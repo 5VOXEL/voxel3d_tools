@@ -4,6 +4,24 @@
  *
  *******************************************************/
 
+#ifndef __VOXEL3d_H__
+#define __VOXEL3d_H__
+
+#ifdef PLAT_WINDOWS
+#pragma once
+
+#ifdef LIBVOXEL3D_EXPORTS
+#define VOXEL3D_API_DLL __declspec(dllexport)
+#elif LIBVOXEL3D_STATIC
+#define VOXEL3D_API_DLL
+#else
+#define VOXEL3D_API_DLL __declspec(dllimport)
+#endif
+
+#else /* PLAT_LINUX */
+#define VOXEL3D_API_DLL
+#endif /* PLAT_WINDOWS */
+
 #define TOF_CAM_VID               "0483"
 #define TOF_CAM_PID               "a307"
 
@@ -16,6 +34,14 @@
 #define TOF_DEPTH_ONLY_FRAME_SIZE (TOF_DEPTH_WIDTH * TOF_DEPTH_HEIGHT * sizeof(unsigned short))
 #define TOF_IR_ONLY_FRAME_SIZE    TOF_DEPTH_ONLY_FRAME_SIZE
 #define TOF_DEPTH_IR_FRAME_SIZE   (TOF_IR_ONLY_FRAME_SIZE * 2)
+
+#define MIN_CONF_THRESHOLD        (10)
+
+enum _range_mode {
+    SHORT_RANGE_MODE = 1,
+    MIDDLE_RANGE_MODE,
+    LONG_RANGE_MODE,
+};
 
 struct CameraInfo {
     float focalLengthFx;
@@ -30,7 +56,7 @@ struct CameraInfo {
     float K4;
     float K5;
     float K6;
-} __attribute__((packed));
+};
 
 
 /*
@@ -45,7 +71,7 @@ struct CameraInfo {
  *     true: found device
  *     false: can't find device
  */
-int voxel3d_init(void);
+extern "C" VOXEL3D_API_DLL int voxel3d_init(void);
 
 /*
  * Function name: voxel3d_release
@@ -56,7 +82,7 @@ int voxel3d_init(void);
  * Input: None
  * Output: None
  */
-void voxel3d_release(void);
+extern "C" VOXEL3D_API_DLL void voxel3d_release(void);
 
 /*
  * Function name: voxel3d_queryframe
@@ -69,8 +95,8 @@ void voxel3d_release(void);
  *     > 0: current frame count (1 ~ UINT_MAX)
  *     = 0: failed to query a frame from device
  */
-unsigned int voxel3d_queryframe(unsigned short *depthmap,
-                                unsigned short *irmap);
+extern "C" VOXEL3D_API_DLL unsigned int voxel3d_queryframe(unsigned short *depthmap,
+                                                           unsigned short *irmap);
 
 /*
  * Function name: voxel3d_qeneratePointCloud
@@ -86,7 +112,7 @@ unsigned int voxel3d_queryframe(unsigned short *depthmap,
  *     > 0: pixels of pointcloud xyz filled in xyz buffer
  *     <= 0: failed to generate pointcloud
  */
-int voxel3d_generatePointCloud(unsigned short *depthmap, float *xyz);
+extern "C" VOXEL3D_API_DLL int voxel3d_generatePointCloud(unsigned short *depthmap, float *xyz);
 
 /*
  * Function name: voxel3d_read_fw_version
@@ -102,7 +128,7 @@ int voxel3d_generatePointCloud(unsigned short *depthmap, float *xyz);
  *     true: buffer shall be filled with F/W version string
  *     false: failed to get F/W version from device or error on input parameters
  */
-int voxel3d_read_fw_version(char *fw_ver, int max_len);
+extern "C" VOXEL3D_API_DLL int voxel3d_read_fw_version(char *fw_ver, unsigned int max_len);
 
 /*
  * Function name: voxel3d_read_fw_build_date
@@ -117,9 +143,9 @@ int voxel3d_read_fw_version(char *fw_ver, int max_len);
  *     max_len: length of user-allocated buffer
  * Output:
  *     true: buffer shall be filled with F/W build date string
- *     false: failed to get F/W version from device or error on input parameters
+ *     false: failed to get F/W build date from device or error on input parameters
  */
-int voxel3d_read_fw_build_date(char *fw_build_date, int max_len);
+extern "C" VOXEL3D_API_DLL int voxel3d_read_fw_build_date(char *fw_build_date, unsigned int max_len);
 
 /*
  * Function name: voxel3d_read_prod_sn
@@ -135,7 +161,7 @@ int voxel3d_read_fw_build_date(char *fw_build_date, int max_len);
  *     true: buffer shall be filled with product s/n string
  *     false: failed to get product s/n from device or error on input parameters
  */
-int voxel3d_read_prod_sn(char *prod_sn, int max_len);
+extern "C" VOXEL3D_API_DLL int voxel3d_read_prod_sn(char *prod_sn, unsigned int max_len);
 
 /*
  * Function name: voxel3d_read_camera_info
@@ -151,7 +177,7 @@ int voxel3d_read_prod_sn(char *prod_sn, int max_len);
  *     false: failed to get camera info from library/device or error on inputa
  *            parameter
  */
-int voxel3d_read_camera_info(CameraInfo *cam_info);
+extern "C" VOXEL3D_API_DLL int voxel3d_read_camera_info(CameraInfo *cam_info);
 
 /*
  * Function name: voxel3d_get_conf_threshold
@@ -166,7 +192,7 @@ int voxel3d_read_camera_info(CameraInfo *cam_info);
  *     >= 0: confidence threshold value read from camera
  *     < 0: failed to get confidence threshold
  */
-int voxel3d_get_conf_threshold(void);
+extern "C" VOXEL3D_API_DLL int voxel3d_get_conf_threshold(void);
 
 /*
  * Function name: voxel3d_set_conf_threshold
@@ -183,7 +209,7 @@ int voxel3d_get_conf_threshold(void);
  *     true: set confidence threshold successfully
  *     false: failed to set confidence threshold
  */
-int voxel3d_set_conf_threshold(unsigned int conf_threshold);
+extern "C" VOXEL3D_API_DLL int voxel3d_set_conf_threshold(unsigned int conf_threshold);
 
  /*
   * Function name: voxel3d_get_range_mode
@@ -200,7 +226,7 @@ int voxel3d_set_conf_threshold(unsigned int conf_threshold);
   *          3 -> long range
   *     others: failed to get range mode
   */
- int voxel3d_get_range_mode(void);
+extern "C" VOXEL3D_API_DLL int voxel3d_get_range_mode(void);
 
  /*
   * Function name: voxel3d_set_range_mode
@@ -218,7 +244,7 @@ int voxel3d_set_conf_threshold(unsigned int conf_threshold);
   *     true: set range mode successfully
   *     false: failed to set range mode
   */
- int voxel3d_set_range_mode(unsigned int range_mode);
+extern "C" VOXEL3D_API_DLL int voxel3d_set_range_mode(unsigned int range_mode);
 
  /*
   * Function name: voxel3d_get_auto_exposure_mode
@@ -234,7 +260,7 @@ int voxel3d_set_conf_threshold(unsigned int conf_threshold);
   *     1: auto exposure is eanbled
   *     < 0: failed to get auto exposure mode
   */
- int voxel3d_get_auto_exposure_mode(void);
+extern "C" VOXEL3D_API_DLL int voxel3d_get_auto_exposure_mode(void);
 
  /*
   * Function name: voxel3d_set_auto_exposure_mode
@@ -251,6 +277,65 @@ int voxel3d_set_conf_threshold(unsigned int conf_threshold);
   *     true: set auto exposure mode successfully
   *     false: failed to set auto exposure mode
   */
- int voxel3d_set_auto_exposure_mode(unsigned int enable);
+extern "C" VOXEL3D_API_DLL int voxel3d_set_auto_exposure_mode(unsigned int enable);
 
- 
+/*
+ * Function name: voxel3d_get_depth_hfov
+ * Description:
+ *     Get camera HFoV
+ * Note:
+ *     Call this function after voxel3d_init() is completed and successfully,
+ *     otherwise, it returns false
+ * Input:
+ *     None
+ * Output:
+ *     > 0: calculated camera HFoV
+ *     <=0: failed to get camera HFoV
+ */
+extern "C" VOXEL3D_API_DLL float voxel3d_get_depth_hfov(void);
+
+/*
+ * Function name: voxel3d_get_depth_vfov
+ * Description:
+ *     Get camera VFoV
+ * Note:
+ *     Call this function after voxel3d_init() is completed and successfully,
+ *     otherwise, it returns false
+ * Input:
+ *     None
+ * Output:
+ *     > 0: calculated camera VFoV
+ *     <=0: failed to get camera VFoV
+ */
+extern "C" VOXEL3D_API_DLL float voxel3d_get_depth_vfov(void);
+
+/*
+ * Function name: voxel3d_read_lib_version
+ * Description:
+ *     Read out library version
+ * Input:
+ *     lib_version: pointer of user-allocated buffer to store library version
+ *                    string
+ *     max_len: length of user-allocated buffer
+ * Output:
+ *     true: buffer shall be filled with library version string
+ *     false: failed to get library version
+ */
+extern "C" VOXEL3D_API_DLL int voxel3d_read_lib_version(char* lib_version, int max_len);
+
+/*
+ * Function name: voxel3d_read_lib_build_date
+ * Description:
+ *     Read out library build date
+ * Input:
+ *     lib_build_date: pointer of user-allocated buffer to store library build date
+ *                    string
+ *     max_len: length of user-allocated buffer
+ * Output:
+ *     true: buffer shall be filled with library build date string
+ *     false: failed to get library build date
+ */
+extern "C" VOXEL3D_API_DLL int voxel3d_read_lib_build_date(char* lib_build_date, int max_len);
+
+#endif /* __VOXEL3d_H__ */
+

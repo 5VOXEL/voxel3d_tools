@@ -73,7 +73,7 @@ static void usage(FILE *fp, int argc, char **argv)
          "-R | --set_mode         set range mode\n"
          "-t | --get_conf         get confidence threshold\n"
          "-T | --set_conf         set confidence threshold\n"
-         "-v | --version          show firmware version\n"
+         "-v | --version          show lib & firmware version\n"
          "\n",
          argv[0], TOOLS_VER_MAJOR, TOOLS_VER_MINOR, frame_count);
 }
@@ -209,8 +209,10 @@ int main(int argc, char **argv)
 
         case 'v':
             voxel3d_init();
+            voxel3d_read_lib_version(data, sizeof(data));
+            printf("Share library version : %s\n", data);
             voxel3d_read_fw_version(data, sizeof(data));
-            printf("FW version : %s\n", data);
+            printf("5Z01A F/W version     : %s\n", data);
             voxel3d_release();
             exit(EXIT_SUCCESS);
 

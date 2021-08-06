@@ -4,7 +4,7 @@ ROOT = $(TOP)/../..
 SRC_DIR = $(ROOT)/src
 LIB_DIR = $(ROOT)/lib
 
-CC=gcc 
+CC=g++
 CFLAGS=-Wall
 LDFLAGS=-L$(ROOT)/lib/x86_64
 INCLUDES=-I$(ROOT)/inc
