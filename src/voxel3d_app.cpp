@@ -36,7 +36,7 @@ static void mainloop(void)
 
     count = frame_count;
 
-    while (count-- > 0) {
+    while (count > 0) {
         unsigned int ret = voxel3d_queryframe(tof_depth, tof_ir);
         if (ret) {
             printf("depth center = %d (mm), IR center = %d\n",

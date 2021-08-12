@@ -2,11 +2,11 @@ TOP := $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 ROOT = $(TOP)/../..
 
 SRC_DIR = $(ROOT)/src
-LIB_DIR = $(ROOT)/lib
+LIB_DIR = $(ROOT)/lib/ubuntu/x86_64
 
 CC=g++
 CFLAGS=-Wall
-LDFLAGS=-L$(ROOT)/lib/x86_64
+LDFLAGS=-L$(ROOT)/lib/ubuntu/x86_64
 INCLUDES=-I$(ROOT)/inc
 LDLIBS=-lvoxel3d
 
