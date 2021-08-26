@@ -30,18 +30,22 @@ Supported Deivce(s)
   
 Supported OS/Platform
 -------------------------------------------------------------------------------
-$ lsb_release -a  
-No LSB modules are available.  
-Distributor ID:	Ubuntu  
-Description:	Ubuntu 18.04.5 LTS  
-Release:	18.04  
-Codename:	bionic  
+* ### OS  
+  $ lsb_release -a  
+  No LSB modules are available.  
+  Distributor ID:	Ubuntu  
+  Description:	Ubuntu 18.04.5 LTS  
+  Release:	18.04  
+  Codename:	bionic  
   
+* ### Platform  
+  * x86_64
+  * aarch64 (Jetson Nano)
   
 Kernel module needed
 -------------------------------------------------------------------------------
 
-Steps
+Build steps
 -------------------------------------------------------------------------------
 1. Go to platform/linux and do 'make'  
 2. Run './voxel3d_tools -h' to show menu  
@@ -83,7 +87,7 @@ $ Windows10 (Visual Studio Community 2017)
 Kernel module needed
 -------------------------------------------------------------------------------
 
-Steps
+Build steps
 -------------------------------------------------------------------------------
 1. Install Vistual Studion Community 2017  
 2. Go to platform/win and click on 'voxel3d_tools.sln' (Visual Studio Solution File)  
