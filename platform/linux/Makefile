@@ -1,12 +1,11 @@
 TOP := $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 ROOT = $(TOP)/../..
+include $(TOP)/Makefile.check
 
 SRC_DIR = $(ROOT)/src
-LIB_DIR = $(ROOT)/lib/ubuntu/x86_64
 
 CC=g++
 CFLAGS=-Wall
-LDFLAGS=-L$(ROOT)/lib/ubuntu/x86_64
 INCLUDES=-I$(ROOT)/inc
 LDLIBS=-lvoxel3d
 

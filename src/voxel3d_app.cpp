@@ -99,7 +99,7 @@ long_options[] = {
 int main(int argc, char **argv)
 {
     char data[64];
-    int  result;
+    int  result, found_device;
 
     for (;;) {
         int idx;
@@ -120,13 +120,15 @@ int main(int argc, char **argv)
             exit(EXIT_SUCCESS);
 
         case 'a':
-            voxel3d_init();
-            result = voxel3d_get_auto_exposure_mode();
-            /*
-             * function returns 0->ae_disabled; 1->ae_enabled; < 0: failed
-             */
-            if (result >= 0) {
-                printf("Auto Exposure Mode : %s\n", (result == 0) ? "disabled" : "enabled");
+            found_device = voxel3d_init();
+            if (found_device) {
+                result = voxel3d_get_auto_exposure_mode();
+                /*
+                 * function returns 0->ae_disabled; 1->ae_enabled; < 0: failed
+                 */
+                if (result >= 0) {
+                    printf("Auto Exposure Mode : %s\n", (result == 0) ? "disabled" : "enabled");
+                }
             }
             voxel3d_release();
             exit(EXIT_SUCCESS);
@@ -136,18 +138,22 @@ int main(int argc, char **argv)
             auto_exposure_mode = strtol(optarg, NULL, 0);
             if (errno)
                 errno_exit(optarg);
-            voxel3d_init();
-            result = voxel3d_set_auto_exposure_mode(auto_exposure_mode);
-            if (result) {
-                printf("Set Auto Exposure Mode : %d\n", auto_exposure_mode);
+            found_device = voxel3d_init();
+            if (found_device) {
+                result = voxel3d_set_auto_exposure_mode(auto_exposure_mode);
+                if (result) {
+                    printf("Set Auto Exposure Mode : %d\n", auto_exposure_mode);
+                }
             }
             voxel3d_release();
             exit(EXIT_SUCCESS);
 
         case 'b':
-            voxel3d_init();
-            voxel3d_read_fw_build_date(data, sizeof(data));
-            printf("FW build date : %s\n", data);
+            found_device = voxel3d_init();
+            if (found_device) {
+                voxel3d_read_fw_build_date(data, sizeof(data));
+                printf("FW build date : %s\n", data);
+            }
             voxel3d_release();
             exit(EXIT_SUCCESS);
 
@@ -159,17 +165,21 @@ int main(int argc, char **argv)
             break;
 
         case 'p':
-            voxel3d_init();
-            voxel3d_read_prod_sn(data, sizeof(data));
-            printf("Product S/N : %s\n", data);
+            found_device = voxel3d_init();
+            if (found_device) {
+                voxel3d_read_prod_sn(data, sizeof(data));
+                printf("Product S/N : %s\n", data);
+            }
             voxel3d_release();
             exit(EXIT_SUCCESS);
 
         case 'r':
-            voxel3d_init();
-            result = voxel3d_get_range_mode();
-            if (result) {
-                printf("Range Mode : %d\n", result);
+            found_device = voxel3d_init();
+            if (found_device) {
+                result = voxel3d_get_range_mode();
+                if (result) {
+                    printf("Range Mode : %d\n", result);
+                }
             }
             voxel3d_release();
             exit(EXIT_SUCCESS);
@@ -179,18 +189,23 @@ int main(int argc, char **argv)
             range_mode = strtol(optarg, NULL, 0);
             if (errno)
                 errno_exit(optarg);
-            voxel3d_init();
-            result = voxel3d_set_range_mode(range_mode);
-            if (result) {
-                printf("Set Rnage Mode : %d\n", range_mode);
+
+            found_device = voxel3d_init();
+            if (found_device) {
+                result = voxel3d_set_range_mode(range_mode);
+                if (result) {
+                    printf("Set Rnage Mode : %d\n", range_mode);
+                }
             }
             voxel3d_release();
             exit(EXIT_SUCCESS);
 
         case 't':
-            voxel3d_init();
-            result = voxel3d_get_conf_threshold();
-            printf("Confidence Threshold : %d\n", result);
+            found_device = voxel3d_init();
+            if (found_device) {
+                result = voxel3d_get_conf_threshold();
+                printf("Confidence Threshold : %d\n", result);
+            }
             voxel3d_release();
             exit(EXIT_SUCCESS);
 
@@ -199,20 +214,25 @@ int main(int argc, char **argv)
             conf_threshold = strtol(optarg, NULL, 0);
             if (errno)
                 errno_exit(optarg);
-            voxel3d_init();
-            result = voxel3d_set_conf_threshold(conf_threshold);
-            if (result) {
-                printf("Set Confidence Threshold : %d\n", conf_threshold);
+
+            found_device = voxel3d_init();
+            if (found_device) {
+                result = voxel3d_set_conf_threshold(conf_threshold);
+                if (result) {
+                    printf("Set Confidence Threshold : %d\n", conf_threshold);
+                }
             }
             voxel3d_release();
             exit(EXIT_SUCCESS);
 
         case 'v':
-            voxel3d_init();
-            voxel3d_read_lib_version(data, sizeof(data));
-            printf("Share library version : %s\n", data);
-            voxel3d_read_fw_version(data, sizeof(data));
-            printf("5Z01A F/W version     : %s\n", data);
+            found_device = voxel3d_init();
+            if (found_device) {
+                voxel3d_read_lib_version(data, sizeof(data));
+                printf("Share library version : %s\n", data);
+                voxel3d_read_fw_version(data, sizeof(data));
+                printf("5Z01A F/W version     : %s\n", data);
+            }
             voxel3d_release();
             exit(EXIT_SUCCESS);
 
@@ -225,12 +245,14 @@ int main(int argc, char **argv)
     /*
      * Start device
      */
-    voxel3d_init();
+    found_device = voxel3d_init();
 
     /*
      * main loop function
      */
-    mainloop();
+    if (found_device) {
+        mainloop();
+    }
 
     /*
      * Stop device
