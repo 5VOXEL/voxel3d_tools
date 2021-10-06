@@ -5,7 +5,7 @@ Library and utilities for working with 5Voxel 5Z01A 3D-ToF Camera
 # Ubuntu
 Usage: ./voxel3d_tools [options]  
   
-Version 1.3  
+Version 1.4  
 Options:  
 -h | --help             Print this message  
 -a | --get_auto_expo    get auto exposure mode  
@@ -17,6 +17,7 @@ Options:
 -R | --set_mode         set range mode  
 -t | --get_conf         get confidence threshold  
 -T | --set_conf         set confidence threshold  
+-u | --fw_upgrade       device firmware upgrade  
 -v | --version          show firmware version  
   
   
@@ -68,6 +69,7 @@ Options:
 -R | --set_mode         set range mode  
 -t | --get_conf         get confidence threshold  
 -T | --set_conf         set confidence threshold  
+-u | --fw_upgrade       device firmware upgrade  
 -v | --version          show firmware version  
   
   

@@ -7,11 +7,22 @@
 #include <string.h>
 #include <getopt.h>             /* getopt_long() */
 #include <errno.h>
+#ifdef PLAT_WINDOWS
+#include <windows.h>
+#else
+#include <unistd.h>
+#endif /* PLAT_WINDOWS */
 
 #include "voxel3d.h"
 
 #define TOOLS_VER_MAJOR         (1)
-#define TOOLS_VER_MINOR         (3)
+#define TOOLS_VER_MINOR         (4)
+
+#ifdef PLAT_WINDOWS
+#define SleepSeconds(x)        Sleep(x * 1000)
+#else /* PLAT_LINUX */
+#define SleepSeconds(x)        sleep(x)
+#endif /* PLAT_WINDOWS */
 
 static unsigned int     frame_count = 70;
 static int              range_mode = 0;
@@ -73,12 +84,13 @@ static void usage(FILE *fp, int argc, char **argv)
          "-R | --set_mode         set range mode\n"
          "-t | --get_conf         get confidence threshold\n"
          "-T | --set_conf         set confidence threshold\n"
+         "-u | --fw_upgrade       device firmware upgrade\n"
          "-v | --version          show lib & firmware version\n"
          "\n",
          argv[0], TOOLS_VER_MAJOR, TOOLS_VER_MINOR, frame_count);
 }
 
-static const char short_options[] = "haA:bc:prR:tT:v";
+static const char short_options[] = "haA:bc:prR:tT:u:v";
 
 static const struct option
 long_options[] = {
@@ -92,12 +104,14 @@ long_options[] = {
     { "set_mode",          required_argument, NULL, 'R' },
     { "get_conf",          no_argument,       NULL, 't' },
     { "set_conf",          required_argument, NULL, 'T' },
+    { "fw_upgrade",        required_argument, NULL, 'u' },
     { "version",           no_argument,       NULL, 'v' },
     { 0, 0, 0, 0 }
 };
 
 int main(int argc, char **argv)
 {
+    int wait_time = 60;
     char data[64];
     int  result, found_device;
 
@@ -121,7 +135,7 @@ int main(int argc, char **argv)
 
         case 'a':
             found_device = voxel3d_init();
-            if (found_device) {
+            if (found_device > 0) {
                 result = voxel3d_get_auto_exposure_mode();
                 /*
                  * function returns 0->ae_disabled; 1->ae_enabled; < 0: failed
@@ -139,9 +153,9 @@ int main(int argc, char **argv)
             if (errno)
                 errno_exit(optarg);
             found_device = voxel3d_init();
-            if (found_device) {
+            if (found_device > 0) {
                 result = voxel3d_set_auto_exposure_mode(auto_exposure_mode);
-                if (result) {
+                if (result > 0) {
                     printf("Set Auto Exposure Mode : %d\n", auto_exposure_mode);
                 }
             }
@@ -150,7 +164,7 @@ int main(int argc, char **argv)
 
         case 'b':
             found_device = voxel3d_init();
-            if (found_device) {
+            if (found_device > 0) {
                 voxel3d_read_fw_build_date(data, sizeof(data));
                 printf("FW build date : %s\n", data);
             }
@@ -166,7 +180,7 @@ int main(int argc, char **argv)
 
         case 'p':
             found_device = voxel3d_init();
-            if (found_device) {
+            if (found_device > 0) {
                 voxel3d_read_prod_sn(data, sizeof(data));
                 printf("Product S/N : %s\n", data);
             }
@@ -175,9 +189,9 @@ int main(int argc, char **argv)
 
         case 'r':
             found_device = voxel3d_init();
-            if (found_device) {
+            if (found_device > 0) {
                 result = voxel3d_get_range_mode();
-                if (result) {
+                if (result > 0) {
                     printf("Range Mode : %d\n", result);
                 }
             }
@@ -191,9 +205,9 @@ int main(int argc, char **argv)
                 errno_exit(optarg);
 
             found_device = voxel3d_init();
-            if (found_device) {
+            if (found_device > 0) {
                 result = voxel3d_set_range_mode(range_mode);
-                if (result) {
+                if (result > 0) {
                     printf("Set Rnage Mode : %d\n", range_mode);
                 }
             }
@@ -202,9 +216,11 @@ int main(int argc, char **argv)
 
         case 't':
             found_device = voxel3d_init();
-            if (found_device) {
+            if (found_device > 0) {
                 result = voxel3d_get_conf_threshold();
-                printf("Confidence Threshold : %d\n", result);
+                if (result >= 0) {
+                    printf("Confidence Threshold : %d\n", result);
+                }
             }
             voxel3d_release();
             exit(EXIT_SUCCESS);
@@ -216,18 +232,56 @@ int main(int argc, char **argv)
                 errno_exit(optarg);
 
             found_device = voxel3d_init();
-            if (found_device) {
+            if (found_device > 0) {
                 result = voxel3d_set_conf_threshold(conf_threshold);
-                if (result) {
+                if (result > 0) {
                     printf("Set Confidence Threshold : %d\n", conf_threshold);
                 }
             }
             voxel3d_release();
             exit(EXIT_SUCCESS);
+        case 'u':
+            found_device = voxel3d_init();
+            if (found_device > 0) {
+                voxel3d_read_fw_version(data, sizeof(data));
+                printf("--------------------------------------------------------\n");
+                printf("Before F/W upgrade\n");
+                printf("F/W file     : %s\n", optarg);
+                printf("F/W version  : %s\n", data);
+                printf("--------------------------------------------------------\n\n");
+                result = voxel3d_dev_fw_upgrade(optarg);
+                voxel3d_release();
+                if (result < 0) {
+                    printf("5Z01A FW upgrade failed\n");
+                    exit(EXIT_SUCCESS);
+                }
+
+                /*
+                 * Give some time for new firmware verification and reboot
+                 */
+                SleepSeconds(5);
+                while (wait_time--) {
+                    found_device = voxel3d_init();
+                    if (found_device > 0) {
+                        voxel3d_read_fw_version(data, sizeof(data));
+                        printf("--------------------------------------------------------\n");
+                        printf("After F/W upgrade\n");
+                        printf("F/W version  : %s\n", data);
+                        printf("--------------------------------------------------------\n\n");
+                        break;
+                    }
+                    SleepSeconds(1);
+                }
+                if (wait_time == 0) {
+                    printf("Time out waiting for 5Z01A device up\n");
+                }
+                exit(EXIT_SUCCESS);
+            }
+            break;
 
         case 'v':
             found_device = voxel3d_init();
-            if (found_device) {
+            if (found_device > 0) {
                 voxel3d_read_lib_version(data, sizeof(data));
                 printf("Share library version : %s\n", data);
                 voxel3d_read_fw_version(data, sizeof(data));
@@ -250,7 +304,7 @@ int main(int argc, char **argv)
     /*
      * main loop function
      */
-    if (found_device) {
+    if (found_device > 0) {
         mainloop();
     }
 

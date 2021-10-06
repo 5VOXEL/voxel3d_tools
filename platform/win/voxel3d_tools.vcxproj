@@ -73,8 +73,8 @@
     <LinkIncremental>true</LinkIncremental>
     <IncludePath>$(SolutionDir)..\..\inc;$(SolutionDir)..\..\inc\win;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)..\..\lib\win\$(PlatformTarget)-Release;$(LibraryPath);$(OutDir)</LibraryPath>
-    <OutDir>$(SolutionDir)Bin\$(PlatformTarget)-$(Configuration)\$(ProjectName)</OutDir>
-    <IntDir>$(SolutionDir)Bin\Intermediate\$(PlatformTarget)-$(Configuration)</IntDir>
+    <OutDir>$(SolutionDir)Bin\$(PlatformTarget)-$(Configuration)\$(ProjectName)\</OutDir>
+    <IntDir>$(SolutionDir)Bin\Intermediate\$(PlatformTarget)-$(Configuration)\</IntDir>
     <ExecutablePath>$(ExecutablePath)</ExecutablePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -89,16 +89,16 @@
     <LinkIncremental>false</LinkIncremental>
     <IncludePath>$(SolutionDir)..\..\inc;$(SolutionDir)..\..\inc\win;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)..\..\lib\win\$(PlatformTarget)-$(Configuration);$(LibraryPath);$(OutDir)</LibraryPath>
-    <OutDir>$(SolutionDir)Bin\$(PlatformTarget)-$(Configuration)\$(ProjectName)</OutDir>
-    <IntDir>$(SolutionDir)Bin\Intermediate\$(PlatformTarget)-$(Configuration)</IntDir>
+    <OutDir>$(SolutionDir)Bin\$(PlatformTarget)-$(Configuration)\$(ProjectName)\</OutDir>
+    <IntDir>$(SolutionDir)Bin\Intermediate\$(PlatformTarget)-$(Configuration)\</IntDir>
     <ExecutablePath>$(ExecutablePath)</ExecutablePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
     <IncludePath>$(SolutionDir)..\..\inc;$(SolutionDir)..\..\inc\win;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)..\..\lib\win\$(PlatformTarget)-$(Configuration);$(OutDir);$(LibraryPath)</LibraryPath>
-    <OutDir>$(SolutionDir)Bin\$(PlatformTarget)-$(Configuration)\$(ProjectName)</OutDir>
-    <IntDir>$(SolutionDir)Bin\Intermediate\$(PlatformTarget)-$(Configuration)</IntDir>
+    <OutDir>$(SolutionDir)Bin\$(PlatformTarget)-$(Configuration)\$(ProjectName)\</OutDir>
+    <IntDir>$(SolutionDir)Bin\Intermediate\$(PlatformTarget)-$(Configuration)\</IntDir>
     <ExecutablePath>$(ExecutablePath)</ExecutablePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
