@@ -41,7 +41,7 @@ Supported OS/Platform
   
 * ### Platform  
   * x86_64
-  * aarch64 (Jetson Nano)
+  * aarch64 (Jetson Nano / Raspberry Pi4)
   
 Kernel module needed
 -------------------------------------------------------------------------------
