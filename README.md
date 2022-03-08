@@ -1,28 +1,31 @@
 # voxel3d_tools
 Library and utilities for working with 5Voxel 5Z01A 3D-ToF Camera  
 
+Note: Multi-devices on single host is supported starting from V1.1.0 library & V1.5 app
+
 -------------------------------------------------------------------------------
 # Ubuntu
 Usage: ./voxel3d_tools [options]  
   
-Version 1.4  
+Version 1.5  
 Options:  
--h | --help             Print this message  
--a | --get_auto_expo    get auto exposure mode  
--A | --set_auto_expo    set auto exposure mode  
--b | --build_date       show firmware build date  
--c | --count            Number of frames to grab [70]  
--p | --prod_sn          show product serial number  
--r | --get_mode         get range mode  
--R | --set_mode         set range mode  
--t | --get_conf         get confidence threshold  
--T | --set_conf         set confidence threshold  
--u | --fw_upgrade       device firmware upgrade  
--v | --version          show firmware version  
+-h | --help&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;Print this message  
+-a | --get_auto_expo&emsp;get auto exposure mode  
+-A | --set_auto_expo&emsp;set auto exposure mode  
+-b | --build_date&emsp;&emsp;&nbsp;&nbsp;&nbsp;show firmware build date  
+-c | --count&emsp;&emsp;&emsp;&emsp;&emsp;Number of frames to grab [70]  
+-r | --get_mode&emsp;&emsp;&emsp;&nbsp;get range mode  
+-R | --set_mode&emsp;&emsp;&emsp;&nbsp;set range mode  
+-S | --scan_dev&emsp;&emsp;&emsp;&nbsp;&nbsp;scan devices and list device S/N  
+-s | --dev_sn&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;specify device S/N to access 
+-t | --get_conf&emsp;&emsp;&emsp;&nbsp;get confidence threshold  
+-T | --set_conf&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;set confidence threshold  
+-u | --fw_upgrade&emsp;&emsp;&nbsp;device firmware upgrade  
+-v | --version&emsp;&emsp;&emsp;&emsp;&nbsp;show firmware version  
   
   
 Example:  
-./voxel3d_tools -c 100  
+./voxel3d_tools -s PX2011090052 -c 100  
   
   
 Supported Deivce(s)
@@ -57,24 +60,25 @@ Build steps
 # Windows
 Usage: voxel3d_tools.exe [options]  
   
-Version 1.3  
+Version 1.5  
 Options:  
--h | --help             Print this message  
--a | --get_auto_expo    get auto exposure mode  
--A | --set_auto_expo    set auto exposure mode  
--b | --build_date       show firmware build date  
--c | --count            Number of frames to grab [70]  
--p | --prod_sn          show product serial number  
--r | --get_mode         get range mode  
--R | --set_mode         set range mode  
--t | --get_conf         get confidence threshold  
--T | --set_conf         set confidence threshold  
--u | --fw_upgrade       device firmware upgrade  
--v | --version          show firmware version  
+-h | --help&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;Print this message  
+-a | --get_auto_expo&emsp;get auto exposure mode  
+-A | --set_auto_expo&emsp;set auto exposure mode  
+-b | --build_date&emsp;&emsp;&nbsp;&nbsp;&nbsp;show firmware build date  
+-c | --count&emsp;&emsp;&emsp;&emsp;&emsp;Number of frames to grab [70]  
+-r | --get_mode&emsp;&emsp;&emsp;&nbsp;get range mode  
+-R | --set_mode&emsp;&emsp;&emsp;&nbsp;set range mode  
+-S | --scan_dev&emsp;&emsp;&emsp;&nbsp;&nbsp;scan devices and list device S/N  
+-s | --dev_sn&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;specify device S/N to access 
+-t | --get_conf&emsp;&emsp;&emsp;&nbsp;get confidence threshold  
+-T | --set_conf&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;set confidence threshold  
+-u | --fw_upgrade&emsp;&emsp;&nbsp;device firmware upgrade  
+-v | --version&emsp;&emsp;&emsp;&emsp;&nbsp;show firmware version  
   
   
 Example:  
-voxel3d_tools.exe -c 100  
+voxel3d_tools.exe -s PX2011090052 -c 100  
   
   
 Supported Deivce(s)
