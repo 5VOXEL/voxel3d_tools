@@ -1,0 +1,665 @@
+\hypertarget{voxel3d_8h}{}\doxysection{inc/voxel3d.h File Reference}
+\label{voxel3d_8h}\index{inc/voxel3d.h@{inc/voxel3d.h}}
+
+
+APIs for using libvoxel3d.  
+
+
+\doxysubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_camera_info}{Camera\+Info}}
+\begin{DoxyCompactList}\small\item\em Structure used in \mbox{\hyperlink{voxel3d_8h_a2d3949c5d279c7158de389478c9dd6bf}{voxel3d\+\_\+read\+\_\+camera\+\_\+info()}} to read out camera info from device. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_cam_dev_info}{Cam\+Dev\+Info}}
+\begin{DoxyCompactList}\small\item\em Structure used in \mbox{\hyperlink{voxel3d_8h_a1cf51682aa09957509a451ea80c68836}{voxel3d\+\_\+scan()}} to fill up with scanned device number and product serial number for each device. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{voxel3d_8h_a1e98829012ff20957adda58dcece331c}\label{voxel3d_8h_a1e98829012ff20957adda58dcece331c}} 
+\#define {\bfseries VOXEL3\+D\+\_\+\+API\+\_\+\+DLL}
+\item 
+\mbox{\Hypertarget{voxel3d_8h_a82354b7050d6ccf747cc8d86838a14d0}\label{voxel3d_8h_a82354b7050d6ccf747cc8d86838a14d0}} 
+\#define {\bfseries TOF\+\_\+\+CAM\+\_\+\+VID}~\char`\"{}0483\char`\"{}
+\item 
+\mbox{\Hypertarget{voxel3d_8h_af0533e947b2adcfb10b9fd0700c53f10}\label{voxel3d_8h_af0533e947b2adcfb10b9fd0700c53f10}} 
+\#define {\bfseries TOF\+\_\+\+CAM\+\_\+\+PID}~\char`\"{}a307\char`\"{}
+\item 
+\mbox{\Hypertarget{voxel3d_8h_aaa8d8eaa9cb2947824f0b991ec132b23}\label{voxel3d_8h_aaa8d8eaa9cb2947824f0b991ec132b23}} 
+\#define {\bfseries TOF\+\_\+\+DEPTH\+\_\+\+WIDTH}~(224)
+\item 
+\mbox{\Hypertarget{voxel3d_8h_a5438c8afab8c52011732603349f14212}\label{voxel3d_8h_a5438c8afab8c52011732603349f14212}} 
+\#define {\bfseries TOF\+\_\+\+DEPTH\+\_\+\+HEIGHT}~(172)
+\item 
+\mbox{\Hypertarget{voxel3d_8h_afa32ef07de1a219998657effe7657bb1}\label{voxel3d_8h_afa32ef07de1a219998657effe7657bb1}} 
+\#define {\bfseries TOF\+\_\+\+DEPTH\+\_\+\+PIXELS}~(TOF\+\_\+\+DEPTH\+\_\+\+WIDTH $\ast$ TOF\+\_\+\+DEPTH\+\_\+\+HEIGHT)
+\item 
+\mbox{\Hypertarget{voxel3d_8h_ab0408508e99550e69107ed8333c3002e}\label{voxel3d_8h_ab0408508e99550e69107ed8333c3002e}} 
+\#define {\bfseries TOF\+\_\+\+IR\+\_\+\+WIDTH}~TOF\+\_\+\+DEPTH\+\_\+\+WIDTH
+\item 
+\mbox{\Hypertarget{voxel3d_8h_ad8e4ea129b081f080e9faafe40fbad6b}\label{voxel3d_8h_ad8e4ea129b081f080e9faafe40fbad6b}} 
+\#define {\bfseries TOF\+\_\+\+IR\+\_\+\+HEIGHT}~TOF\+\_\+\+DEPTH\+\_\+\+HEIGHT
+\item 
+\mbox{\Hypertarget{voxel3d_8h_af408d6a5754a4ab3b1698c79e0da681f}\label{voxel3d_8h_af408d6a5754a4ab3b1698c79e0da681f}} 
+\#define {\bfseries TOF\+\_\+\+IR\+\_\+\+PIXELS}~TOF\+\_\+\+DEPTH\+\_\+\+PIXELS
+\item 
+\mbox{\Hypertarget{voxel3d_8h_a031d7786932b90fe7f66bc5ba105aa96}\label{voxel3d_8h_a031d7786932b90fe7f66bc5ba105aa96}} 
+\#define {\bfseries TOF\+\_\+\+DEPTH\+\_\+\+ONLY\+\_\+\+FRAME\+\_\+\+SIZE}~(TOF\+\_\+\+DEPTH\+\_\+\+PIXELS $\ast$ sizeof(unsigned short))
+\item 
+\mbox{\Hypertarget{voxel3d_8h_a6316cebecdd90955c1534d659edba5c1}\label{voxel3d_8h_a6316cebecdd90955c1534d659edba5c1}} 
+\#define {\bfseries TOF\+\_\+\+IR\+\_\+\+ONLY\+\_\+\+FRAME\+\_\+\+SIZE}~TOF\+\_\+\+DEPTH\+\_\+\+ONLY\+\_\+\+FRAME\+\_\+\+SIZE
+\item 
+\mbox{\Hypertarget{voxel3d_8h_a7dfe7d55457fcab2ea1d69a1bb8c5192}\label{voxel3d_8h_a7dfe7d55457fcab2ea1d69a1bb8c5192}} 
+\#define {\bfseries TOF\+\_\+\+DEPTH\+\_\+\+IR\+\_\+\+FRAME\+\_\+\+SIZE}~(TOF\+\_\+\+DEPTH\+\_\+\+ONLY\+\_\+\+FRAME\+\_\+\+SIZE + TOF\+\_\+\+IR\+\_\+\+ONLY\+\_\+\+FRAME\+\_\+\+SIZE)
+\item 
+\mbox{\Hypertarget{voxel3d_8h_a577ed69f6995cb91a3b648c0a4989ef2}\label{voxel3d_8h_a577ed69f6995cb91a3b648c0a4989ef2}} 
+\#define {\bfseries MIN\+\_\+\+CONF\+\_\+\+THRESHOLD}~(10)
+\item 
+\mbox{\Hypertarget{voxel3d_8h_a380bffeb13f399ce04a5a4edf44a1c30}\label{voxel3d_8h_a380bffeb13f399ce04a5a4edf44a1c30}} 
+\#define {\bfseries MAX\+\_\+\+SUPPORTED\+\_\+\+CAMERA\+\_\+\+MODULE}~(10)
+\item 
+\mbox{\Hypertarget{voxel3d_8h_ad764f6d4454e4db4375fca21a63fb207}\label{voxel3d_8h_ad764f6d4454e4db4375fca21a63fb207}} 
+\#define {\bfseries MAX\+\_\+\+PRODUCT\+\_\+\+NAME\+\_\+\+LEN}~(128)
+\item 
+\mbox{\Hypertarget{voxel3d_8h_ab36b256eb28db47487c4327073592224}\label{voxel3d_8h_ab36b256eb28db47487c4327073592224}} 
+\#define {\bfseries MAX\+\_\+\+PRODUCT\+\_\+\+SN\+\_\+\+LEN}~(128)
+\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{voxel3d_8h_a29600188291d93981ff1bc64da9a78df}{\+\_\+range\+\_\+mode}} \{ {\bfseries SHORT\+\_\+\+RANGE\+\_\+\+MODE} = 1
+, {\bfseries MIDDLE\+\_\+\+RANGE\+\_\+\+MODE}
+, {\bfseries LONG\+\_\+\+RANGE\+\_\+\+MODE}
+ \}
+\begin{DoxyCompactList}\small\item\em Supported range mode ~\newline
+ \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+VOXEL3\+D\+\_\+\+API\+\_\+\+DLL int \mbox{\hyperlink{voxel3d_8h_a1cf51682aa09957509a451ea80c68836}{voxel3d\+\_\+scan}} (\mbox{\hyperlink{struct_cam_dev_info}{Cam\+Dev\+Info}} $\ast$cam\+\_\+dev\+\_\+info)
+\begin{DoxyCompactList}\small\item\em Perform the scan of 5Voxel 5Z01A devices. \end{DoxyCompactList}\item 
+VOXEL3\+D\+\_\+\+API\+\_\+\+DLL int \mbox{\hyperlink{voxel3d_8h_a496143fdb21996473d36dcd87eeb38ee}{voxel3d\+\_\+init}} (char $\ast$dev\+\_\+sn)
+\begin{DoxyCompactList}\small\item\em Perform the initialization of sepcific 5Voxel 5Z01A device. \end{DoxyCompactList}\item 
+VOXEL3\+D\+\_\+\+API\+\_\+\+DLL void \mbox{\hyperlink{voxel3d_8h_a6d1a7d460137fbb4ad88f34353edc33c}{voxel3d\+\_\+release}} (char $\ast$dev\+\_\+sn)
+\begin{DoxyCompactList}\small\item\em Release the resource allocated for 5Voxel 5Z01A device. \end{DoxyCompactList}\item 
+VOXEL3\+D\+\_\+\+API\+\_\+\+DLL unsigned int \mbox{\hyperlink{voxel3d_8h_a7f8b8c416fc9ebfc17a02b013d0240a5}{voxel3d\+\_\+queryframe}} (char $\ast$dev\+\_\+sn, unsigned short $\ast$depthmap, unsigned short $\ast$irmap)
+\begin{DoxyCompactList}\small\item\em Grab a depth \& ir frame from 5Z01A camera. \end{DoxyCompactList}\item 
+VOXEL3\+D\+\_\+\+API\+\_\+\+DLL int \mbox{\hyperlink{voxel3d_8h_a6e1fba56cb09fbd7c2075ab0026ff300}{voxel3d\+\_\+generate\+Point\+Cloud}} (char $\ast$dev\+\_\+sn, unsigned short $\ast$depthmap, float $\ast$xyz)
+\begin{DoxyCompactList}\small\item\em Generate pointcloud data based on input deptpmap and the calibration parameters from 5Z01A camera. \end{DoxyCompactList}\item 
+VOXEL3\+D\+\_\+\+API\+\_\+\+DLL int \mbox{\hyperlink{voxel3d_8h_a4f7e200f3b85635a5ea09582c1d5224b}{voxel3d\+\_\+read\+\_\+fw\+\_\+version}} (char $\ast$dev\+\_\+sn, char $\ast$fw\+\_\+ver, unsigned int max\+\_\+len)
+\begin{DoxyCompactList}\small\item\em Read out camera F/W version. \end{DoxyCompactList}\item 
+VOXEL3\+D\+\_\+\+API\+\_\+\+DLL int \mbox{\hyperlink{voxel3d_8h_a995e7fcaaee46ede72cbe5ece19395cc}{voxel3d\+\_\+read\+\_\+fw\+\_\+build\+\_\+date}} (char $\ast$dev\+\_\+sn, char $\ast$fw\+\_\+build\+\_\+date, unsigned int max\+\_\+len)
+\begin{DoxyCompactList}\small\item\em Read out camera F/W build date. \end{DoxyCompactList}\item 
+VOXEL3\+D\+\_\+\+API\+\_\+\+DLL int \mbox{\hyperlink{voxel3d_8h_a2d3949c5d279c7158de389478c9dd6bf}{voxel3d\+\_\+read\+\_\+camera\+\_\+info}} (char $\ast$dev\+\_\+sn, \mbox{\hyperlink{struct_camera_info}{Camera\+Info}} $\ast$cam\+\_\+info)
+\begin{DoxyCompactList}\small\item\em Grab camera info from 5Voxel library. \end{DoxyCompactList}\item 
+VOXEL3\+D\+\_\+\+API\+\_\+\+DLL int \mbox{\hyperlink{voxel3d_8h_a38c85ec7421983c6e632ef5bf82416d7}{voxel3d\+\_\+get\+\_\+conf\+\_\+threshold}} (char $\ast$dev\+\_\+sn)
+\begin{DoxyCompactList}\small\item\em Get current confidence threshold value from camera. \end{DoxyCompactList}\item 
+VOXEL3\+D\+\_\+\+API\+\_\+\+DLL int \mbox{\hyperlink{voxel3d_8h_a0ad6772b5994f8b069fbae44e502cfde}{voxel3d\+\_\+set\+\_\+conf\+\_\+threshold}} (char $\ast$dev\+\_\+sn, unsigned int conf\+\_\+threshold)
+\begin{DoxyCompactList}\small\item\em Set run-\/time confidence threshold to camera. \end{DoxyCompactList}\item 
+VOXEL3\+D\+\_\+\+API\+\_\+\+DLL int \mbox{\hyperlink{voxel3d_8h_a604e8a9782abdac085d8054882046030}{voxel3d\+\_\+get\+\_\+range\+\_\+mode}} (char $\ast$dev\+\_\+sn)
+\begin{DoxyCompactList}\small\item\em Get current range mode setting from camera. \end{DoxyCompactList}\item 
+VOXEL3\+D\+\_\+\+API\+\_\+\+DLL int \mbox{\hyperlink{voxel3d_8h_a111494ba0a5c982c91b341c2f945bb90}{voxel3d\+\_\+set\+\_\+range\+\_\+mode}} (char $\ast$dev\+\_\+sn, unsigned int range\+\_\+mode)
+\begin{DoxyCompactList}\small\item\em Set range mode to camera. \end{DoxyCompactList}\item 
+VOXEL3\+D\+\_\+\+API\+\_\+\+DLL int \mbox{\hyperlink{voxel3d_8h_afc5edbe95b6477bf5d939a6a33e6f629}{voxel3d\+\_\+get\+\_\+auto\+\_\+exposure\+\_\+mode}} (char $\ast$dev\+\_\+sn)
+\begin{DoxyCompactList}\small\item\em Get current auto exposure mode setting from camera. \end{DoxyCompactList}\item 
+VOXEL3\+D\+\_\+\+API\+\_\+\+DLL int \mbox{\hyperlink{voxel3d_8h_a33a3399a19f90f5f2d5a5f0ec38df6e7}{voxel3d\+\_\+set\+\_\+auto\+\_\+exposure\+\_\+mode}} (char $\ast$dev\+\_\+sn, unsigned int enable)
+\begin{DoxyCompactList}\small\item\em Set auto exposure mode to camera. \end{DoxyCompactList}\item 
+VOXEL3\+D\+\_\+\+API\+\_\+\+DLL float \mbox{\hyperlink{voxel3d_8h_a4f643605142854bcd8cb7d6565c2711b}{voxel3d\+\_\+get\+\_\+depth\+\_\+hfov}} (char $\ast$dev\+\_\+sn)
+\begin{DoxyCompactList}\small\item\em Get camera HFoV. \end{DoxyCompactList}\item 
+VOXEL3\+D\+\_\+\+API\+\_\+\+DLL float \mbox{\hyperlink{voxel3d_8h_a85e761e5080625cdcda1deaffedfdc93}{voxel3d\+\_\+get\+\_\+depth\+\_\+vfov}} (char $\ast$dev\+\_\+sn)
+\begin{DoxyCompactList}\small\item\em Get camera VFoV. \end{DoxyCompactList}\item 
+VOXEL3\+D\+\_\+\+API\+\_\+\+DLL int \mbox{\hyperlink{voxel3d_8h_a3577fd1a6c1b6c528c8f2e6a392c17c2}{voxel3d\+\_\+read\+\_\+lib\+\_\+version}} (char $\ast$lib\+\_\+version, int max\+\_\+len)
+\begin{DoxyCompactList}\small\item\em Read out library version. \end{DoxyCompactList}\item 
+VOXEL3\+D\+\_\+\+API\+\_\+\+DLL int \mbox{\hyperlink{voxel3d_8h_abcfef580d181c50c2bd136bb9ffbff6c}{voxel3d\+\_\+read\+\_\+lib\+\_\+build\+\_\+date}} (char $\ast$lib\+\_\+build\+\_\+date, int max\+\_\+len)
+\begin{DoxyCompactList}\small\item\em Read out library build date. \end{DoxyCompactList}\item 
+VOXEL3\+D\+\_\+\+API\+\_\+\+DLL int \mbox{\hyperlink{voxel3d_8h_af3adea8d59b85fb1837188dc787f9b34}{voxel3d\+\_\+dev\+\_\+fw\+\_\+upgrade}} (char $\ast$dev\+\_\+sn, char $\ast$file\+\_\+path)
+\begin{DoxyCompactList}\small\item\em 5Z01A device firmware upgrade utility \end{DoxyCompactList}\item 
+VOXEL3\+D\+\_\+\+API\+\_\+\+DLL int \mbox{\hyperlink{voxel3d_8h_a1fcb6c89da75b64b69b82fccf2c1dcac}{voxel3d\+\_\+set\+\_\+filter\+\_\+fpr\+\_\+mode}} (char $\ast$dev\+\_\+sn, int mode)
+\begin{DoxyCompactList}\small\item\em Configure filter (Flying Pixel Removal) mode. \end{DoxyCompactList}\item 
+VOXEL3\+D\+\_\+\+API\+\_\+\+DLL int \mbox{\hyperlink{voxel3d_8h_a024ba9ed128283a05fbd9e5370b7303b}{voxel3d\+\_\+get\+\_\+filter\+\_\+fpr\+\_\+mode}} (char $\ast$dev\+\_\+sn)
+\begin{DoxyCompactList}\small\item\em Get current configuration of filter (Flying Pixel Removal) mode. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+APIs for using libvoxel3d. 
+
+\begin{DoxyAuthor}{Author}
+Jackie Lee 
+\end{DoxyAuthor}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2022 5Voxel Co., Ltd. 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{voxel3d_8h_a29600188291d93981ff1bc64da9a78df}\label{voxel3d_8h_a29600188291d93981ff1bc64da9a78df}} 
+\index{voxel3d.h@{voxel3d.h}!\_range\_mode@{\_range\_mode}}
+\index{\_range\_mode@{\_range\_mode}!voxel3d.h@{voxel3d.h}}
+\doxysubsubsection{\texorpdfstring{\_range\_mode}{\_range\_mode}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{voxel3d_8h_a29600188291d93981ff1bc64da9a78df}{\+\_\+range\+\_\+mode}}}
+
+
+
+Supported range mode ~\newline
+ 
+
+\hypertarget{voxel3d_8h_autotoc_md0}{}\doxyparagraph{Short range\+:}\label{voxel3d_8h_autotoc_md0}
+
+\begin{DoxyItemize}
+\item FPS\+: 25fps
+\item Suggested sensing range with AE-\/enabled\+: 0.\+1m $\sim$ 1.\+5m ~\newline
+ 
+\end{DoxyItemize}\hypertarget{voxel3d_8h_autotoc_md1}{}\doxyparagraph{Middle Range\+:}\label{voxel3d_8h_autotoc_md1}
+
+\begin{DoxyItemize}
+\item FPS\+: 15fps
+\item Suggested sensing range with AE-\/enabled\+: 0.\+1m $\sim$ 3.\+0m ~\newline
+ 
+\end{DoxyItemize}\hypertarget{voxel3d_8h_autotoc_md2}{}\doxyparagraph{Long Range\+:}\label{voxel3d_8h_autotoc_md2}
+
+\begin{DoxyItemize}
+\item FPS\+: 5fps
+\item Suggested sensing range with AE-\/enabled\+: 0.\+1m $\sim$ 4.\+5m 
+\end{DoxyItemize}
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{voxel3d_8h_af3adea8d59b85fb1837188dc787f9b34}\label{voxel3d_8h_af3adea8d59b85fb1837188dc787f9b34}} 
+\index{voxel3d.h@{voxel3d.h}!voxel3d\_dev\_fw\_upgrade@{voxel3d\_dev\_fw\_upgrade}}
+\index{voxel3d\_dev\_fw\_upgrade@{voxel3d\_dev\_fw\_upgrade}!voxel3d.h@{voxel3d.h}}
+\doxysubsubsection{\texorpdfstring{voxel3d\_dev\_fw\_upgrade()}{voxel3d\_dev\_fw\_upgrade()}}
+{\footnotesize\ttfamily VOXEL3\+D\+\_\+\+API\+\_\+\+DLL int voxel3d\+\_\+dev\+\_\+fw\+\_\+upgrade (\begin{DoxyParamCaption}\item[{char $\ast$}]{dev\+\_\+sn,  }\item[{char $\ast$}]{file\+\_\+path }\end{DoxyParamCaption})}
+
+
+
+5Z01A device firmware upgrade utility 
+
+\begin{DoxyWarning}{Warning}
+Device firmware upgrade utility allows both upgrade to new version of firmware and also downgrade to older version. User can use \mbox{\hyperlink{voxel3d_8h_a4f7e200f3b85635a5ea09582c1d5224b}{voxel3d\+\_\+read\+\_\+fw\+\_\+version()}} to confirm the firmware version running on device. It can also be used to confirm if the firmware version on device after upgrade. 
+\end{DoxyWarning}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em dev\+\_\+sn} & device S/N. Input S/N with NULL pointer or empty string will initialize the 1st scanned device \\
+\hline
+\mbox{\texttt{ in}}  & {\em file\+\_\+path} & point to the location of the new firmware image string \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true\+: completed sending specific firmware to device for upgrade successfully 
+
+\texorpdfstring{$<$}{<} 0\+: upgrade failure 
+\end{DoxyReturn}
+\mbox{\Hypertarget{voxel3d_8h_a6e1fba56cb09fbd7c2075ab0026ff300}\label{voxel3d_8h_a6e1fba56cb09fbd7c2075ab0026ff300}} 
+\index{voxel3d.h@{voxel3d.h}!voxel3d\_generatePointCloud@{voxel3d\_generatePointCloud}}
+\index{voxel3d\_generatePointCloud@{voxel3d\_generatePointCloud}!voxel3d.h@{voxel3d.h}}
+\doxysubsubsection{\texorpdfstring{voxel3d\_generatePointCloud()}{voxel3d\_generatePointCloud()}}
+{\footnotesize\ttfamily VOXEL3\+D\+\_\+\+API\+\_\+\+DLL int voxel3d\+\_\+generate\+Point\+Cloud (\begin{DoxyParamCaption}\item[{char $\ast$}]{dev\+\_\+sn,  }\item[{unsigned short $\ast$}]{depthmap,  }\item[{float $\ast$}]{xyz }\end{DoxyParamCaption})}
+
+
+
+Generate pointcloud data based on input deptpmap and the calibration parameters from 5Z01A camera. 
+
+The unit of x/y/z is meter 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em dev\+\_\+sn} & device S/N. Input S/N with NULL pointer or empty string will initialize the 1st scanned device \\
+\hline
+\mbox{\texttt{ in}}  & {\em depthmap} & pointer of Depth frame filled by \mbox{\hyperlink{voxel3d_8h_a7f8b8c416fc9ebfc17a02b013d0240a5}{voxel3d\+\_\+queryframe()}} \\
+\hline
+\mbox{\texttt{ out}}  & {\em xyz} & pointer of user-\/allocated buffer for pointcloud frame storage \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\texorpdfstring{$>$}{>} 0\+: pixels of pointcloud xyz filled in xyz buffer 
+
+\texorpdfstring{$<$}{<}= 0\+: failed to generate pointcloud 
+\end{DoxyReturn}
+\mbox{\Hypertarget{voxel3d_8h_afc5edbe95b6477bf5d939a6a33e6f629}\label{voxel3d_8h_afc5edbe95b6477bf5d939a6a33e6f629}} 
+\index{voxel3d.h@{voxel3d.h}!voxel3d\_get\_auto\_exposure\_mode@{voxel3d\_get\_auto\_exposure\_mode}}
+\index{voxel3d\_get\_auto\_exposure\_mode@{voxel3d\_get\_auto\_exposure\_mode}!voxel3d.h@{voxel3d.h}}
+\doxysubsubsection{\texorpdfstring{voxel3d\_get\_auto\_exposure\_mode()}{voxel3d\_get\_auto\_exposure\_mode()}}
+{\footnotesize\ttfamily VOXEL3\+D\+\_\+\+API\+\_\+\+DLL int voxel3d\+\_\+get\+\_\+auto\+\_\+exposure\+\_\+mode (\begin{DoxyParamCaption}\item[{char $\ast$}]{dev\+\_\+sn }\end{DoxyParamCaption})}
+
+
+
+Get current auto exposure mode setting from camera. 
+
+\begin{DoxyWarning}{Warning}
+Call this function after \mbox{\hyperlink{voxel3d_8h_a496143fdb21996473d36dcd87eeb38ee}{voxel3d\+\_\+init()}} is completed and successfully, otherwise, it returns false 
+\end{DoxyWarning}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em dev\+\_\+sn} & device S/N. Input S/N with NULL pointer or empty string will initialize the 1st scanned device \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0\+: auto exposure is disabled 
+
+1\+: auto exposure is eanbled 
+
+\texorpdfstring{$<$}{<} 0\+: failed to get auto exposure mode 
+\end{DoxyReturn}
+\mbox{\Hypertarget{voxel3d_8h_a38c85ec7421983c6e632ef5bf82416d7}\label{voxel3d_8h_a38c85ec7421983c6e632ef5bf82416d7}} 
+\index{voxel3d.h@{voxel3d.h}!voxel3d\_get\_conf\_threshold@{voxel3d\_get\_conf\_threshold}}
+\index{voxel3d\_get\_conf\_threshold@{voxel3d\_get\_conf\_threshold}!voxel3d.h@{voxel3d.h}}
+\doxysubsubsection{\texorpdfstring{voxel3d\_get\_conf\_threshold()}{voxel3d\_get\_conf\_threshold()}}
+{\footnotesize\ttfamily VOXEL3\+D\+\_\+\+API\+\_\+\+DLL int voxel3d\+\_\+get\+\_\+conf\+\_\+threshold (\begin{DoxyParamCaption}\item[{char $\ast$}]{dev\+\_\+sn }\end{DoxyParamCaption})}
+
+
+
+Get current confidence threshold value from camera. 
+
+\begin{DoxyWarning}{Warning}
+Call this function after \mbox{\hyperlink{voxel3d_8h_a496143fdb21996473d36dcd87eeb38ee}{voxel3d\+\_\+init()}} is completed and successfully, otherwise, it returns false 
+\end{DoxyWarning}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em dev\+\_\+sn} & device S/N. Input S/N with NULL pointer or empty string will initialize the 1st scanned device \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\texorpdfstring{$>$}{>}= 0\+: confidence threshold value read from camera 
+
+\texorpdfstring{$<$}{<} 0\+: failed to get confidence threshold 
+\end{DoxyReturn}
+\mbox{\Hypertarget{voxel3d_8h_a4f643605142854bcd8cb7d6565c2711b}\label{voxel3d_8h_a4f643605142854bcd8cb7d6565c2711b}} 
+\index{voxel3d.h@{voxel3d.h}!voxel3d\_get\_depth\_hfov@{voxel3d\_get\_depth\_hfov}}
+\index{voxel3d\_get\_depth\_hfov@{voxel3d\_get\_depth\_hfov}!voxel3d.h@{voxel3d.h}}
+\doxysubsubsection{\texorpdfstring{voxel3d\_get\_depth\_hfov()}{voxel3d\_get\_depth\_hfov()}}
+{\footnotesize\ttfamily VOXEL3\+D\+\_\+\+API\+\_\+\+DLL float voxel3d\+\_\+get\+\_\+depth\+\_\+hfov (\begin{DoxyParamCaption}\item[{char $\ast$}]{dev\+\_\+sn }\end{DoxyParamCaption})}
+
+
+
+Get camera HFoV. 
+
+\begin{DoxyWarning}{Warning}
+Call this function after \mbox{\hyperlink{voxel3d_8h_a496143fdb21996473d36dcd87eeb38ee}{voxel3d\+\_\+init()}} is completed and successfully, otherwise, it returns false 
+\end{DoxyWarning}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em dev\+\_\+sn} & device S/N. Input S/N with NULL pointer or empty string will initialize the 1st scanned device \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\texorpdfstring{$>$}{>} 0\+: calculated camera HFoV 
+
+\texorpdfstring{$<$}{<}=0\+: failed to get camera HFoV 
+\end{DoxyReturn}
+\mbox{\Hypertarget{voxel3d_8h_a85e761e5080625cdcda1deaffedfdc93}\label{voxel3d_8h_a85e761e5080625cdcda1deaffedfdc93}} 
+\index{voxel3d.h@{voxel3d.h}!voxel3d\_get\_depth\_vfov@{voxel3d\_get\_depth\_vfov}}
+\index{voxel3d\_get\_depth\_vfov@{voxel3d\_get\_depth\_vfov}!voxel3d.h@{voxel3d.h}}
+\doxysubsubsection{\texorpdfstring{voxel3d\_get\_depth\_vfov()}{voxel3d\_get\_depth\_vfov()}}
+{\footnotesize\ttfamily VOXEL3\+D\+\_\+\+API\+\_\+\+DLL float voxel3d\+\_\+get\+\_\+depth\+\_\+vfov (\begin{DoxyParamCaption}\item[{char $\ast$}]{dev\+\_\+sn }\end{DoxyParamCaption})}
+
+
+
+Get camera VFoV. 
+
+\begin{DoxyWarning}{Warning}
+Call this function after \mbox{\hyperlink{voxel3d_8h_a496143fdb21996473d36dcd87eeb38ee}{voxel3d\+\_\+init()}} is completed and successfully, otherwise, it returns false 
+\end{DoxyWarning}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em dev\+\_\+sn} & device S/N. Input S/N with NULL pointer or empty string will initialize the 1st scanned device \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\texorpdfstring{$>$}{>} 0\+: calculated camera VFoV 
+
+\texorpdfstring{$<$}{<}=0\+: failed to get camera VFoV 
+\end{DoxyReturn}
+\mbox{\Hypertarget{voxel3d_8h_a024ba9ed128283a05fbd9e5370b7303b}\label{voxel3d_8h_a024ba9ed128283a05fbd9e5370b7303b}} 
+\index{voxel3d.h@{voxel3d.h}!voxel3d\_get\_filter\_fpr\_mode@{voxel3d\_get\_filter\_fpr\_mode}}
+\index{voxel3d\_get\_filter\_fpr\_mode@{voxel3d\_get\_filter\_fpr\_mode}!voxel3d.h@{voxel3d.h}}
+\doxysubsubsection{\texorpdfstring{voxel3d\_get\_filter\_fpr\_mode()}{voxel3d\_get\_filter\_fpr\_mode()}}
+{\footnotesize\ttfamily VOXEL3\+D\+\_\+\+API\+\_\+\+DLL int voxel3d\+\_\+get\+\_\+filter\+\_\+fpr\+\_\+mode (\begin{DoxyParamCaption}\item[{char $\ast$}]{dev\+\_\+sn }\end{DoxyParamCaption})}
+
+
+
+Get current configuration of filter (Flying Pixel Removal) mode. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em dev\+\_\+sn} & device S/N. Input S/N with NULL pointer or empty string will initialize the 1st scanned device \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+mode\+: 0 -\/\texorpdfstring{$>$}{>} Disable 1 -\/\texorpdfstring{$>$}{>} Light 2 -\/\texorpdfstring{$>$}{>} Standard 3 -\/\texorpdfstring{$>$}{>} Heavy 
+\end{DoxyReturn}
+\mbox{\Hypertarget{voxel3d_8h_a604e8a9782abdac085d8054882046030}\label{voxel3d_8h_a604e8a9782abdac085d8054882046030}} 
+\index{voxel3d.h@{voxel3d.h}!voxel3d\_get\_range\_mode@{voxel3d\_get\_range\_mode}}
+\index{voxel3d\_get\_range\_mode@{voxel3d\_get\_range\_mode}!voxel3d.h@{voxel3d.h}}
+\doxysubsubsection{\texorpdfstring{voxel3d\_get\_range\_mode()}{voxel3d\_get\_range\_mode()}}
+{\footnotesize\ttfamily VOXEL3\+D\+\_\+\+API\+\_\+\+DLL int voxel3d\+\_\+get\+\_\+range\+\_\+mode (\begin{DoxyParamCaption}\item[{char $\ast$}]{dev\+\_\+sn }\end{DoxyParamCaption})}
+
+
+
+Get current range mode setting from camera. 
+
+\begin{DoxyWarning}{Warning}
+Call this function after \mbox{\hyperlink{voxel3d_8h_a496143fdb21996473d36dcd87eeb38ee}{voxel3d\+\_\+init()}} is completed and successfully, otherwise, it returns false 
+\end{DoxyWarning}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em dev\+\_\+sn} & device S/N. Input S/N with NULL pointer or empty string will initialize the 1st scanned device \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 -\/\texorpdfstring{$>$}{>} short range 
+
+2 -\/\texorpdfstring{$>$}{>} middle range 
+
+3 -\/\texorpdfstring{$>$}{>} long range 
+
+\texorpdfstring{$<$}{<} 0\+: failed to get range mode 
+\end{DoxyReturn}
+\mbox{\Hypertarget{voxel3d_8h_a496143fdb21996473d36dcd87eeb38ee}\label{voxel3d_8h_a496143fdb21996473d36dcd87eeb38ee}} 
+\index{voxel3d.h@{voxel3d.h}!voxel3d\_init@{voxel3d\_init}}
+\index{voxel3d\_init@{voxel3d\_init}!voxel3d.h@{voxel3d.h}}
+\doxysubsubsection{\texorpdfstring{voxel3d\_init()}{voxel3d\_init()}}
+{\footnotesize\ttfamily VOXEL3\+D\+\_\+\+API\+\_\+\+DLL int voxel3d\+\_\+init (\begin{DoxyParamCaption}\item[{char $\ast$}]{dev\+\_\+sn }\end{DoxyParamCaption})}
+
+
+
+Perform the initialization of sepcific 5Voxel 5Z01A device. 
+
+\begin{DoxyWarning}{Warning}
+This function has to be called before \mbox{\hyperlink{voxel3d_8h_a7f8b8c416fc9ebfc17a02b013d0240a5}{voxel3d\+\_\+queryframe()}}, otherwise the query will fail 
+\end{DoxyWarning}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em dev\+\_\+sn} & device S/N, which can be read from the label on 5Z01A device or from result of \mbox{\hyperlink{voxel3d_8h_a1cf51682aa09957509a451ea80c68836}{voxel3d\+\_\+scan()}}. Input S/N with NULL pointer or empty string will initialize the 1st scanned device \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true found device 
+
+\texorpdfstring{$<$}{<} 0 can\textquotesingle{}t find device or data error 
+\end{DoxyReturn}
+\mbox{\Hypertarget{voxel3d_8h_a7f8b8c416fc9ebfc17a02b013d0240a5}\label{voxel3d_8h_a7f8b8c416fc9ebfc17a02b013d0240a5}} 
+\index{voxel3d.h@{voxel3d.h}!voxel3d\_queryframe@{voxel3d\_queryframe}}
+\index{voxel3d\_queryframe@{voxel3d\_queryframe}!voxel3d.h@{voxel3d.h}}
+\doxysubsubsection{\texorpdfstring{voxel3d\_queryframe()}{voxel3d\_queryframe()}}
+{\footnotesize\ttfamily VOXEL3\+D\+\_\+\+API\+\_\+\+DLL unsigned int voxel3d\+\_\+queryframe (\begin{DoxyParamCaption}\item[{char $\ast$}]{dev\+\_\+sn,  }\item[{unsigned short $\ast$}]{depthmap,  }\item[{unsigned short $\ast$}]{irmap }\end{DoxyParamCaption})}
+
+
+
+Grab a depth \& ir frame from 5Z01A camera. 
+
+\begin{DoxyWarning}{Warning}
+Call \mbox{\hyperlink{voxel3d_8h_a496143fdb21996473d36dcd87eeb38ee}{voxel3d\+\_\+init()}} to initialize specific device before query 
+\end{DoxyWarning}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em dev\+\_\+sn} & device S/N. Input S/N with NULL pointer or empty string will initialize the 1st scanned device \\
+\hline
+\mbox{\texttt{ out}}  & {\em depthmap} & pointer of user-\/allocated buffer for Depth frame storage Buffer size shall be TOF\+\_\+\+DEPTH\+\_\+\+ONLY\+\_\+\+FRAME\+\_\+\+SIZE (in bytes) \\
+\hline
+\mbox{\texttt{ out}}  & {\em irmap} & pointer of user-\/allocated buffer for IR frame storage Buffer size shall be TOF\+\_\+\+IR\+\_\+\+ONLY\+\_\+\+FRAME\+\_\+\+SIZE (in bytes) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\texorpdfstring{$>$}{>} 0\+: current frame count (1 $\sim$ UINT\+\_\+\+MAX) 
+
+\texorpdfstring{$<$}{<} 0\+: failed to query a frame from device 
+\end{DoxyReturn}
+\mbox{\Hypertarget{voxel3d_8h_a2d3949c5d279c7158de389478c9dd6bf}\label{voxel3d_8h_a2d3949c5d279c7158de389478c9dd6bf}} 
+\index{voxel3d.h@{voxel3d.h}!voxel3d\_read\_camera\_info@{voxel3d\_read\_camera\_info}}
+\index{voxel3d\_read\_camera\_info@{voxel3d\_read\_camera\_info}!voxel3d.h@{voxel3d.h}}
+\doxysubsubsection{\texorpdfstring{voxel3d\_read\_camera\_info()}{voxel3d\_read\_camera\_info()}}
+{\footnotesize\ttfamily VOXEL3\+D\+\_\+\+API\+\_\+\+DLL int voxel3d\+\_\+read\+\_\+camera\+\_\+info (\begin{DoxyParamCaption}\item[{char $\ast$}]{dev\+\_\+sn,  }\item[{\mbox{\hyperlink{struct_camera_info}{Camera\+Info}} $\ast$}]{cam\+\_\+info }\end{DoxyParamCaption})}
+
+
+
+Grab camera info from 5Voxel library. 
+
+\begin{DoxyWarning}{Warning}
+Call this function after \mbox{\hyperlink{voxel3d_8h_a496143fdb21996473d36dcd87eeb38ee}{voxel3d\+\_\+init()}} is completed and successfully, otherwise, it returns false 
+\end{DoxyWarning}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em dev\+\_\+sn} & device S/N. Input S/N with NULL pointer or empty string will initialize the 1st scanned device \\
+\hline
+\mbox{\texttt{ out}}  & {\em camera\+\_\+params} & pointer of uesr-\/allocated buffer to store camera info \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true\+: buffer shall be filled with related camera info 
+
+\texorpdfstring{$<$}{<} 0\+: failed to get camera info from library/device or error on inputa parameter 
+\end{DoxyReturn}
+\mbox{\Hypertarget{voxel3d_8h_a995e7fcaaee46ede72cbe5ece19395cc}\label{voxel3d_8h_a995e7fcaaee46ede72cbe5ece19395cc}} 
+\index{voxel3d.h@{voxel3d.h}!voxel3d\_read\_fw\_build\_date@{voxel3d\_read\_fw\_build\_date}}
+\index{voxel3d\_read\_fw\_build\_date@{voxel3d\_read\_fw\_build\_date}!voxel3d.h@{voxel3d.h}}
+\doxysubsubsection{\texorpdfstring{voxel3d\_read\_fw\_build\_date()}{voxel3d\_read\_fw\_build\_date()}}
+{\footnotesize\ttfamily VOXEL3\+D\+\_\+\+API\+\_\+\+DLL int voxel3d\+\_\+read\+\_\+fw\+\_\+build\+\_\+date (\begin{DoxyParamCaption}\item[{char $\ast$}]{dev\+\_\+sn,  }\item[{char $\ast$}]{fw\+\_\+build\+\_\+date,  }\item[{unsigned int}]{max\+\_\+len }\end{DoxyParamCaption})}
+
+
+
+Read out camera F/W build date. 
+
+\begin{DoxyWarning}{Warning}
+Call this function after \mbox{\hyperlink{voxel3d_8h_a496143fdb21996473d36dcd87eeb38ee}{voxel3d\+\_\+init()}} is completed and successfully, otherwise, it returns false 
+\end{DoxyWarning}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em dev\+\_\+sn} & device S/N. Input S/N with NULL pointer or empty string will initialize the 1st scanned device \\
+\hline
+\mbox{\texttt{ out}}  & {\em fw\+\_\+build\+\_\+date} & pointer of user-\/allocated buffer to store fw build date string \\
+\hline
+\mbox{\texttt{ in}}  & {\em max\+\_\+len} & length of user-\/allocated buffer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true\+: buffer shall be filled with F/W build date string 
+
+\texorpdfstring{$<$}{<} 0\+: failed to get F/W build date from device or error on input parameters 
+\end{DoxyReturn}
+\mbox{\Hypertarget{voxel3d_8h_a4f7e200f3b85635a5ea09582c1d5224b}\label{voxel3d_8h_a4f7e200f3b85635a5ea09582c1d5224b}} 
+\index{voxel3d.h@{voxel3d.h}!voxel3d\_read\_fw\_version@{voxel3d\_read\_fw\_version}}
+\index{voxel3d\_read\_fw\_version@{voxel3d\_read\_fw\_version}!voxel3d.h@{voxel3d.h}}
+\doxysubsubsection{\texorpdfstring{voxel3d\_read\_fw\_version()}{voxel3d\_read\_fw\_version()}}
+{\footnotesize\ttfamily VOXEL3\+D\+\_\+\+API\+\_\+\+DLL int voxel3d\+\_\+read\+\_\+fw\+\_\+version (\begin{DoxyParamCaption}\item[{char $\ast$}]{dev\+\_\+sn,  }\item[{char $\ast$}]{fw\+\_\+ver,  }\item[{unsigned int}]{max\+\_\+len }\end{DoxyParamCaption})}
+
+
+
+Read out camera F/W version. 
+
+\begin{DoxyWarning}{Warning}
+Call this function after \mbox{\hyperlink{voxel3d_8h_a496143fdb21996473d36dcd87eeb38ee}{voxel3d\+\_\+init()}} is completed and successfully, otherwise, it returns false 
+\end{DoxyWarning}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em dev\+\_\+sn} & device S/N. Input S/N with NULL pointer or empty string will initialize the 1st scanned device \\
+\hline
+\mbox{\texttt{ out}}  & {\em fw\+\_\+ver} & pointer of user-\/allocated buffer to store fw version string \\
+\hline
+\mbox{\texttt{ in}}  & {\em max\+\_\+len} & length of user-\/allocated buffer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true\+: buffer shall be filled with F/W version string 
+
+\texorpdfstring{$<$}{<} 0\+: failed to get F/W version from device or error on input parameters 
+\end{DoxyReturn}
+\mbox{\Hypertarget{voxel3d_8h_abcfef580d181c50c2bd136bb9ffbff6c}\label{voxel3d_8h_abcfef580d181c50c2bd136bb9ffbff6c}} 
+\index{voxel3d.h@{voxel3d.h}!voxel3d\_read\_lib\_build\_date@{voxel3d\_read\_lib\_build\_date}}
+\index{voxel3d\_read\_lib\_build\_date@{voxel3d\_read\_lib\_build\_date}!voxel3d.h@{voxel3d.h}}
+\doxysubsubsection{\texorpdfstring{voxel3d\_read\_lib\_build\_date()}{voxel3d\_read\_lib\_build\_date()}}
+{\footnotesize\ttfamily VOXEL3\+D\+\_\+\+API\+\_\+\+DLL int voxel3d\+\_\+read\+\_\+lib\+\_\+build\+\_\+date (\begin{DoxyParamCaption}\item[{char $\ast$}]{lib\+\_\+build\+\_\+date,  }\item[{int}]{max\+\_\+len }\end{DoxyParamCaption})}
+
+
+
+Read out library build date. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ out}}  & {\em lib\+\_\+build\+\_\+date} & pointer of user-\/allocated buffer to store library build date string \\
+\hline
+\mbox{\texttt{ in}}  & {\em max\+\_\+len} & length of user-\/allocated buffer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true\+: buffer shall be filled with library build date string 
+
+false\+: failed to get library build date 
+\end{DoxyReturn}
+\mbox{\Hypertarget{voxel3d_8h_a3577fd1a6c1b6c528c8f2e6a392c17c2}\label{voxel3d_8h_a3577fd1a6c1b6c528c8f2e6a392c17c2}} 
+\index{voxel3d.h@{voxel3d.h}!voxel3d\_read\_lib\_version@{voxel3d\_read\_lib\_version}}
+\index{voxel3d\_read\_lib\_version@{voxel3d\_read\_lib\_version}!voxel3d.h@{voxel3d.h}}
+\doxysubsubsection{\texorpdfstring{voxel3d\_read\_lib\_version()}{voxel3d\_read\_lib\_version()}}
+{\footnotesize\ttfamily VOXEL3\+D\+\_\+\+API\+\_\+\+DLL int voxel3d\+\_\+read\+\_\+lib\+\_\+version (\begin{DoxyParamCaption}\item[{char $\ast$}]{lib\+\_\+version,  }\item[{int}]{max\+\_\+len }\end{DoxyParamCaption})}
+
+
+
+Read out library version. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ out}}  & {\em lib\+\_\+version} & pointer of user-\/allocated buffer to store library version string \\
+\hline
+\mbox{\texttt{ in}}  & {\em max\+\_\+len} & length of user-\/allocated buffer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true\+: buffer shall be filled with library version string 
+
+false\+: failed to get library version 
+\end{DoxyReturn}
+\mbox{\Hypertarget{voxel3d_8h_a6d1a7d460137fbb4ad88f34353edc33c}\label{voxel3d_8h_a6d1a7d460137fbb4ad88f34353edc33c}} 
+\index{voxel3d.h@{voxel3d.h}!voxel3d\_release@{voxel3d\_release}}
+\index{voxel3d\_release@{voxel3d\_release}!voxel3d.h@{voxel3d.h}}
+\doxysubsubsection{\texorpdfstring{voxel3d\_release()}{voxel3d\_release()}}
+{\footnotesize\ttfamily VOXEL3\+D\+\_\+\+API\+\_\+\+DLL void voxel3d\+\_\+release (\begin{DoxyParamCaption}\item[{char $\ast$}]{dev\+\_\+sn }\end{DoxyParamCaption})}
+
+
+
+Release the resource allocated for 5Voxel 5Z01A device. 
+
+\begin{DoxyWarning}{Warning}
+This function has to be called before program exit 
+\end{DoxyWarning}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em dev\+\_\+sn} & device S/N. Input S/N with NULL pointer or empty string will initialize the 1st scanned device \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{voxel3d_8h_a1cf51682aa09957509a451ea80c68836}\label{voxel3d_8h_a1cf51682aa09957509a451ea80c68836}} 
+\index{voxel3d.h@{voxel3d.h}!voxel3d\_scan@{voxel3d\_scan}}
+\index{voxel3d\_scan@{voxel3d\_scan}!voxel3d.h@{voxel3d.h}}
+\doxysubsubsection{\texorpdfstring{voxel3d\_scan()}{voxel3d\_scan()}}
+{\footnotesize\ttfamily VOXEL3\+D\+\_\+\+API\+\_\+\+DLL int voxel3d\+\_\+scan (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_cam_dev_info}{Cam\+Dev\+Info}} $\ast$}]{cam\+\_\+dev\+\_\+info }\end{DoxyParamCaption})}
+
+
+
+Perform the scan of 5Voxel 5Z01A devices. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ out}}  & {\em \mbox{\hyperlink{struct_cam_dev_info}{Cam\+Dev\+Info}}} & structure to store the scanned result \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\texorpdfstring{$>$}{>} 0\+: number of device(s) found 
+
+others\+: can\textquotesingle{}t find device 
+\end{DoxyReturn}
+\mbox{\Hypertarget{voxel3d_8h_a33a3399a19f90f5f2d5a5f0ec38df6e7}\label{voxel3d_8h_a33a3399a19f90f5f2d5a5f0ec38df6e7}} 
+\index{voxel3d.h@{voxel3d.h}!voxel3d\_set\_auto\_exposure\_mode@{voxel3d\_set\_auto\_exposure\_mode}}
+\index{voxel3d\_set\_auto\_exposure\_mode@{voxel3d\_set\_auto\_exposure\_mode}!voxel3d.h@{voxel3d.h}}
+\doxysubsubsection{\texorpdfstring{voxel3d\_set\_auto\_exposure\_mode()}{voxel3d\_set\_auto\_exposure\_mode()}}
+{\footnotesize\ttfamily VOXEL3\+D\+\_\+\+API\+\_\+\+DLL int voxel3d\+\_\+set\+\_\+auto\+\_\+exposure\+\_\+mode (\begin{DoxyParamCaption}\item[{char $\ast$}]{dev\+\_\+sn,  }\item[{unsigned int}]{enable }\end{DoxyParamCaption})}
+
+
+
+Set auto exposure mode to camera. 
+
+\begin{DoxyWarning}{Warning}
+Call this function after \mbox{\hyperlink{voxel3d_8h_a496143fdb21996473d36dcd87eeb38ee}{voxel3d\+\_\+init()}} is completed and successfully, therwise, it returns false 
+\end{DoxyWarning}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em dev\+\_\+sn} & device S/N. Input S/N with NULL pointer or empty string will initialize the 1st scanned device \\
+\hline
+\mbox{\texttt{ in}}  & {\em enable} & 0 -\/\texorpdfstring{$>$}{>} disable auto exposure, others -\/\texorpdfstring{$>$}{>} enable auto exposure \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true\+: set auto exposure mode successfully 
+
+\texorpdfstring{$<$}{<} 0\+: failed to set auto exposure mode 
+\end{DoxyReturn}
+\mbox{\Hypertarget{voxel3d_8h_a0ad6772b5994f8b069fbae44e502cfde}\label{voxel3d_8h_a0ad6772b5994f8b069fbae44e502cfde}} 
+\index{voxel3d.h@{voxel3d.h}!voxel3d\_set\_conf\_threshold@{voxel3d\_set\_conf\_threshold}}
+\index{voxel3d\_set\_conf\_threshold@{voxel3d\_set\_conf\_threshold}!voxel3d.h@{voxel3d.h}}
+\doxysubsubsection{\texorpdfstring{voxel3d\_set\_conf\_threshold()}{voxel3d\_set\_conf\_threshold()}}
+{\footnotesize\ttfamily VOXEL3\+D\+\_\+\+API\+\_\+\+DLL int voxel3d\+\_\+set\+\_\+conf\+\_\+threshold (\begin{DoxyParamCaption}\item[{char $\ast$}]{dev\+\_\+sn,  }\item[{unsigned int}]{conf\+\_\+threshold }\end{DoxyParamCaption})}
+
+
+
+Set run-\/time confidence threshold to camera. 
+
+\begin{DoxyWarning}{Warning}
+
+\begin{DoxyEnumerate}
+\item Call this function after \mbox{\hyperlink{voxel3d_8h_a496143fdb21996473d36dcd87eeb38ee}{voxel3d\+\_\+init()}} is completed and successfully, otherwise, it returns false
+\item Corresponding pixel depth will be zero if its confidence is lower than threshold
+\item Configured threshold will go back to default when camera is power-\/cycled 
+\end{DoxyEnumerate}
+\end{DoxyWarning}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em dev\+\_\+sn} & device S/N. Input S/N with NULL pointer or empty string will initialize the 1st scanned device \\
+\hline
+\mbox{\texttt{ in}}  & {\em conf\+\_\+threshold} & 0$\sim$4095 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true\+: set confidence threshold successfully 
+
+\texorpdfstring{$<$}{<} 0\+: failed to set confidence threshold 
+\end{DoxyReturn}
+\mbox{\Hypertarget{voxel3d_8h_a1fcb6c89da75b64b69b82fccf2c1dcac}\label{voxel3d_8h_a1fcb6c89da75b64b69b82fccf2c1dcac}} 
+\index{voxel3d.h@{voxel3d.h}!voxel3d\_set\_filter\_fpr\_mode@{voxel3d\_set\_filter\_fpr\_mode}}
+\index{voxel3d\_set\_filter\_fpr\_mode@{voxel3d\_set\_filter\_fpr\_mode}!voxel3d.h@{voxel3d.h}}
+\doxysubsubsection{\texorpdfstring{voxel3d\_set\_filter\_fpr\_mode()}{voxel3d\_set\_filter\_fpr\_mode()}}
+{\footnotesize\ttfamily VOXEL3\+D\+\_\+\+API\+\_\+\+DLL int voxel3d\+\_\+set\+\_\+filter\+\_\+fpr\+\_\+mode (\begin{DoxyParamCaption}\item[{char $\ast$}]{dev\+\_\+sn,  }\item[{int}]{mode }\end{DoxyParamCaption})}
+
+
+
+Configure filter (Flying Pixel Removal) mode. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em dev\+\_\+sn} & device S/N. Input S/N with NULL pointer or empty string will initialize the 1st scanned device \\
+\hline
+\mbox{\texttt{ in}}  & {\em mode} & (0 -\/\texorpdfstring{$>$}{>} Disable, 1 -\/\texorpdfstring{$>$}{>} Light, 2 -\/\texorpdfstring{$>$}{>} Standard, 3 -\/\texorpdfstring{$>$}{>} Heavy) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true\+: completed configration 
+
+\texorpdfstring{$<$}{<} 0\+: configuration failure 
+\end{DoxyReturn}
+\mbox{\Hypertarget{voxel3d_8h_a111494ba0a5c982c91b341c2f945bb90}\label{voxel3d_8h_a111494ba0a5c982c91b341c2f945bb90}} 
+\index{voxel3d.h@{voxel3d.h}!voxel3d\_set\_range\_mode@{voxel3d\_set\_range\_mode}}
+\index{voxel3d\_set\_range\_mode@{voxel3d\_set\_range\_mode}!voxel3d.h@{voxel3d.h}}
+\doxysubsubsection{\texorpdfstring{voxel3d\_set\_range\_mode()}{voxel3d\_set\_range\_mode()}}
+{\footnotesize\ttfamily VOXEL3\+D\+\_\+\+API\+\_\+\+DLL int voxel3d\+\_\+set\+\_\+range\+\_\+mode (\begin{DoxyParamCaption}\item[{char $\ast$}]{dev\+\_\+sn,  }\item[{unsigned int}]{range\+\_\+mode }\end{DoxyParamCaption})}
+
+
+
+Set range mode to camera. 
+
+\begin{DoxyWarning}{Warning}
+Call this function after \mbox{\hyperlink{voxel3d_8h_a496143fdb21996473d36dcd87eeb38ee}{voxel3d\+\_\+init()}} is completed and successfully, otherwise, it returns false 
+\end{DoxyWarning}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em dev\+\_\+sn} & device S/N. Input S/N with NULL pointer or empty string will initialize the 1st scanned device \\
+\hline
+\mbox{\texttt{ in}}  & {\em range\+\_\+mode} & only accept 1 $\sim$ 3, others will return failure. (1 -\/\texorpdfstring{$>$}{>} short range, 2 -\/\texorpdfstring{$>$}{>} middle range, 3 -\/\texorpdfstring{$>$}{>} long range) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true\+: set range mode successfully 
+
+\texorpdfstring{$<$}{<} 0\+: failed to set range mode 
+\end{DoxyReturn}

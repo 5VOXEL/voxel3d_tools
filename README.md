@@ -1,5 +1,8 @@
 # voxel3d_tools
 Library and utilities for working with 5Voxel 5Z01A 3D-ToF Camera  
+* For usage of voxel3d library
+  1. Open voxel3d_tools/html/index.html in browser
+  2. Click "Files", then "voxel3d.h" for detail info
 
 Note: Multi-devices on single host is supported starting from V1.1.0 library & V1.5 app
 
@@ -9,19 +12,19 @@ Usage: ./voxel3d_tools [options]
   
 Version 1.5  
 Options:  
--h | --help&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;Print this message  
--a | --get_auto_expo&emsp;get auto exposure mode  
--A | --set_auto_expo&emsp;set auto exposure mode  
--b | --build_date&emsp;&emsp;&nbsp;&nbsp;&nbsp;show firmware build date  
--c | --count&emsp;&emsp;&emsp;&emsp;&emsp;Number of frames to grab [70]  
--r | --get_mode&emsp;&emsp;&emsp;&nbsp;get range mode  
--R | --set_mode&emsp;&emsp;&emsp;&nbsp;set range mode  
--S | --scan_dev&emsp;&emsp;&emsp;&nbsp;&nbsp;scan devices and list device S/N  
--s | --dev_sn&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;specify device S/N to access 
--t | --get_conf&emsp;&emsp;&emsp;&nbsp;get confidence threshold  
--T | --set_conf&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;set confidence threshold  
--u | --fw_upgrade&emsp;&emsp;&nbsp;device firmware upgrade  
--v | --version&emsp;&emsp;&emsp;&emsp;&nbsp;show firmware version  
+&emsp;-h | --help&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;Print this message  
+&emsp;-a | --get_auto_expo&emsp;get auto exposure mode  
+&emsp;-A | --set_auto_expo&emsp;set auto exposure mode  
+&emsp;-b | --build_date&emsp;&emsp;&nbsp;&nbsp;&nbsp;show firmware build date  
+&emsp;-c | --count&emsp;&emsp;&emsp;&emsp;&emsp;Number of frames to grab [70]  
+&emsp;-r | --get_mode&emsp;&emsp;&emsp;&nbsp;get range mode  
+&emsp;-R | --set_mode&emsp;&emsp;&emsp;&nbsp;set range mode  
+&emsp;-S | --scan_dev&emsp;&emsp;&emsp;&nbsp;&nbsp;scan devices and list device S/N  
+&emsp;-s | --dev_sn&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;specify device S/N to access 
+&emsp;-t | --get_conf&emsp;&emsp;&emsp;&nbsp;get confidence threshold  
+&emsp;-T | --set_conf&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;set confidence threshold  
+&emsp;-u | --fw_upgrade&emsp;&emsp;&nbsp;device firmware upgrade  
+&emsp;-v | --version&emsp;&emsp;&emsp;&emsp;&nbsp;show firmware version  
   
   
 Example:  
@@ -62,19 +65,19 @@ Usage: voxel3d_tools.exe [options]
   
 Version 1.5  
 Options:  
--h | --help&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;Print this message  
--a | --get_auto_expo&emsp;get auto exposure mode  
--A | --set_auto_expo&emsp;set auto exposure mode  
--b | --build_date&emsp;&emsp;&nbsp;&nbsp;&nbsp;show firmware build date  
--c | --count&emsp;&emsp;&emsp;&emsp;&emsp;Number of frames to grab [70]  
--r | --get_mode&emsp;&emsp;&emsp;&nbsp;get range mode  
--R | --set_mode&emsp;&emsp;&emsp;&nbsp;set range mode  
--S | --scan_dev&emsp;&emsp;&emsp;&nbsp;&nbsp;scan devices and list device S/N  
--s | --dev_sn&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;specify device S/N to access 
--t | --get_conf&emsp;&emsp;&emsp;&nbsp;get confidence threshold  
--T | --set_conf&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;set confidence threshold  
--u | --fw_upgrade&emsp;&emsp;&nbsp;device firmware upgrade  
--v | --version&emsp;&emsp;&emsp;&emsp;&nbsp;show firmware version  
+&emsp;-h | --help&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;Print this message  
+&emsp;-a | --get_auto_expo&emsp;get auto exposure mode  
+&emsp;-A | --set_auto_expo&emsp;set auto exposure mode  
+&emsp;-b | --build_date&emsp;&emsp;&nbsp;&nbsp;&nbsp;show firmware build date  
+&emsp;-c | --count&emsp;&emsp;&emsp;&emsp;&emsp;Number of frames to grab [70]  
+&emsp;-r | --get_mode&emsp;&emsp;&emsp;&nbsp;get range mode  
+&emsp;-R | --set_mode&emsp;&emsp;&emsp;&nbsp;set range mode  
+&emsp;-S | --scan_dev&emsp;&emsp;&emsp;&nbsp;&nbsp;scan devices and list device S/N  
+&emsp;-s | --dev_sn&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;specify device S/N to access 
+&emsp;-t | --get_conf&emsp;&emsp;&emsp;&nbsp;get confidence threshold  
+&emsp;-T | --set_conf&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;set confidence threshold  
+&emsp;-u | --fw_upgrade&emsp;&emsp;&nbsp;device firmware upgrade  
+&emsp;-v | --version&emsp;&emsp;&emsp;&emsp;&nbsp;show firmware version  
   
   
 Example:  

@@ -1,0 +1,100 @@
+\hypertarget{getopt_8h_source}{}\doxysection{getopt.\+h}
+\label{getopt_8h_source}\index{inc/win/getopt.h@{inc/win/getopt.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef \_\_GETOPT\_H\_\_}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#define \_\_GETOPT\_H\_\_}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{comment}{/* All the headers include this file. */}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#include <crtdefs.h>}}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#if defined( WINGETOPT\_SHARED\_LIB )}}
+\DoxyCodeLine{19 \textcolor{preprocessor}{\# if defined( BUILDING\_WINGETOPT\_DLL )}}
+\DoxyCodeLine{20 \textcolor{preprocessor}{\#  define WINGETOPT\_API \_\_declspec(dllexport)}}
+\DoxyCodeLine{21 \textcolor{preprocessor}{\# else}}
+\DoxyCodeLine{22 \textcolor{preprocessor}{\#  define WINGETOPT\_API \_\_declspec(dllimport)}}
+\DoxyCodeLine{23 \textcolor{preprocessor}{\# endif}}
+\DoxyCodeLine{24 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{25 \textcolor{preprocessor}{\# define WINGETOPT\_API}}
+\DoxyCodeLine{26 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28 \textcolor{preprocessor}{\#ifdef \_\_cplusplus}}
+\DoxyCodeLine{29 \textcolor{keyword}{extern} \textcolor{stringliteral}{"{}C"{}} \{}
+\DoxyCodeLine{30 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{32 WINGETOPT\_API \textcolor{keyword}{extern} \textcolor{keywordtype}{int} optind;        \textcolor{comment}{/* index of first non-\/option in argv      */}}
+\DoxyCodeLine{33 WINGETOPT\_API \textcolor{keyword}{extern} \textcolor{keywordtype}{int} optopt;        \textcolor{comment}{/* single option character, as parsed     */}}
+\DoxyCodeLine{34 WINGETOPT\_API \textcolor{keyword}{extern} \textcolor{keywordtype}{int} opterr;        \textcolor{comment}{/* flag to enable built-\/in diagnostics... */}}
+\DoxyCodeLine{35                 \textcolor{comment}{/* (user may set to zero, to suppress)    */}}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{37 WINGETOPT\_API \textcolor{keyword}{extern} \textcolor{keywordtype}{char} *optarg;      \textcolor{comment}{/* pointer to argument of current option  */}}
+\DoxyCodeLine{38 }
+\DoxyCodeLine{39 \textcolor{keyword}{extern} \textcolor{keywordtype}{int} getopt(\textcolor{keywordtype}{int} nargc, \textcolor{keywordtype}{char} * \textcolor{keyword}{const} *nargv, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *options);}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{41 \textcolor{preprocessor}{\#ifdef \_BSD\_SOURCE}}
+\DoxyCodeLine{42 \textcolor{comment}{/*}}
+\DoxyCodeLine{43 \textcolor{comment}{ * BSD adds the non-\/standard `optreset' feature, for reinitialisation}}
+\DoxyCodeLine{44 \textcolor{comment}{ * of `getopt' parsing.  We support this feature, for applications which}}
+\DoxyCodeLine{45 \textcolor{comment}{ * proclaim their BSD heritage, before including this header; however,}}
+\DoxyCodeLine{46 \textcolor{comment}{ * to maintain portability, developers are advised to avoid it.}}
+\DoxyCodeLine{47 \textcolor{comment}{ */}}
+\DoxyCodeLine{48 \textcolor{preprocessor}{\# define optreset  \_\_mingw\_optreset}}
+\DoxyCodeLine{49 \textcolor{keyword}{extern} \textcolor{keywordtype}{int} optreset;}
+\DoxyCodeLine{50 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{51 \textcolor{preprocessor}{\#ifdef \_\_cplusplus}}
+\DoxyCodeLine{52 \}}
+\DoxyCodeLine{53 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{54 \textcolor{comment}{/*}}
+\DoxyCodeLine{55 \textcolor{comment}{ * POSIX requires the `getopt' API to be specified in `unistd.h';}}
+\DoxyCodeLine{56 \textcolor{comment}{ * thus, `unistd.h' includes this header.  However, we do not want}}
+\DoxyCodeLine{57 \textcolor{comment}{ * to expose the `getopt\_long' or `getopt\_long\_only' APIs, when}}
+\DoxyCodeLine{58 \textcolor{comment}{ * included in this manner.  Thus, close the standard \_\_GETOPT\_H\_\_}}
+\DoxyCodeLine{59 \textcolor{comment}{ * declarations block, and open an additional \_\_GETOPT\_LONG\_H\_\_}}
+\DoxyCodeLine{60 \textcolor{comment}{ * specific block, only when *not* \_\_UNISTD\_H\_SOURCED\_\_, in which}}
+\DoxyCodeLine{61 \textcolor{comment}{ * to declare the extended API.}}
+\DoxyCodeLine{62 \textcolor{comment}{ */}}
+\DoxyCodeLine{63 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* !defined(\_\_GETOPT\_H\_\_) */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{64 }
+\DoxyCodeLine{65 \textcolor{preprocessor}{\#if !defined(\_\_UNISTD\_H\_SOURCED\_\_) \&\& !defined(\_\_GETOPT\_LONG\_H\_\_)}}
+\DoxyCodeLine{66 \textcolor{preprocessor}{\#define \_\_GETOPT\_LONG\_H\_\_}}
+\DoxyCodeLine{67 }
+\DoxyCodeLine{68 \textcolor{preprocessor}{\#ifdef \_\_cplusplus}}
+\DoxyCodeLine{69 \textcolor{keyword}{extern} \textcolor{stringliteral}{"{}C"{}} \{}
+\DoxyCodeLine{70 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{71 }
+\DoxyCodeLine{72 \textcolor{keyword}{struct }\mbox{\hyperlink{structoption}{option}}     \textcolor{comment}{/* specification for a long form option...  */}}
+\DoxyCodeLine{73 \{}
+\DoxyCodeLine{74   \textcolor{keyword}{const} \textcolor{keywordtype}{char} *name;     \textcolor{comment}{/* option name, without leading hyphens */}}
+\DoxyCodeLine{75   \textcolor{keywordtype}{int}         has\_arg;      \textcolor{comment}{/* does it take an argument?        */}}
+\DoxyCodeLine{76   \textcolor{keywordtype}{int}        *flag;     \textcolor{comment}{/* where to save its status, or NULL    */}}
+\DoxyCodeLine{77   \textcolor{keywordtype}{int}         val;      \textcolor{comment}{/* its associated status value      */}}
+\DoxyCodeLine{78 \};}
+\DoxyCodeLine{79 }
+\DoxyCodeLine{80 \textcolor{keyword}{enum}            \textcolor{comment}{/* permitted values for its `has\_arg' field...  */}}
+\DoxyCodeLine{81 \{}
+\DoxyCodeLine{82   no\_argument = 0,          \textcolor{comment}{/* option never takes an argument   */}}
+\DoxyCodeLine{83   required\_argument,        \textcolor{comment}{/* option always requires an argument   */}}
+\DoxyCodeLine{84   optional\_argument     \textcolor{comment}{/* option may take an argument      */}}
+\DoxyCodeLine{85 \};}
+\DoxyCodeLine{86 }
+\DoxyCodeLine{87 \textcolor{keyword}{extern} \textcolor{keywordtype}{int} getopt\_long(\textcolor{keywordtype}{int} nargc, \textcolor{keywordtype}{char} * \textcolor{keyword}{const} *nargv, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *options,}
+\DoxyCodeLine{88     \textcolor{keyword}{const} \textcolor{keyword}{struct} \mbox{\hyperlink{structoption}{option}} *long\_options, \textcolor{keywordtype}{int} *idx);}
+\DoxyCodeLine{89 \textcolor{keyword}{extern} \textcolor{keywordtype}{int} getopt\_long\_only(\textcolor{keywordtype}{int} nargc, \textcolor{keywordtype}{char} * \textcolor{keyword}{const} *nargv, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *options,}
+\DoxyCodeLine{90     \textcolor{keyword}{const} \textcolor{keyword}{struct} \mbox{\hyperlink{structoption}{option}} *long\_options, \textcolor{keywordtype}{int} *idx);}
+\DoxyCodeLine{91 \textcolor{comment}{/*}}
+\DoxyCodeLine{92 \textcolor{comment}{ * Previous MinGW implementation had...}}
+\DoxyCodeLine{93 \textcolor{comment}{ */}}
+\DoxyCodeLine{94 \textcolor{preprocessor}{\#ifndef HAVE\_DECL\_GETOPT}}
+\DoxyCodeLine{95 \textcolor{comment}{/*}}
+\DoxyCodeLine{96 \textcolor{comment}{ * ...for the long form API only; keep this for compatibility.}}
+\DoxyCodeLine{97 \textcolor{comment}{ */}}
+\DoxyCodeLine{98 \textcolor{preprocessor}{\# define HAVE\_DECL\_GETOPT   1}}
+\DoxyCodeLine{99 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{100 }
+\DoxyCodeLine{101 \textcolor{preprocessor}{\#ifdef \_\_cplusplus}}
+\DoxyCodeLine{102 \}}
+\DoxyCodeLine{103 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{104 }
+\DoxyCodeLine{105 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* !defined(\_\_UNISTD\_H\_SOURCED\_\_) \&\& !defined(\_\_GETOPT\_LONG\_H\_\_) */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}
