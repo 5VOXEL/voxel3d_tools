@@ -3,7 +3,7 @@ Library and utilities for working with 5Voxel 5Z01A 3D-\/\+ToF Camera ~\newline
 \begin{DoxyItemize}
 \item For usage of voxel3d library
 \begin{DoxyEnumerate}
-\item Open html/index.\+html in browser
+\item Open voxel3d\+\_\+tools/html/index.\+html in browser
 \item Click \char`\"{}\+Files\char`\"{}, then \char`\"{}voxel3d.\+h\char`\"{} for detail info
 \end{DoxyEnumerate}
 \end{DoxyItemize}
@@ -15,7 +15,7 @@ Note\+: Multi-\/devices on single host is supported starting from V1.\+1.\+0 lib
 Usage\+: ./voxel3d\+\_\+tools \mbox{[}options\mbox{]} ~\newline
 
 
-Version 1.\+5 ~\newline
+Version 1.\+6 ~\newline
  Options\+: ~\newline
  \quad{}-\/h $\vert$ --help\quad{}\quad{}\quad{}\quad{}\quad{}~~Print this message ~\newline
  \quad{}-\/a $\vert$ --get\+\_\+auto\+\_\+expo\quad{}get auto exposure mode ~\newline
@@ -25,7 +25,8 @@ Version 1.\+5 ~\newline
  \quad{}-\/r $\vert$ --get\+\_\+mode\quad{}\quad{}\quad{}~get range mode ~\newline
  \quad{}-\/R $\vert$ --set\+\_\+mode\quad{}\quad{}\quad{}~set range mode ~\newline
  \quad{}-\/S $\vert$ --scan\+\_\+dev\quad{}\quad{}\quad{}~~scan devices and list device S/N ~\newline
- \quad{}-\/s $\vert$ --dev\+\_\+sn\quad{}\quad{}\quad{}\quad{}~~specify device S/N to access \quad{}-\/t $\vert$ --get\+\_\+conf\quad{}\quad{}\quad{}~get confidence threshold ~\newline
+ \quad{}-\/s $\vert$ --dev\+\_\+sn\quad{}\quad{}\quad{}\quad{}~~specify device S/N to access ~\newline
+ \quad{}-\/t $\vert$ --get\+\_\+conf\quad{}\quad{}\quad{}~get confidence threshold ~\newline
  \quad{}-\/T $\vert$ --set\+\_\+conf\quad{}\quad{}\quad{}~~~set confidence threshold ~\newline
  \quad{}-\/u $\vert$ --fw\+\_\+upgrade\quad{}\quad{}~device firmware upgrade ~\newline
  \quad{}-\/v $\vert$ --version\quad{}\quad{}\quad{}\quad{}~show firmware version ~\newline
@@ -67,20 +68,21 @@ Example\+: ~\newline
 Usage\+: voxel3d\+\_\+tools.\+exe \mbox{[}options\mbox{]} ~\newline
 
 
-Version 1.\+5 ~\newline
+Version 1.\+6 ~\newline
  Options\+: ~\newline
- -\/h $\vert$ --help\quad{}\quad{}\quad{}\quad{}\quad{}~~Print this message ~\newline
- -\/a $\vert$ --get\+\_\+auto\+\_\+expo\quad{}get auto exposure mode ~\newline
- -\/A $\vert$ --set\+\_\+auto\+\_\+expo\quad{}set auto exposure mode ~\newline
- -\/b $\vert$ --build\+\_\+date\quad{}\quad{}~~~show firmware build date ~\newline
- -\/c $\vert$ --count\quad{}\quad{}\quad{}\quad{}\quad{}Number of frames to grab \mbox{[}70\mbox{]} ~\newline
- -\/r $\vert$ --get\+\_\+mode\quad{}\quad{}\quad{}~get range mode ~\newline
- -\/R $\vert$ --set\+\_\+mode\quad{}\quad{}\quad{}~set range mode ~\newline
- -\/S $\vert$ --scan\+\_\+dev\quad{}\quad{}\quad{}~~scan devices and list device S/N ~\newline
- -\/s $\vert$ --dev\+\_\+sn\quad{}\quad{}\quad{}\quad{}~~specify device S/N to access -\/t $\vert$ --get\+\_\+conf\quad{}\quad{}\quad{}~get confidence threshold ~\newline
- -\/T $\vert$ --set\+\_\+conf\quad{}\quad{}\quad{}~~~set confidence threshold ~\newline
- -\/u $\vert$ --fw\+\_\+upgrade\quad{}\quad{}~device firmware upgrade ~\newline
- -\/v $\vert$ --version\quad{}\quad{}\quad{}\quad{}~show firmware version ~\newline
+ \quad{}-\/h $\vert$ --help\quad{}\quad{}\quad{}\quad{}\quad{}~~Print this message ~\newline
+ \quad{}-\/a $\vert$ --get\+\_\+auto\+\_\+expo\quad{}get auto exposure mode ~\newline
+ \quad{}-\/A $\vert$ --set\+\_\+auto\+\_\+expo\quad{}set auto exposure mode ~\newline
+ \quad{}-\/b $\vert$ --build\+\_\+date\quad{}\quad{}~~~show firmware build date ~\newline
+ \quad{}-\/c $\vert$ --count\quad{}\quad{}\quad{}\quad{}\quad{}Number of frames to grab \mbox{[}70\mbox{]} ~\newline
+ \quad{}-\/r $\vert$ --get\+\_\+mode\quad{}\quad{}\quad{}~get range mode ~\newline
+ \quad{}-\/R $\vert$ --set\+\_\+mode\quad{}\quad{}\quad{}~set range mode ~\newline
+ \quad{}-\/S $\vert$ --scan\+\_\+dev\quad{}\quad{}\quad{}~~scan devices and list device S/N ~\newline
+ \quad{}-\/s $\vert$ --dev\+\_\+sn\quad{}\quad{}\quad{}\quad{}~~specify device S/N to access ~\newline
+ \quad{}-\/t $\vert$ --get\+\_\+conf\quad{}\quad{}\quad{}~get confidence threshold ~\newline
+ \quad{}-\/T $\vert$ --set\+\_\+conf\quad{}\quad{}\quad{}~~~set confidence threshold ~\newline
+ \quad{}-\/u $\vert$ --fw\+\_\+upgrade\quad{}\quad{}~device firmware upgrade ~\newline
+ \quad{}-\/v $\vert$ --version\quad{}\quad{}\quad{}\quad{}~show firmware version ~\newline
 
 
 Example\+: ~\newline

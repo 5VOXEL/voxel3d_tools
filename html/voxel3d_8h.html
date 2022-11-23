@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Voxel3D Example<span id="projectnumber">&#160;V1.5</span>
+   <div id="projectname">Voxel3D Example<span id="projectnumber">&#160;V1.6</span>
    </div>
   </td>
  </tr>
@@ -82,7 +82,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>APIs for using libvoxel3d.  
+<p>libvoxel3d APIs for 5Voxel 5Z01A device  
 <a href="#details">More...</a></p>
 
 <p><a href="voxel3d_8h_source.html">Go to the source code of this file.</a></p>
@@ -213,9 +213,12 @@ Functions</h2></td></tr>
 <tr class="memitem:abcfef580d181c50c2bd136bb9ffbff6c"><td class="memItemLeft" align="right" valign="top">VOXEL3D_API_DLL int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="voxel3d_8h.html#abcfef580d181c50c2bd136bb9ffbff6c">voxel3d_read_lib_build_date</a> (char *lib_build_date, int max_len)</td></tr>
 <tr class="memdesc:abcfef580d181c50c2bd136bb9ffbff6c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read out library build date.  <a href="voxel3d_8h.html#abcfef580d181c50c2bd136bb9ffbff6c">More...</a><br /></td></tr>
 <tr class="separator:abcfef580d181c50c2bd136bb9ffbff6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af3adea8d59b85fb1837188dc787f9b34"><td class="memItemLeft" align="right" valign="top">VOXEL3D_API_DLL int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="voxel3d_8h.html#af3adea8d59b85fb1837188dc787f9b34">voxel3d_dev_fw_upgrade</a> (char *dev_sn, char *file_path)</td></tr>
-<tr class="memdesc:af3adea8d59b85fb1837188dc787f9b34"><td class="mdescLeft">&#160;</td><td class="mdescRight">5Z01A device firmware upgrade utility  <a href="voxel3d_8h.html#af3adea8d59b85fb1837188dc787f9b34">More...</a><br /></td></tr>
-<tr class="separator:af3adea8d59b85fb1837188dc787f9b34"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8deac6462b1d96dc3184c39c835e6cba"><td class="memItemLeft" align="right" valign="top">VOXEL3D_API_DLL int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="voxel3d_8h.html#a8deac6462b1d96dc3184c39c835e6cba">voxel3d_dev_fw_upgrade</a> (char *dev_sn, char *file_path, unsigned char(*fw_upgrade_cb)(int state, unsigned int percent_complete))</td></tr>
+<tr class="memdesc:a8deac6462b1d96dc3184c39c835e6cba"><td class="mdescLeft">&#160;</td><td class="mdescRight">5Z01A device firmware upgrade utility  <a href="voxel3d_8h.html#a8deac6462b1d96dc3184c39c835e6cba">More...</a><br /></td></tr>
+<tr class="separator:a8deac6462b1d96dc3184c39c835e6cba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ec3c8ddac21c27e3507813ea93887d5"><td class="memItemLeft" align="right" valign="top">VOXEL3D_API_DLL int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="voxel3d_8h.html#a8ec3c8ddac21c27e3507813ea93887d5">voxel3d_dev_fw_upgrade_state_poll</a> (char *dev_sn, int &amp;state, unsigned int &amp;percent_complete)</td></tr>
+<tr class="memdesc:a8ec3c8ddac21c27e3507813ea93887d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to poll the state and p5Z01A device firmware upgrade utility.  <a href="voxel3d_8h.html#a8ec3c8ddac21c27e3507813ea93887d5">More...</a><br /></td></tr>
+<tr class="separator:a8ec3c8ddac21c27e3507813ea93887d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1fcb6c89da75b64b69b82fccf2c1dcac"><td class="memItemLeft" align="right" valign="top">VOXEL3D_API_DLL int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="voxel3d_8h.html#a1fcb6c89da75b64b69b82fccf2c1dcac">voxel3d_set_filter_fpr_mode</a> (char *dev_sn, int mode)</td></tr>
 <tr class="memdesc:a1fcb6c89da75b64b69b82fccf2c1dcac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configure filter (Flying Pixel Removal) mode.  <a href="voxel3d_8h.html#a1fcb6c89da75b64b69b82fccf2c1dcac">More...</a><br /></td></tr>
 <tr class="separator:a1fcb6c89da75b64b69b82fccf2c1dcac"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -224,7 +227,7 @@ Functions</h2></td></tr>
 <tr class="separator:a024ba9ed128283a05fbd9e5370b7303b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p >APIs for using libvoxel3d. </p>
+<div class="textblock"><p >libvoxel3d APIs for 5Voxel 5Z01A device </p>
 <dl class="section author"><dt>Author</dt><dd>Jackie Lee </dd></dl>
 <dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2022 5Voxel Co., Ltd. </dd></dl>
 </div><h2 class="groupheader">Enumeration Type Documentation</h2>
@@ -266,8 +269,8 @@ Long Range:</h3>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="af3adea8d59b85fb1837188dc787f9b34" name="af3adea8d59b85fb1837188dc787f9b34"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af3adea8d59b85fb1837188dc787f9b34">&#9670;&#160;</a></span>voxel3d_dev_fw_upgrade()</h2>
+<a id="a8deac6462b1d96dc3184c39c835e6cba" name="a8deac6462b1d96dc3184c39c835e6cba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8deac6462b1d96dc3184c39c835e6cba">&#9670;&#160;</a></span>voxel3d_dev_fw_upgrade()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -282,7 +285,13 @@ Long Range:</h3>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">char *&#160;</td>
-          <td class="paramname"><em>file_path</em>&#160;</td>
+          <td class="paramname"><em>file_path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned char(*)(int state, unsigned int percent_complete)&#160;</td>
+          <td class="paramname"><em>fw_upgrade_cb</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -304,6 +313,53 @@ Long Range:</h3>
 <dl class="section return"><dt>Returns</dt><dd>true: completed sending specific firmware to device for upgrade successfully </dd>
 <dd>
 &lt; 0: upgrade failure </dd></dl>
+
+</div>
+</div>
+<a id="a8ec3c8ddac21c27e3507813ea93887d5" name="a8ec3c8ddac21c27e3507813ea93887d5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8ec3c8ddac21c27e3507813ea93887d5">&#9670;&#160;</a></span>voxel3d_dev_fw_upgrade_state_poll()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">VOXEL3D_API_DLL int voxel3d_dev_fw_upgrade_state_poll </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>dev_sn</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int &amp;&#160;</td>
+          <td class="paramname"><em>state</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int &amp;&#160;</td>
+          <td class="paramname"><em>percent_complete</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Function to poll the state and p5Z01A device firmware upgrade utility. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">dev_sn</td><td>device S/N. Input S/N with NULL pointer or empty string will initialize the 1st scanned device </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">state</td><td>reference of the state varaible for API to write current fw download state state: &lt; 0 (error), 0: (initial), 1 (downloading), 2 (complete) </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">percent_complete</td><td>reference of the percentage varaible for API to write current percentage of completion percent_complete: 0 ~ 100 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true: In upgrade procedure </dd>
+<dd>
+&lt; 0: Not in upgrade procedure Note: while output &lt; 0, state &amp; percent_complete can be used to know if the previous upgrade had error or completed withtout failure </dd></dl>
 
 </div>
 </div>

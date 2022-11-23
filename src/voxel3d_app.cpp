@@ -16,7 +16,7 @@
 #include "voxel3d.h"
 
 #define TOOLS_VER_MAJOR         (1)
-#define TOOLS_VER_MINOR         (5)
+#define TOOLS_VER_MINOR         (6)
 
 #ifdef PLAT_WINDOWS
 #define SleepSeconds(x)        Sleep(x * 1000)
@@ -36,6 +36,26 @@ static void errno_exit(const char *s)
 {
     fprintf(stderr, "%s error %d, %s\n", s, errno, strerror(errno));
     exit(EXIT_FAILURE);
+}
+
+static unsigned char fw_upgrade_cb(int state, unsigned int percent_complete)
+{
+    switch (state) {
+    case 0:
+        printf("\rFW upgrade - state: Initial             ");
+        break;
+    case 1:
+        printf("\rFW upgrade - state: Downloading (%d%%)", percent_complete);
+        break;
+    case 2:
+        printf("\rFW upgrade - state: Complete            ");
+        break;
+    default:
+        printf("\rFW upgrade - state: Error               ");
+        break;
+    }
+
+    return (1);
 }
 
 static void mainloop(char* dev_sn)
@@ -171,6 +191,7 @@ int main(int argc, char **argv)
         case 'b':
             found_device = voxel3d_init(dev_sn);
             if (found_device > 0) {
+                memset(data, 0x0, sizeof(data));
                 voxel3d_read_fw_build_date(dev_sn, data, sizeof(data));
                 printf("FW build date : %s\n", data);
             }
@@ -257,13 +278,14 @@ int main(int argc, char **argv)
         case 'u':
             found_device = voxel3d_init(dev_sn);
             if (found_device > 0) {
+                memset(data, 0x0, sizeof(data));
                 voxel3d_read_fw_version(dev_sn, data, sizeof(data));
                 printf("--------------------------------------------------------\n");
                 printf("Before F/W upgrade\n");
                 printf("F/W file     : %s\n", optarg);
                 printf("F/W version  : %s\n", data);
                 printf("--------------------------------------------------------\n\n");
-                result = voxel3d_dev_fw_upgrade(dev_sn, optarg);
+                result = voxel3d_dev_fw_upgrade(dev_sn, optarg, fw_upgrade_cb);
                 voxel3d_release(dev_sn);
                 if (result < 0) {
                     printf("5Z01A FW upgrade failed\n");
@@ -277,6 +299,7 @@ int main(int argc, char **argv)
                 while (wait_time--) {
                     found_device = voxel3d_init(dev_sn);
                     if (found_device > 0) {
+                        memset(data, 0x0, sizeof(data));
                         voxel3d_read_fw_version(dev_sn, data, sizeof(data));
                         printf("--------------------------------------------------------\n");
                         printf("After F/W upgrade\n");
@@ -300,10 +323,25 @@ int main(int argc, char **argv)
         case 'v':
             found_device = voxel3d_init(dev_sn);
             if (found_device > 0) {
-                voxel3d_read_lib_version(data, sizeof(data));
-                printf("Share library version : %s\n", data);
-                voxel3d_read_fw_version(dev_sn, data, sizeof(data));
-                printf("5Z01A F/W version     : %s\n", data);
+                int ret;
+                SleepSeconds(1);
+                memset(data, 0x0, sizeof(data));
+                ret = voxel3d_read_lib_version(data, sizeof(data));
+                if (ret < 0) {
+                    printf("Failed to read share library version\n");
+                }
+                else {
+                    printf("Share library version : %s\n", data);
+                }
+
+                memset(data, 0x0, sizeof(data));
+                ret = voxel3d_read_fw_version(dev_sn, data, sizeof(data));
+                if (ret < 0) {
+                    printf("Failed to read 5Z01A F/W version\n");
+                }
+                else {
+                    printf("5Z01A F/W version     : %s\n", data);
+                }
             }
             voxel3d_release(dev_sn);
             exit(EXIT_SUCCESS);

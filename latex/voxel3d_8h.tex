@@ -2,7 +2,7 @@
 \label{voxel3d_8h}\index{inc/voxel3d.h@{inc/voxel3d.h}}
 
 
-APIs for using libvoxel3d.  
+libvoxel3d APIs for 5Voxel 5Z01A device  
 
 
 \doxysubsection*{Data Structures}
@@ -111,8 +111,10 @@ VOXEL3\+D\+\_\+\+API\+\_\+\+DLL int \mbox{\hyperlink{voxel3d_8h_a3577fd1a6c1b6c5
 \begin{DoxyCompactList}\small\item\em Read out library version. \end{DoxyCompactList}\item 
 VOXEL3\+D\+\_\+\+API\+\_\+\+DLL int \mbox{\hyperlink{voxel3d_8h_abcfef580d181c50c2bd136bb9ffbff6c}{voxel3d\+\_\+read\+\_\+lib\+\_\+build\+\_\+date}} (char $\ast$lib\+\_\+build\+\_\+date, int max\+\_\+len)
 \begin{DoxyCompactList}\small\item\em Read out library build date. \end{DoxyCompactList}\item 
-VOXEL3\+D\+\_\+\+API\+\_\+\+DLL int \mbox{\hyperlink{voxel3d_8h_af3adea8d59b85fb1837188dc787f9b34}{voxel3d\+\_\+dev\+\_\+fw\+\_\+upgrade}} (char $\ast$dev\+\_\+sn, char $\ast$file\+\_\+path)
+VOXEL3\+D\+\_\+\+API\+\_\+\+DLL int \mbox{\hyperlink{voxel3d_8h_a8deac6462b1d96dc3184c39c835e6cba}{voxel3d\+\_\+dev\+\_\+fw\+\_\+upgrade}} (char $\ast$dev\+\_\+sn, char $\ast$file\+\_\+path, unsigned char($\ast$fw\+\_\+upgrade\+\_\+cb)(int state, unsigned int percent\+\_\+complete))
 \begin{DoxyCompactList}\small\item\em 5Z01A device firmware upgrade utility \end{DoxyCompactList}\item 
+VOXEL3\+D\+\_\+\+API\+\_\+\+DLL int \mbox{\hyperlink{voxel3d_8h_a8ec3c8ddac21c27e3507813ea93887d5}{voxel3d\+\_\+dev\+\_\+fw\+\_\+upgrade\+\_\+state\+\_\+poll}} (char $\ast$dev\+\_\+sn, int \&state, unsigned int \&percent\+\_\+complete)
+\begin{DoxyCompactList}\small\item\em Function to poll the state and p5\+Z01A device firmware upgrade utility. \end{DoxyCompactList}\item 
 VOXEL3\+D\+\_\+\+API\+\_\+\+DLL int \mbox{\hyperlink{voxel3d_8h_a1fcb6c89da75b64b69b82fccf2c1dcac}{voxel3d\+\_\+set\+\_\+filter\+\_\+fpr\+\_\+mode}} (char $\ast$dev\+\_\+sn, int mode)
 \begin{DoxyCompactList}\small\item\em Configure filter (Flying Pixel Removal) mode. \end{DoxyCompactList}\item 
 VOXEL3\+D\+\_\+\+API\+\_\+\+DLL int \mbox{\hyperlink{voxel3d_8h_a024ba9ed128283a05fbd9e5370b7303b}{voxel3d\+\_\+get\+\_\+filter\+\_\+fpr\+\_\+mode}} (char $\ast$dev\+\_\+sn)
@@ -120,7 +122,7 @@ VOXEL3\+D\+\_\+\+API\+\_\+\+DLL int \mbox{\hyperlink{voxel3d_8h_a024ba9ed128283a
 
 
 \doxysubsection{Detailed Description}
-APIs for using libvoxel3d. 
+libvoxel3d APIs for 5Voxel 5Z01A device 
 
 \begin{DoxyAuthor}{Author}
 Jackie Lee 
@@ -162,11 +164,11 @@ Supported range mode ~\newline
 \end{DoxyItemize}
 
 \doxysubsection{Function Documentation}
-\mbox{\Hypertarget{voxel3d_8h_af3adea8d59b85fb1837188dc787f9b34}\label{voxel3d_8h_af3adea8d59b85fb1837188dc787f9b34}} 
+\mbox{\Hypertarget{voxel3d_8h_a8deac6462b1d96dc3184c39c835e6cba}\label{voxel3d_8h_a8deac6462b1d96dc3184c39c835e6cba}} 
 \index{voxel3d.h@{voxel3d.h}!voxel3d\_dev\_fw\_upgrade@{voxel3d\_dev\_fw\_upgrade}}
 \index{voxel3d\_dev\_fw\_upgrade@{voxel3d\_dev\_fw\_upgrade}!voxel3d.h@{voxel3d.h}}
 \doxysubsubsection{\texorpdfstring{voxel3d\_dev\_fw\_upgrade()}{voxel3d\_dev\_fw\_upgrade()}}
-{\footnotesize\ttfamily VOXEL3\+D\+\_\+\+API\+\_\+\+DLL int voxel3d\+\_\+dev\+\_\+fw\+\_\+upgrade (\begin{DoxyParamCaption}\item[{char $\ast$}]{dev\+\_\+sn,  }\item[{char $\ast$}]{file\+\_\+path }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily VOXEL3\+D\+\_\+\+API\+\_\+\+DLL int voxel3d\+\_\+dev\+\_\+fw\+\_\+upgrade (\begin{DoxyParamCaption}\item[{char $\ast$}]{dev\+\_\+sn,  }\item[{char $\ast$}]{file\+\_\+path,  }\item[{unsigned char($\ast$)(int state, unsigned int percent\+\_\+complete)}]{fw\+\_\+upgrade\+\_\+cb }\end{DoxyParamCaption})}
 
 
 
@@ -186,6 +188,30 @@ Device firmware upgrade utility allows both upgrade to new version of firmware a
 true\+: completed sending specific firmware to device for upgrade successfully 
 
 \texorpdfstring{$<$}{<} 0\+: upgrade failure 
+\end{DoxyReturn}
+\mbox{\Hypertarget{voxel3d_8h_a8ec3c8ddac21c27e3507813ea93887d5}\label{voxel3d_8h_a8ec3c8ddac21c27e3507813ea93887d5}} 
+\index{voxel3d.h@{voxel3d.h}!voxel3d\_dev\_fw\_upgrade\_state\_poll@{voxel3d\_dev\_fw\_upgrade\_state\_poll}}
+\index{voxel3d\_dev\_fw\_upgrade\_state\_poll@{voxel3d\_dev\_fw\_upgrade\_state\_poll}!voxel3d.h@{voxel3d.h}}
+\doxysubsubsection{\texorpdfstring{voxel3d\_dev\_fw\_upgrade\_state\_poll()}{voxel3d\_dev\_fw\_upgrade\_state\_poll()}}
+{\footnotesize\ttfamily VOXEL3\+D\+\_\+\+API\+\_\+\+DLL int voxel3d\+\_\+dev\+\_\+fw\+\_\+upgrade\+\_\+state\+\_\+poll (\begin{DoxyParamCaption}\item[{char $\ast$}]{dev\+\_\+sn,  }\item[{int \&}]{state,  }\item[{unsigned int \&}]{percent\+\_\+complete }\end{DoxyParamCaption})}
+
+
+
+Function to poll the state and p5\+Z01A device firmware upgrade utility. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em dev\+\_\+sn} & device S/N. Input S/N with NULL pointer or empty string will initialize the 1st scanned device \\
+\hline
+\mbox{\texttt{ out}}  & {\em state} & reference of the state varaible for API to write current fw download state state\+: \texorpdfstring{$<$}{<} 0 (error), 0\+: (initial), 1 (downloading), 2 (complete) \\
+\hline
+\mbox{\texttt{ out}}  & {\em percent\+\_\+complete} & reference of the percentage varaible for API to write current percentage of completion percent\+\_\+complete\+: 0 $\sim$ 100 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true\+: In upgrade procedure 
+
+\texorpdfstring{$<$}{<} 0\+: Not in upgrade procedure Note\+: while output \texorpdfstring{$<$}{<} 0, state \& percent\+\_\+complete can be used to know if the previous upgrade had error or completed withtout failure 
 \end{DoxyReturn}
 \mbox{\Hypertarget{voxel3d_8h_a6e1fba56cb09fbd7c2075ab0026ff300}\label{voxel3d_8h_a6e1fba56cb09fbd7c2075ab0026ff300}} 
 \index{voxel3d.h@{voxel3d.h}!voxel3d\_generatePointCloud@{voxel3d\_generatePointCloud}}

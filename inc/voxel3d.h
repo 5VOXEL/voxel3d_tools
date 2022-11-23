@@ -346,7 +346,25 @@ extern "C" VOXEL3D_API_DLL int voxel3d_read_lib_build_date(char* lib_build_date,
  * @return      < 0: upgrade failure 
  */
 extern "C" VOXEL3D_API_DLL int voxel3d_dev_fw_upgrade(char* dev_sn,
-                                                      char* file_path);
+                                                      char* file_path,
+                                                      unsigned char (*fw_upgrade_cb)(int state, unsigned int percent_complete));
+
+
+/**
+ * @brief       Function to poll the state and p5Z01A device firmware upgrade utility
+ * @param[in]   dev_sn: device S/N. Input S/N with NULL pointer or empty string will
+ *                      initialize the 1st scanned device
+ * @param[out]  state: reference of the state varaible for API to write current fw download state
+ *              state: < 0 (error), 0: (initial), 1 (downloading), 2 (complete)
+ * @param[out]  percent_complete: reference of the percentage varaible for API to write current percentage of completion
+ *              percent_complete: 0 ~ 100
+ * @return      true: In upgrade procedure
+ * @return      < 0: Not in upgrade procedure
+ *              Note: while output < 0, state & percent_complete can be used to know if the previous upgrade
+ *                    had error or completed withtout failure
+ */
+extern "C" VOXEL3D_API_DLL int voxel3d_dev_fw_upgrade_state_poll (char* dev_sn, int &state,
+                                                                  unsigned int &percent_complete);
 
 
 /**

@@ -135,17 +135,22 @@
 \DoxyCodeLine{333                                                            \textcolor{keywordtype}{int} max\_len);}
 \DoxyCodeLine{334 }
 \DoxyCodeLine{335 }
-\DoxyCodeLine{348 \textcolor{keyword}{extern} \textcolor{stringliteral}{"{}C"{}} VOXEL3D\_API\_DLL \textcolor{keywordtype}{int} \mbox{\hyperlink{voxel3d_8h_af3adea8d59b85fb1837188dc787f9b34}{voxel3d\_dev\_fw\_upgrade}}(\textcolor{keywordtype}{char}* dev\_sn,}
-\DoxyCodeLine{349                                                       \textcolor{keywordtype}{char}* file\_path);}
-\DoxyCodeLine{350 }
+\DoxyCodeLine{348 \textcolor{keyword}{extern} \textcolor{stringliteral}{"{}C"{}} VOXEL3D\_API\_DLL \textcolor{keywordtype}{int} \mbox{\hyperlink{voxel3d_8h_a8deac6462b1d96dc3184c39c835e6cba}{voxel3d\_dev\_fw\_upgrade}}(\textcolor{keywordtype}{char}* dev\_sn,}
+\DoxyCodeLine{349                                                       \textcolor{keywordtype}{char}* file\_path,}
+\DoxyCodeLine{350                                                       \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} (*fw\_upgrade\_cb)(\textcolor{keywordtype}{int} state, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} percent\_complete));}
 \DoxyCodeLine{351 }
-\DoxyCodeLine{360 \textcolor{keyword}{extern} \textcolor{stringliteral}{"{}C"{}} VOXEL3D\_API\_DLL \textcolor{keywordtype}{int} \mbox{\hyperlink{voxel3d_8h_a1fcb6c89da75b64b69b82fccf2c1dcac}{voxel3d\_set\_filter\_fpr\_mode}}(\textcolor{keywordtype}{char}* dev\_sn,}
-\DoxyCodeLine{361                                                            \textcolor{keywordtype}{int} mode);}
-\DoxyCodeLine{362 }
-\DoxyCodeLine{363 }
-\DoxyCodeLine{373 \textcolor{keyword}{extern} \textcolor{stringliteral}{"{}C"{}} VOXEL3D\_API\_DLL \textcolor{keywordtype}{int} \mbox{\hyperlink{voxel3d_8h_a024ba9ed128283a05fbd9e5370b7303b}{voxel3d\_get\_filter\_fpr\_mode}}(\textcolor{keywordtype}{char}* dev\_sn);}
-\DoxyCodeLine{374 }
-\DoxyCodeLine{375 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* \_\_VOXEL3d\_H\_\_ */}\textcolor{preprocessor}{}}
-\DoxyCodeLine{376 }
+\DoxyCodeLine{352 }
+\DoxyCodeLine{366 \textcolor{keyword}{extern} \textcolor{stringliteral}{"{}C"{}} VOXEL3D\_API\_DLL \textcolor{keywordtype}{int} \mbox{\hyperlink{voxel3d_8h_a8ec3c8ddac21c27e3507813ea93887d5}{voxel3d\_dev\_fw\_upgrade\_state\_poll}} (\textcolor{keywordtype}{char}* dev\_sn, \textcolor{keywordtype}{int} \&state,}
+\DoxyCodeLine{367                                                                   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \&percent\_complete);}
+\DoxyCodeLine{368 }
+\DoxyCodeLine{369 }
+\DoxyCodeLine{378 \textcolor{keyword}{extern} \textcolor{stringliteral}{"{}C"{}} VOXEL3D\_API\_DLL \textcolor{keywordtype}{int} \mbox{\hyperlink{voxel3d_8h_a1fcb6c89da75b64b69b82fccf2c1dcac}{voxel3d\_set\_filter\_fpr\_mode}}(\textcolor{keywordtype}{char}* dev\_sn,}
+\DoxyCodeLine{379                                                            \textcolor{keywordtype}{int} mode);}
+\DoxyCodeLine{380 }
+\DoxyCodeLine{381 }
+\DoxyCodeLine{391 \textcolor{keyword}{extern} \textcolor{stringliteral}{"{}C"{}} VOXEL3D\_API\_DLL \textcolor{keywordtype}{int} \mbox{\hyperlink{voxel3d_8h_a024ba9ed128283a05fbd9e5370b7303b}{voxel3d\_get\_filter\_fpr\_mode}}(\textcolor{keywordtype}{char}* dev\_sn);}
+\DoxyCodeLine{392 }
+\DoxyCodeLine{393 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* \_\_VOXEL3d\_H\_\_ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{394 }
 
 \end{DoxyCode}

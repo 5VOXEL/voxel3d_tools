@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Voxel3D Example<span id="projectnumber">&#160;V1.5</span>
+   <div id="projectname">Voxel3D Example<span id="projectnumber">&#160;V1.6</span>
    </div>
   </td>
  </tr>
@@ -75,7 +75,7 @@ $(function() {
 <div class="textblock"><p >Library and utilities for working with 5Voxel 5Z01A 3D-ToF Camera <br  />
 </p><ul>
 <li>For usage of voxel3d library<ol type="1">
-<li>Open html/index.html in browser</li>
+<li>Open voxel3d_tools/html/index.html in browser</li>
 <li>Click "Files", then "voxel3d.h" for detail info</li>
 </ol>
 </li>
@@ -86,7 +86,7 @@ $(function() {
 Ubuntu</h1>
 <p >Usage: ./voxel3d_tools [options] <br  />
 </p>
-<p >Version 1.5 <br  />
+<p >Version 1.6 <br  />
  Options: <br  />
  &emsp;-h | &ndash;help&emsp;&emsp;&emsp;&emsp;&emsp;&#160;&#160;Print this message <br  />
  &emsp;-a | &ndash;get_auto_expo&emsp;get auto exposure mode <br  />
@@ -96,7 +96,8 @@ Ubuntu</h1>
  &emsp;-r | &ndash;get_mode&emsp;&emsp;&emsp;&#160;get range mode <br  />
  &emsp;-R | &ndash;set_mode&emsp;&emsp;&emsp;&#160;set range mode <br  />
  &emsp;-S | &ndash;scan_dev&emsp;&emsp;&emsp;&#160;&#160;scan devices and list device S/N <br  />
- &emsp;-s | &ndash;dev_sn&emsp;&emsp;&emsp;&emsp;&#160;&#160;specify device S/N to access &emsp;-t | &ndash;get_conf&emsp;&emsp;&emsp;&#160;get confidence threshold <br  />
+ &emsp;-s | &ndash;dev_sn&emsp;&emsp;&emsp;&emsp;&#160;&#160;specify device S/N to access <br  />
+ &emsp;-t | &ndash;get_conf&emsp;&emsp;&emsp;&#160;get confidence threshold <br  />
  &emsp;-T | &ndash;set_conf&emsp;&emsp;&emsp;&#160;&#160;&#160;set confidence threshold <br  />
  &emsp;-u | &ndash;fw_upgrade&emsp;&emsp;&#160;device firmware upgrade <br  />
  &emsp;-v | &ndash;version&emsp;&emsp;&emsp;&emsp;&#160;show firmware version <br  />
@@ -141,20 +142,21 @@ Build steps</h2>
 Windows</h1>
 <p >Usage: voxel3d_tools.exe [options] <br  />
 </p>
-<p >Version 1.5 <br  />
+<p >Version 1.6 <br  />
  Options: <br  />
- -h | &ndash;help&emsp;&emsp;&emsp;&emsp;&emsp;&#160;&#160;Print this message <br  />
- -a | &ndash;get_auto_expo&emsp;get auto exposure mode <br  />
- -A | &ndash;set_auto_expo&emsp;set auto exposure mode <br  />
- -b | &ndash;build_date&emsp;&emsp;&#160;&#160;&#160;show firmware build date <br  />
- -c | &ndash;count&emsp;&emsp;&emsp;&emsp;&emsp;Number of frames to grab [70] <br  />
- -r | &ndash;get_mode&emsp;&emsp;&emsp;&#160;get range mode <br  />
- -R | &ndash;set_mode&emsp;&emsp;&emsp;&#160;set range mode <br  />
- -S | &ndash;scan_dev&emsp;&emsp;&emsp;&#160;&#160;scan devices and list device S/N <br  />
- -s | &ndash;dev_sn&emsp;&emsp;&emsp;&emsp;&#160;&#160;specify device S/N to access -t | &ndash;get_conf&emsp;&emsp;&emsp;&#160;get confidence threshold <br  />
- -T | &ndash;set_conf&emsp;&emsp;&emsp;&#160;&#160;&#160;set confidence threshold <br  />
- -u | &ndash;fw_upgrade&emsp;&emsp;&#160;device firmware upgrade <br  />
- -v | &ndash;version&emsp;&emsp;&emsp;&emsp;&#160;show firmware version <br  />
+ &emsp;-h | &ndash;help&emsp;&emsp;&emsp;&emsp;&emsp;&#160;&#160;Print this message <br  />
+ &emsp;-a | &ndash;get_auto_expo&emsp;get auto exposure mode <br  />
+ &emsp;-A | &ndash;set_auto_expo&emsp;set auto exposure mode <br  />
+ &emsp;-b | &ndash;build_date&emsp;&emsp;&#160;&#160;&#160;show firmware build date <br  />
+ &emsp;-c | &ndash;count&emsp;&emsp;&emsp;&emsp;&emsp;Number of frames to grab [70] <br  />
+ &emsp;-r | &ndash;get_mode&emsp;&emsp;&emsp;&#160;get range mode <br  />
+ &emsp;-R | &ndash;set_mode&emsp;&emsp;&emsp;&#160;set range mode <br  />
+ &emsp;-S | &ndash;scan_dev&emsp;&emsp;&emsp;&#160;&#160;scan devices and list device S/N <br  />
+ &emsp;-s | &ndash;dev_sn&emsp;&emsp;&emsp;&emsp;&#160;&#160;specify device S/N to access <br  />
+ &emsp;-t | &ndash;get_conf&emsp;&emsp;&emsp;&#160;get confidence threshold <br  />
+ &emsp;-T | &ndash;set_conf&emsp;&emsp;&emsp;&#160;&#160;&#160;set confidence threshold <br  />
+ &emsp;-u | &ndash;fw_upgrade&emsp;&emsp;&#160;device firmware upgrade <br  />
+ &emsp;-v | &ndash;version&emsp;&emsp;&emsp;&emsp;&#160;show firmware version <br  />
 </p>
 <p >Example: <br  />
  voxel3d_tools.exe -s PX2011090052 -c 100 <br  />
