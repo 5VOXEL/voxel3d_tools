@@ -1,5 +1,5 @@
 # voxel3d_tools
-Library and utilities for working with 5Voxel 5Z01A 3D-ToF Camera  
+Library and utilities for working with 5Voxel 5Z01A/5Z01B 3D-ToF Camera  
 * For usage of voxel3d library
   1. Open voxel3d_tools/html/index.html in browser
   2. Click "Files", then "voxel3d.h" for detail info
@@ -10,21 +10,24 @@ Note: Multi-devices on single host is supported starting from V1.1.0 library & V
 # Ubuntu
 Usage: ./voxel3d_tools [options]  
   
-Version 1.6  
+Version 1.7  
 Options:  
 &emsp;-h | --help&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;Print this message  
 &emsp;-a | --get_auto_expo&emsp;get auto exposure mode  
 &emsp;-A | --set_auto_expo&emsp;set auto exposure mode  
 &emsp;-b | --build_date&emsp;&emsp;&nbsp;&nbsp;&nbsp;show firmware build date  
 &emsp;-c | --count&emsp;&emsp;&emsp;&emsp;&emsp;Number of frames to grab [70]  
+&emsp;-d | --display&emsp;&emsp;&emsp;&nbsp;&emsp;Display camera temperature  
+&emsp;-f | --get_acf_mode&emsp;&nbsp;&nbsp;get adaptive confidence filter mode  
+&emsp;-F | --set_acf_mode&emsp;&nbsp;&nbsp;set adaptive confidence filter mode  
 &emsp;-r | --get_mode&emsp;&emsp;&emsp;&nbsp;get range mode  
 &emsp;-R | --set_mode&emsp;&emsp;&emsp;&nbsp;set range mode  
 &emsp;-S | --scan_dev&emsp;&emsp;&emsp;&nbsp;&nbsp;scan devices and list device S/N  
 &emsp;-s | --dev_sn&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;specify device S/N to access  
-&emsp;-t | --get_conf&emsp;&emsp;&emsp;&nbsp;get confidence threshold  
+&emsp;-t | --get_conf&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;get confidence threshold  
 &emsp;-T | --set_conf&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;set confidence threshold  
 &emsp;-u | --fw_upgrade&emsp;&emsp;&nbsp;device firmware upgrade  
-&emsp;-v | --version&emsp;&emsp;&emsp;&emsp;&nbsp;show firmware version  
+&emsp;-v | --version&emsp;&emsp;&emsp;&emsp;&nbsp;show lib & firmware version  
   
   
 Example:  
@@ -33,7 +36,7 @@ Example:
   
 Supported Deivce(s)
 -------------------------------------------------------------------------------
-5Voxel 5Z01A  
+5Voxel 5Z01A/5Z01B  
   
 Supported OS/Platform
 -------------------------------------------------------------------------------
@@ -41,9 +44,9 @@ Supported OS/Platform
   $ lsb_release -a  
   No LSB modules are available.  
   Distributor ID:	Ubuntu  
-  Description:	Ubuntu 18.04.5 LTS  
-  Release:	18.04  
-  Codename:	bionic  
+  Description:	Ubuntu 22.04.3 LTS  
+  Release:	22.04  
+  Codename:	jammy  
   
 * ### Platform  
   * x86_64
@@ -63,21 +66,24 @@ Build steps
 # Windows
 Usage: voxel3d_tools.exe [options]  
   
-Version 1.6  
+Version 1.7  
 Options:  
 &emsp;-h | --help&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;Print this message  
 &emsp;-a | --get_auto_expo&emsp;get auto exposure mode  
 &emsp;-A | --set_auto_expo&emsp;set auto exposure mode  
 &emsp;-b | --build_date&emsp;&emsp;&nbsp;&nbsp;&nbsp;show firmware build date  
 &emsp;-c | --count&emsp;&emsp;&emsp;&emsp;&emsp;Number of frames to grab [70]  
+&emsp;-d | --display&emsp;&emsp;&emsp;&nbsp;&emsp;Display camera temperature  
+&emsp;-f | --get_acf_mode&emsp;&nbsp;&nbsp;get adaptive confidence filter mode  
+&emsp;-F | --set_acf_mode&emsp;&nbsp;&nbsp;set adaptive confidence filter mode  
 &emsp;-r | --get_mode&emsp;&emsp;&emsp;&nbsp;get range mode  
 &emsp;-R | --set_mode&emsp;&emsp;&emsp;&nbsp;set range mode  
 &emsp;-S | --scan_dev&emsp;&emsp;&emsp;&nbsp;&nbsp;scan devices and list device S/N  
 &emsp;-s | --dev_sn&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;specify device S/N to access  
-&emsp;-t | --get_conf&emsp;&emsp;&emsp;&nbsp;get confidence threshold  
+&emsp;-t | --get_conf&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;get confidence threshold  
 &emsp;-T | --set_conf&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;set confidence threshold  
 &emsp;-u | --fw_upgrade&emsp;&emsp;&nbsp;device firmware upgrade  
-&emsp;-v | --version&emsp;&emsp;&emsp;&emsp;&nbsp;show firmware version  
+&emsp;-v | --version&emsp;&emsp;&emsp;&emsp;&nbsp;show lib & firmware version  
   
   
 Example:  
@@ -86,7 +92,7 @@ voxel3d_tools.exe -s PX2011090052 -c 100
   
 Supported Deivce(s)
 -------------------------------------------------------------------------------
-5Voxel 5Z01A  
+5Voxel 5Z01A/5Z01B  
 
 Supported OS/Platform
 -------------------------------------------------------------------------------
