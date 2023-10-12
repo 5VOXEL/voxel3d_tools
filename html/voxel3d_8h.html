@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Voxel3D Example<span id="projectnumber">&#160;V1.6</span>
+   <div id="projectname">Voxel3D Example<span id="projectnumber">&#160;V1.7</span>
    </div>
   </td>
  </tr>
@@ -146,6 +146,9 @@ Macros</h2></td></tr>
 <tr class="memitem:ab36b256eb28db47487c4327073592224"><td class="memItemLeft" align="right" valign="top"><a id="ab36b256eb28db47487c4327073592224" name="ab36b256eb28db47487c4327073592224"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>MAX_PRODUCT_SN_LEN</b>&#160;&#160;&#160;(128)</td></tr>
 <tr class="separator:ab36b256eb28db47487c4327073592224"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad731a3919bef3fc9787d1c0bed4057be"><td class="memItemLeft" align="right" valign="top"><a id="ad731a3919bef3fc9787d1c0bed4057be" name="ad731a3919bef3fc9787d1c0bed4057be"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>MAX_FW_VER_LEN</b>&#160;&#160;&#160;(16)</td></tr>
+<tr class="separator:ad731a3919bef3fc9787d1c0bed4057be"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
@@ -156,6 +159,17 @@ Enumerations</h2></td></tr>
 <tr class="memdesc:a29600188291d93981ff1bc64da9a78df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Supported range mode <br  />
   <a href="voxel3d_8h.html#a29600188291d93981ff1bc64da9a78df">More...</a><br /></td></tr>
 <tr class="separator:a29600188291d93981ff1bc64da9a78df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a729d59796ce7329d9185859e356abb07"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="voxel3d_8h.html#a729d59796ce7329d9185859e356abb07">AdaptiveConfFilter_TypeDef</a> { <br />
+&#160;&#160;<b>ADAPTIVE_CONF_NONE</b> = 0
+, <b>ADAPTIVE_CONF_LIGHT</b>
+, <b>ADAPTIVE_CONF_STANDARD</b>
+, <b>ADAPTIVE_CONF_HEAVY</b>
+, <br />
+&#160;&#160;<b>ADAPTIVE_CONF_MAX</b>
+<br />
+ }</td></tr>
+<tr class="memdesc:a729d59796ce7329d9185859e356abb07"><td class="mdescLeft">&#160;</td><td class="mdescRight">Supported adaptive confidence filter mode. Adaptive confidence filter will try to filter (zero out pixel depth) abnormal / bad pixels.  <a href="voxel3d_8h.html#a729d59796ce7329d9185859e356abb07">More...</a><br /></td></tr>
+<tr class="separator:a729d59796ce7329d9185859e356abb07"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
@@ -225,11 +239,23 @@ Functions</h2></td></tr>
 <tr class="memitem:a024ba9ed128283a05fbd9e5370b7303b"><td class="memItemLeft" align="right" valign="top">VOXEL3D_API_DLL int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="voxel3d_8h.html#a024ba9ed128283a05fbd9e5370b7303b">voxel3d_get_filter_fpr_mode</a> (char *dev_sn)</td></tr>
 <tr class="memdesc:a024ba9ed128283a05fbd9e5370b7303b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get current configuration of filter (Flying Pixel Removal) mode.  <a href="voxel3d_8h.html#a024ba9ed128283a05fbd9e5370b7303b">More...</a><br /></td></tr>
 <tr class="separator:a024ba9ed128283a05fbd9e5370b7303b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac3ab91e65739e6bfcccf8b5d8faa441d"><td class="memItemLeft" align="right" valign="top">VOXEL3D_API_DLL float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="voxel3d_8h.html#ac3ab91e65739e6bfcccf8b5d8faa441d">voxel3d_get_sensor_temperature</a> (char *dev_sn)</td></tr>
+<tr class="memdesc:ac3ab91e65739e6bfcccf8b5d8faa441d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get current temperature of ToF sensor.  <a href="voxel3d_8h.html#ac3ab91e65739e6bfcccf8b5d8faa441d">More...</a><br /></td></tr>
+<tr class="separator:ac3ab91e65739e6bfcccf8b5d8faa441d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a61e8f71a78c13d8e87e02d08ca4156dd"><td class="memItemLeft" align="right" valign="top">VOXEL3D_API_DLL float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="voxel3d_8h.html#a61e8f71a78c13d8e87e02d08ca4156dd">voxel3d_get_illum_temperature</a> (char *dev_sn)</td></tr>
+<tr class="memdesc:a61e8f71a78c13d8e87e02d08ca4156dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get current temperature of illumination VCSEL.  <a href="voxel3d_8h.html#a61e8f71a78c13d8e87e02d08ca4156dd">More...</a><br /></td></tr>
+<tr class="separator:a61e8f71a78c13d8e87e02d08ca4156dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb8e8c2f1c832599ba0ecbcd3bb8da12"><td class="memItemLeft" align="right" valign="top">VOXEL3D_API_DLL int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="voxel3d_8h.html#aeb8e8c2f1c832599ba0ecbcd3bb8da12">voxel3d_set_adaptive_conf_filter_mode</a> (char *dev_sn, int mode)</td></tr>
+<tr class="memdesc:aeb8e8c2f1c832599ba0ecbcd3bb8da12"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configure adaptive confidence filter mode.  <a href="voxel3d_8h.html#aeb8e8c2f1c832599ba0ecbcd3bb8da12">More...</a><br /></td></tr>
+<tr class="separator:aeb8e8c2f1c832599ba0ecbcd3bb8da12"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a467fbf3dae26b469736212c9347d2452"><td class="memItemLeft" align="right" valign="top">VOXEL3D_API_DLL int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="voxel3d_8h.html#a467fbf3dae26b469736212c9347d2452">voxel3d_get_adaptive_conf_filter_mode</a> (char *dev_sn)</td></tr>
+<tr class="memdesc:a467fbf3dae26b469736212c9347d2452"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get current configuration of adaptive confidence filter mode.  <a href="voxel3d_8h.html#a467fbf3dae26b469736212c9347d2452">More...</a><br /></td></tr>
+<tr class="separator:a467fbf3dae26b469736212c9347d2452"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >libvoxel3d APIs for 5Voxel 5Z01A device </p>
 <dl class="section author"><dt>Author</dt><dd>Jackie Lee </dd></dl>
-<dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2022 5Voxel Co., Ltd. </dd></dl>
+<dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2023 5Voxel Co., Ltd. </dd></dl>
 </div><h2 class="groupheader">Enumeration Type Documentation</h2>
 <a id="a29600188291d93981ff1bc64da9a78df" name="a29600188291d93981ff1bc64da9a78df"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a29600188291d93981ff1bc64da9a78df">&#9670;&#160;</a></span>_range_mode</h2>
@@ -264,6 +290,42 @@ Long Range:</h3>
 <ul>
 <li>FPS: 5fps</li>
 <li>Suggested sensing range with AE-enabled: 0.1m ~ 4.5m </li>
+</ul>
+
+</div>
+</div>
+<a id="a729d59796ce7329d9185859e356abb07" name="a729d59796ce7329d9185859e356abb07"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a729d59796ce7329d9185859e356abb07">&#9670;&#160;</a></span>AdaptiveConfFilter_TypeDef</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="voxel3d_8h.html#a729d59796ce7329d9185859e356abb07">AdaptiveConfFilter_TypeDef</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Supported adaptive confidence filter mode. Adaptive confidence filter will try to filter (zero out pixel depth) abnormal / bad pixels. </p>
+<h3><a class="anchor" id="autotoc_md3"></a>
+ADAPTIVE_CONF_NONE:</h3>
+<ul>
+<li>Disable adaptive confidence filter </li>
+</ul>
+<h3><a class="anchor" id="autotoc_md4"></a>
+ADAPTIVE_CONF_LIGHT:</h3>
+<ul>
+<li>Light effect (less zero-out pixels) </li>
+</ul>
+<h3><a class="anchor" id="autotoc_md5"></a>
+ADAPTIVE_CONF_STANDARD:</h3>
+<ul>
+<li>Default mode </li>
+</ul>
+<h3><a class="anchor" id="autotoc_md6"></a>
+ADAPTIVE_CONF_HEAVY:</h3>
+<ul>
+<li>Heavy effect (more zero-out pixels) </li>
 </ul>
 
 </div>
@@ -359,7 +421,8 @@ Long Range:</h3>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true: In upgrade procedure </dd>
 <dd>
-&lt; 0: Not in upgrade procedure Note: while output &lt; 0, state &amp; percent_complete can be used to know if the previous upgrade had error or completed withtout failure </dd></dl>
+&lt; 0: Not in upgrade procedure </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>while output &lt; 0, state &amp; percent_complete can be used to know if the previous upgrade had error or completed withtout failure </dd></dl>
 
 </div>
 </div>
@@ -407,6 +470,34 @@ Long Range:</h3>
 <dl class="section return"><dt>Returns</dt><dd>&gt; 0: pixels of pointcloud xyz filled in xyz buffer </dd>
 <dd>
 &lt;= 0: failed to generate pointcloud </dd></dl>
+
+</div>
+</div>
+<a id="a467fbf3dae26b469736212c9347d2452" name="a467fbf3dae26b469736212c9347d2452"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a467fbf3dae26b469736212c9347d2452">&#9670;&#160;</a></span>voxel3d_get_adaptive_conf_filter_mode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">VOXEL3D_API_DLL int voxel3d_get_adaptive_conf_filter_mode </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>dev_sn</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get current configuration of adaptive confidence filter mode. </p>
+<dl class="section warning"><dt>Warning</dt><dd>Call this function after <a class="el" href="voxel3d_8h.html#a496143fdb21996473d36dcd87eeb38ee" title="Perform the initialization of sepcific 5Voxel 5Z01A device.">voxel3d_init()</a> is completed and successfully, otherwise, it returns false </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">dev_sn</td><td>device S/N. Input S/N with NULL pointer or empty string will initialize the 1st scanned device </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>mode: 0 -&gt; Disable 1 -&gt; Light 2 -&gt; Standard 3 -&gt; Heavy </dd></dl>
 
 </div>
 </div>
@@ -559,6 +650,35 @@ Long Range:</h3>
 
 </div>
 </div>
+<a id="a61e8f71a78c13d8e87e02d08ca4156dd" name="a61e8f71a78c13d8e87e02d08ca4156dd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a61e8f71a78c13d8e87e02d08ca4156dd">&#9670;&#160;</a></span>voxel3d_get_illum_temperature()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">VOXEL3D_API_DLL float voxel3d_get_illum_temperature </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>dev_sn</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get current temperature of illumination VCSEL. </p>
+<dl class="section warning"><dt>Warning</dt><dd>Call this function after <a class="el" href="voxel3d_8h.html#a496143fdb21996473d36dcd87eeb38ee" title="Perform the initialization of sepcific 5Voxel 5Z01A device.">voxel3d_init()</a> is completed and successfully, otherwise, it returns false </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">dev_sn</td><td>device S/N. Input S/N with NULL pointer or empty string will initialize the 1st scanned device </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>temperature in degree C </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>temperature only get updated during new depth frame receiving </dd></dl>
+
+</div>
+</div>
 <a id="a604e8a9782abdac085d8054882046030" name="a604e8a9782abdac085d8054882046030"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a604e8a9782abdac085d8054882046030">&#9670;&#160;</a></span>voxel3d_get_range_mode()</h2>
 
@@ -590,6 +710,35 @@ Long Range:</h3>
 3 -&gt; long range </dd>
 <dd>
 &lt; 0: failed to get range mode </dd></dl>
+
+</div>
+</div>
+<a id="ac3ab91e65739e6bfcccf8b5d8faa441d" name="ac3ab91e65739e6bfcccf8b5d8faa441d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac3ab91e65739e6bfcccf8b5d8faa441d">&#9670;&#160;</a></span>voxel3d_get_sensor_temperature()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">VOXEL3D_API_DLL float voxel3d_get_sensor_temperature </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>dev_sn</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get current temperature of ToF sensor. </p>
+<dl class="section warning"><dt>Warning</dt><dd>Call this function after <a class="el" href="voxel3d_8h.html#a496143fdb21996473d36dcd87eeb38ee" title="Perform the initialization of sepcific 5Voxel 5Z01A device.">voxel3d_init()</a> is completed and successfully, otherwise, it returns false </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">dev_sn</td><td>device S/N. Input S/N with NULL pointer or empty string will initialize the 1st scanned device </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>temperature in degree C </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>temperature only get updated during new depth frame receiving </dd></dl>
 
 </div>
 </div>
@@ -941,6 +1090,47 @@ false: failed to get library version </dd></dl>
 <dl class="section return"><dt>Returns</dt><dd>&gt; 0: number of device(s) found </dd>
 <dd>
 others: can't find device </dd></dl>
+
+</div>
+</div>
+<a id="aeb8e8c2f1c832599ba0ecbcd3bb8da12" name="aeb8e8c2f1c832599ba0ecbcd3bb8da12"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb8e8c2f1c832599ba0ecbcd3bb8da12">&#9670;&#160;</a></span>voxel3d_set_adaptive_conf_filter_mode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">VOXEL3D_API_DLL int voxel3d_set_adaptive_conf_filter_mode </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>dev_sn</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>mode</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Configure adaptive confidence filter mode. </p>
+<dl class="section warning"><dt>Warning</dt><dd>Call this function after <a class="el" href="voxel3d_8h.html#a496143fdb21996473d36dcd87eeb38ee" title="Perform the initialization of sepcific 5Voxel 5Z01A device.">voxel3d_init()</a> is completed and successfully, otherwise, it returns false </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">dev_sn</td><td>device S/N. Input S/N with NULL pointer or empty string will initialize the 1st scanned device </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">mode</td><td>(0 -&gt; Disable, 1 -&gt; Light, 2 -&gt; Standard, 3 -&gt; Heavy) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true: completed configration </dd>
+<dd>
+&lt; 0: configuration failure </dd></dl>
 
 </div>
 </div>

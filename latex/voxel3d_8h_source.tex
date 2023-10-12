@@ -40,117 +40,141 @@
 \DoxyCodeLine{42 \textcolor{preprocessor}{\#define MAX\_PRODUCT\_NAME\_LEN          (128)}}
 \DoxyCodeLine{43 \textcolor{preprocessor}{\#define MAX\_PRODUCT\_SN\_LEN            (128)}}
 \DoxyCodeLine{44 }
-\DoxyCodeLine{57 \textcolor{keyword}{enum} \mbox{\hyperlink{voxel3d_8h_a29600188291d93981ff1bc64da9a78df}{\_range\_mode}} \{}
-\DoxyCodeLine{58     SHORT\_RANGE\_MODE = 1,}
-\DoxyCodeLine{59     MIDDLE\_RANGE\_MODE,}
-\DoxyCodeLine{60     LONG\_RANGE\_MODE,}
-\DoxyCodeLine{61 \};}
-\DoxyCodeLine{62 }
-\DoxyCodeLine{66 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_camera_info}{CameraInfo}} \{}
-\DoxyCodeLine{67     \textcolor{keywordtype}{float} focalLengthFx;}
-\DoxyCodeLine{68     \textcolor{keywordtype}{float} focalLengthFy;}
-\DoxyCodeLine{69     \textcolor{keywordtype}{float} principalPointCx;}
-\DoxyCodeLine{70     \textcolor{keywordtype}{float} principalPointCy;}
-\DoxyCodeLine{71     \textcolor{keywordtype}{float} K1;}
-\DoxyCodeLine{72     \textcolor{keywordtype}{float} K2;}
-\DoxyCodeLine{73     \textcolor{keywordtype}{float} P1;}
-\DoxyCodeLine{74     \textcolor{keywordtype}{float} P2;}
-\DoxyCodeLine{75     \textcolor{keywordtype}{float} K3;}
-\DoxyCodeLine{76     \textcolor{keywordtype}{float} K4;}
-\DoxyCodeLine{77     \textcolor{keywordtype}{float} K5;}
-\DoxyCodeLine{78     \textcolor{keywordtype}{float} K6;}
-\DoxyCodeLine{79 \};}
-\DoxyCodeLine{80 }
-\DoxyCodeLine{85 \textcolor{keyword}{struct }VOXEL3D\_API\_DLL \mbox{\hyperlink{struct_cam_dev_info}{CamDevInfo}} \{}
-\DoxyCodeLine{86     \textcolor{keywordtype}{int} num\_of\_devices = 0;}
-\DoxyCodeLine{87     \textcolor{keywordtype}{char} product\_sn[MAX\_SUPPORTED\_CAMERA\_MODULE][MAX\_PRODUCT\_SN\_LEN] = \{\};}
-\DoxyCodeLine{88 \};}
-\DoxyCodeLine{89 }
-\DoxyCodeLine{90 }
-\DoxyCodeLine{97 \textcolor{keyword}{extern} \textcolor{stringliteral}{"{}C"{}} VOXEL3D\_API\_DLL \textcolor{keywordtype}{int} \mbox{\hyperlink{voxel3d_8h_a1cf51682aa09957509a451ea80c68836}{voxel3d\_scan}}(\mbox{\hyperlink{struct_cam_dev_info}{CamDevInfo}} *cam\_dev\_info);}
-\DoxyCodeLine{98 }
-\DoxyCodeLine{99 }
-\DoxyCodeLine{110 \textcolor{keyword}{extern} \textcolor{stringliteral}{"{}C"{}} VOXEL3D\_API\_DLL \textcolor{keywordtype}{int} \mbox{\hyperlink{voxel3d_8h_a496143fdb21996473d36dcd87eeb38ee}{voxel3d\_init}}(\textcolor{keywordtype}{char} *dev\_sn);}
-\DoxyCodeLine{111 }
+\DoxyCodeLine{45 \textcolor{preprocessor}{\#define MAX\_FW\_VER\_LEN                (16)}}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{59 \textcolor{keyword}{enum} \mbox{\hyperlink{voxel3d_8h_a29600188291d93981ff1bc64da9a78df}{\_range\_mode}} \{}
+\DoxyCodeLine{60     SHORT\_RANGE\_MODE = 1,}
+\DoxyCodeLine{61     MIDDLE\_RANGE\_MODE,}
+\DoxyCodeLine{62     LONG\_RANGE\_MODE,}
+\DoxyCodeLine{63 \};}
+\DoxyCodeLine{64 }
+\DoxyCodeLine{77 \textcolor{keyword}{typedef} \textcolor{keyword}{enum}}
+\DoxyCodeLine{78 \{}
+\DoxyCodeLine{79     ADAPTIVE\_CONF\_NONE = 0,}
+\DoxyCodeLine{80     ADAPTIVE\_CONF\_LIGHT,}
+\DoxyCodeLine{81     ADAPTIVE\_CONF\_STANDARD,}
+\DoxyCodeLine{82     ADAPTIVE\_CONF\_HEAVY,}
+\DoxyCodeLine{83     ADAPTIVE\_CONF\_MAX}
+\DoxyCodeLine{84 \} \mbox{\hyperlink{voxel3d_8h_a729d59796ce7329d9185859e356abb07}{AdaptiveConfFilter\_TypeDef}};}
+\DoxyCodeLine{85 }
+\DoxyCodeLine{89 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_camera_info}{CameraInfo}} \{}
+\DoxyCodeLine{90     \textcolor{keywordtype}{float} focalLengthFx;}
+\DoxyCodeLine{91     \textcolor{keywordtype}{float} focalLengthFy;}
+\DoxyCodeLine{92     \textcolor{keywordtype}{float} principalPointCx;}
+\DoxyCodeLine{93     \textcolor{keywordtype}{float} principalPointCy;}
+\DoxyCodeLine{94     \textcolor{keywordtype}{float} K1;}
+\DoxyCodeLine{95     \textcolor{keywordtype}{float} K2;}
+\DoxyCodeLine{96     \textcolor{keywordtype}{float} P1;}
+\DoxyCodeLine{97     \textcolor{keywordtype}{float} P2;}
+\DoxyCodeLine{98     \textcolor{keywordtype}{float} K3;}
+\DoxyCodeLine{99     \textcolor{keywordtype}{float} K4;}
+\DoxyCodeLine{100     \textcolor{keywordtype}{float} K5;}
+\DoxyCodeLine{101     \textcolor{keywordtype}{float} K6;}
+\DoxyCodeLine{102 \};}
+\DoxyCodeLine{103 }
+\DoxyCodeLine{108 \textcolor{keyword}{struct }VOXEL3D\_API\_DLL \mbox{\hyperlink{struct_cam_dev_info}{CamDevInfo}} \{}
+\DoxyCodeLine{109     \textcolor{keywordtype}{int} num\_of\_devices = 0;}
+\DoxyCodeLine{110     \textcolor{keywordtype}{char} product\_sn[MAX\_SUPPORTED\_CAMERA\_MODULE][MAX\_PRODUCT\_SN\_LEN] = \{\};}
+\DoxyCodeLine{111 \};}
 \DoxyCodeLine{112 }
-\DoxyCodeLine{119 \textcolor{keyword}{extern} \textcolor{stringliteral}{"{}C"{}} VOXEL3D\_API\_DLL \textcolor{keywordtype}{void} \mbox{\hyperlink{voxel3d_8h_a6d1a7d460137fbb4ad88f34353edc33c}{voxel3d\_release}}(\textcolor{keywordtype}{char}* dev\_sn);}
-\DoxyCodeLine{120 }
+\DoxyCodeLine{113 }
+\DoxyCodeLine{120 \textcolor{keyword}{extern} \textcolor{stringliteral}{"{}C"{}} VOXEL3D\_API\_DLL \textcolor{keywordtype}{int} \mbox{\hyperlink{voxel3d_8h_a1cf51682aa09957509a451ea80c68836}{voxel3d\_scan}}(\mbox{\hyperlink{struct_cam_dev_info}{CamDevInfo}} *cam\_dev\_info);}
 \DoxyCodeLine{121 }
-\DoxyCodeLine{134 \textcolor{keyword}{extern} \textcolor{stringliteral}{"{}C"{}} VOXEL3D\_API\_DLL \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \mbox{\hyperlink{voxel3d_8h_a7f8b8c416fc9ebfc17a02b013d0240a5}{voxel3d\_queryframe}}(\textcolor{keywordtype}{char}* dev\_sn,}
-\DoxyCodeLine{135                                                            \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{short} *depthmap,}
-\DoxyCodeLine{136                                                            \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{short} *irmap);}
-\DoxyCodeLine{137 }
-\DoxyCodeLine{138 }
-\DoxyCodeLine{150 \textcolor{keyword}{extern} \textcolor{stringliteral}{"{}C"{}} VOXEL3D\_API\_DLL \textcolor{keywordtype}{int} \mbox{\hyperlink{voxel3d_8h_a6e1fba56cb09fbd7c2075ab0026ff300}{voxel3d\_generatePointCloud}}(\textcolor{keywordtype}{char}* dev\_sn,}
-\DoxyCodeLine{151                                                           \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{short} *depthmap,}
-\DoxyCodeLine{152                                                           \textcolor{keywordtype}{float} *xyz);}
-\DoxyCodeLine{153 }
-\DoxyCodeLine{154 }
-\DoxyCodeLine{166 \textcolor{keyword}{extern} \textcolor{stringliteral}{"{}C"{}} VOXEL3D\_API\_DLL \textcolor{keywordtype}{int} \mbox{\hyperlink{voxel3d_8h_a4f7e200f3b85635a5ea09582c1d5224b}{voxel3d\_read\_fw\_version}}(\textcolor{keywordtype}{char}* dev\_sn,}
-\DoxyCodeLine{167                                                        \textcolor{keywordtype}{char} *fw\_ver,}
-\DoxyCodeLine{168                                                        \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} max\_len);}
-\DoxyCodeLine{169 }
-\DoxyCodeLine{170 }
-\DoxyCodeLine{183 \textcolor{keyword}{extern} \textcolor{stringliteral}{"{}C"{}} VOXEL3D\_API\_DLL \textcolor{keywordtype}{int} \mbox{\hyperlink{voxel3d_8h_a995e7fcaaee46ede72cbe5ece19395cc}{voxel3d\_read\_fw\_build\_date}}(\textcolor{keywordtype}{char}* dev\_sn,}
-\DoxyCodeLine{184                                                           \textcolor{keywordtype}{char} *fw\_build\_date,}
-\DoxyCodeLine{185                                                           \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} max\_len);}
-\DoxyCodeLine{186 }
-\DoxyCodeLine{187 }
-\DoxyCodeLine{199 \textcolor{keyword}{extern} \textcolor{stringliteral}{"{}C"{}} VOXEL3D\_API\_DLL \textcolor{keywordtype}{int} \mbox{\hyperlink{voxel3d_8h_a2d3949c5d279c7158de389478c9dd6bf}{voxel3d\_read\_camera\_info}}(\textcolor{keywordtype}{char}* dev\_sn,}
-\DoxyCodeLine{200                                                         \mbox{\hyperlink{struct_camera_info}{CameraInfo}} *cam\_info);}
-\DoxyCodeLine{201 }
-\DoxyCodeLine{202 }
-\DoxyCodeLine{212 \textcolor{keyword}{extern} \textcolor{stringliteral}{"{}C"{}} VOXEL3D\_API\_DLL \textcolor{keywordtype}{int} \mbox{\hyperlink{voxel3d_8h_a38c85ec7421983c6e632ef5bf82416d7}{voxel3d\_get\_conf\_threshold}}(\textcolor{keywordtype}{char}* dev\_sn);}
-\DoxyCodeLine{213 }
-\DoxyCodeLine{214 }
-\DoxyCodeLine{228 \textcolor{keyword}{extern} \textcolor{stringliteral}{"{}C"{}} VOXEL3D\_API\_DLL \textcolor{keywordtype}{int} \mbox{\hyperlink{voxel3d_8h_a0ad6772b5994f8b069fbae44e502cfde}{voxel3d\_set\_conf\_threshold}}(\textcolor{keywordtype}{char}* dev\_sn,}
-\DoxyCodeLine{229                                                          \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} conf\_threshold);}
-\DoxyCodeLine{230 }
-\DoxyCodeLine{231 }
-\DoxyCodeLine{243 \textcolor{keyword}{extern} \textcolor{stringliteral}{"{}C"{}} VOXEL3D\_API\_DLL \textcolor{keywordtype}{int} \mbox{\hyperlink{voxel3d_8h_a604e8a9782abdac085d8054882046030}{voxel3d\_get\_range\_mode}}(\textcolor{keywordtype}{char}* dev\_sn);}
-\DoxyCodeLine{244 }
-\DoxyCodeLine{245 }
-\DoxyCodeLine{257 \textcolor{keyword}{extern} \textcolor{stringliteral}{"{}C"{}} VOXEL3D\_API\_DLL \textcolor{keywordtype}{int} \mbox{\hyperlink{voxel3d_8h_a111494ba0a5c982c91b341c2f945bb90}{voxel3d\_set\_range\_mode}}(\textcolor{keywordtype}{char}* dev\_sn,}
-\DoxyCodeLine{258                                                       \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} range\_mode);}
-\DoxyCodeLine{259 }
-\DoxyCodeLine{260 }
-\DoxyCodeLine{271 \textcolor{keyword}{extern} \textcolor{stringliteral}{"{}C"{}} VOXEL3D\_API\_DLL \textcolor{keywordtype}{int} \mbox{\hyperlink{voxel3d_8h_afc5edbe95b6477bf5d939a6a33e6f629}{voxel3d\_get\_auto\_exposure\_mode}}(\textcolor{keywordtype}{char}* dev\_sn);}
-\DoxyCodeLine{272 }
-\DoxyCodeLine{273 }
-\DoxyCodeLine{284 \textcolor{keyword}{extern} \textcolor{stringliteral}{"{}C"{}} VOXEL3D\_API\_DLL \textcolor{keywordtype}{int} \mbox{\hyperlink{voxel3d_8h_a33a3399a19f90f5f2d5a5f0ec38df6e7}{voxel3d\_set\_auto\_exposure\_mode}}(\textcolor{keywordtype}{char}* dev\_sn,}
-\DoxyCodeLine{285                                                               \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} enable);}
-\DoxyCodeLine{286 }
-\DoxyCodeLine{287 }
-\DoxyCodeLine{297 \textcolor{keyword}{extern} \textcolor{stringliteral}{"{}C"{}} VOXEL3D\_API\_DLL \textcolor{keywordtype}{float} \mbox{\hyperlink{voxel3d_8h_a4f643605142854bcd8cb7d6565c2711b}{voxel3d\_get\_depth\_hfov}}(\textcolor{keywordtype}{char}* dev\_sn);}
-\DoxyCodeLine{298 }
-\DoxyCodeLine{299 }
-\DoxyCodeLine{309 \textcolor{keyword}{extern} \textcolor{stringliteral}{"{}C"{}} VOXEL3D\_API\_DLL \textcolor{keywordtype}{float} \mbox{\hyperlink{voxel3d_8h_a85e761e5080625cdcda1deaffedfdc93}{voxel3d\_get\_depth\_vfov}}(\textcolor{keywordtype}{char}* dev\_sn);}
+\DoxyCodeLine{122 }
+\DoxyCodeLine{133 \textcolor{keyword}{extern} \textcolor{stringliteral}{"{}C"{}} VOXEL3D\_API\_DLL \textcolor{keywordtype}{int} \mbox{\hyperlink{voxel3d_8h_a496143fdb21996473d36dcd87eeb38ee}{voxel3d\_init}}(\textcolor{keywordtype}{char} *dev\_sn);}
+\DoxyCodeLine{134 }
+\DoxyCodeLine{135 }
+\DoxyCodeLine{142 \textcolor{keyword}{extern} \textcolor{stringliteral}{"{}C"{}} VOXEL3D\_API\_DLL \textcolor{keywordtype}{void} \mbox{\hyperlink{voxel3d_8h_a6d1a7d460137fbb4ad88f34353edc33c}{voxel3d\_release}}(\textcolor{keywordtype}{char}* dev\_sn);}
+\DoxyCodeLine{143 }
+\DoxyCodeLine{144 }
+\DoxyCodeLine{157 \textcolor{keyword}{extern} \textcolor{stringliteral}{"{}C"{}} VOXEL3D\_API\_DLL \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \mbox{\hyperlink{voxel3d_8h_a7f8b8c416fc9ebfc17a02b013d0240a5}{voxel3d\_queryframe}}(\textcolor{keywordtype}{char}* dev\_sn,}
+\DoxyCodeLine{158                                                            \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{short} *depthmap,}
+\DoxyCodeLine{159                                                            \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{short} *irmap);}
+\DoxyCodeLine{160 }
+\DoxyCodeLine{161 }
+\DoxyCodeLine{173 \textcolor{keyword}{extern} \textcolor{stringliteral}{"{}C"{}} VOXEL3D\_API\_DLL \textcolor{keywordtype}{int} \mbox{\hyperlink{voxel3d_8h_a6e1fba56cb09fbd7c2075ab0026ff300}{voxel3d\_generatePointCloud}}(\textcolor{keywordtype}{char}* dev\_sn,}
+\DoxyCodeLine{174                                                           \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{short} *depthmap,}
+\DoxyCodeLine{175                                                           \textcolor{keywordtype}{float} *xyz);}
+\DoxyCodeLine{176 }
+\DoxyCodeLine{177 }
+\DoxyCodeLine{189 \textcolor{keyword}{extern} \textcolor{stringliteral}{"{}C"{}} VOXEL3D\_API\_DLL \textcolor{keywordtype}{int} \mbox{\hyperlink{voxel3d_8h_a4f7e200f3b85635a5ea09582c1d5224b}{voxel3d\_read\_fw\_version}}(\textcolor{keywordtype}{char}* dev\_sn,}
+\DoxyCodeLine{190                                                        \textcolor{keywordtype}{char} *fw\_ver,}
+\DoxyCodeLine{191                                                        \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} max\_len);}
+\DoxyCodeLine{192 }
+\DoxyCodeLine{193 }
+\DoxyCodeLine{206 \textcolor{keyword}{extern} \textcolor{stringliteral}{"{}C"{}} VOXEL3D\_API\_DLL \textcolor{keywordtype}{int} \mbox{\hyperlink{voxel3d_8h_a995e7fcaaee46ede72cbe5ece19395cc}{voxel3d\_read\_fw\_build\_date}}(\textcolor{keywordtype}{char}* dev\_sn,}
+\DoxyCodeLine{207                                                           \textcolor{keywordtype}{char} *fw\_build\_date,}
+\DoxyCodeLine{208                                                           \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} max\_len);}
+\DoxyCodeLine{209 }
+\DoxyCodeLine{210 }
+\DoxyCodeLine{222 \textcolor{keyword}{extern} \textcolor{stringliteral}{"{}C"{}} VOXEL3D\_API\_DLL \textcolor{keywordtype}{int} \mbox{\hyperlink{voxel3d_8h_a2d3949c5d279c7158de389478c9dd6bf}{voxel3d\_read\_camera\_info}}(\textcolor{keywordtype}{char}* dev\_sn,}
+\DoxyCodeLine{223                                                         \mbox{\hyperlink{struct_camera_info}{CameraInfo}} *cam\_info);}
+\DoxyCodeLine{224 }
+\DoxyCodeLine{225 }
+\DoxyCodeLine{235 \textcolor{keyword}{extern} \textcolor{stringliteral}{"{}C"{}} VOXEL3D\_API\_DLL \textcolor{keywordtype}{int} \mbox{\hyperlink{voxel3d_8h_a38c85ec7421983c6e632ef5bf82416d7}{voxel3d\_get\_conf\_threshold}}(\textcolor{keywordtype}{char}* dev\_sn);}
+\DoxyCodeLine{236 }
+\DoxyCodeLine{237 }
+\DoxyCodeLine{251 \textcolor{keyword}{extern} \textcolor{stringliteral}{"{}C"{}} VOXEL3D\_API\_DLL \textcolor{keywordtype}{int} \mbox{\hyperlink{voxel3d_8h_a0ad6772b5994f8b069fbae44e502cfde}{voxel3d\_set\_conf\_threshold}}(\textcolor{keywordtype}{char}* dev\_sn,}
+\DoxyCodeLine{252                                                          \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} conf\_threshold);}
+\DoxyCodeLine{253 }
+\DoxyCodeLine{254 }
+\DoxyCodeLine{266 \textcolor{keyword}{extern} \textcolor{stringliteral}{"{}C"{}} VOXEL3D\_API\_DLL \textcolor{keywordtype}{int} \mbox{\hyperlink{voxel3d_8h_a604e8a9782abdac085d8054882046030}{voxel3d\_get\_range\_mode}}(\textcolor{keywordtype}{char}* dev\_sn);}
+\DoxyCodeLine{267 }
+\DoxyCodeLine{268 }
+\DoxyCodeLine{280 \textcolor{keyword}{extern} \textcolor{stringliteral}{"{}C"{}} VOXEL3D\_API\_DLL \textcolor{keywordtype}{int} \mbox{\hyperlink{voxel3d_8h_a111494ba0a5c982c91b341c2f945bb90}{voxel3d\_set\_range\_mode}}(\textcolor{keywordtype}{char}* dev\_sn,}
+\DoxyCodeLine{281                                                       \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} range\_mode);}
+\DoxyCodeLine{282 }
+\DoxyCodeLine{283 }
+\DoxyCodeLine{294 \textcolor{keyword}{extern} \textcolor{stringliteral}{"{}C"{}} VOXEL3D\_API\_DLL \textcolor{keywordtype}{int} \mbox{\hyperlink{voxel3d_8h_afc5edbe95b6477bf5d939a6a33e6f629}{voxel3d\_get\_auto\_exposure\_mode}}(\textcolor{keywordtype}{char}* dev\_sn);}
+\DoxyCodeLine{295 }
+\DoxyCodeLine{296 }
+\DoxyCodeLine{307 \textcolor{keyword}{extern} \textcolor{stringliteral}{"{}C"{}} VOXEL3D\_API\_DLL \textcolor{keywordtype}{int} \mbox{\hyperlink{voxel3d_8h_a33a3399a19f90f5f2d5a5f0ec38df6e7}{voxel3d\_set\_auto\_exposure\_mode}}(\textcolor{keywordtype}{char}* dev\_sn,}
+\DoxyCodeLine{308                                                               \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} enable);}
+\DoxyCodeLine{309 }
 \DoxyCodeLine{310 }
-\DoxyCodeLine{311 }
-\DoxyCodeLine{320 \textcolor{keyword}{extern} \textcolor{stringliteral}{"{}C"{}} VOXEL3D\_API\_DLL \textcolor{keywordtype}{int} \mbox{\hyperlink{voxel3d_8h_a3577fd1a6c1b6c528c8f2e6a392c17c2}{voxel3d\_read\_lib\_version}}(\textcolor{keywordtype}{char}* lib\_version,}
-\DoxyCodeLine{321                                                         \textcolor{keywordtype}{int} max\_len);}
+\DoxyCodeLine{320 \textcolor{keyword}{extern} \textcolor{stringliteral}{"{}C"{}} VOXEL3D\_API\_DLL \textcolor{keywordtype}{float} \mbox{\hyperlink{voxel3d_8h_a4f643605142854bcd8cb7d6565c2711b}{voxel3d\_get\_depth\_hfov}}(\textcolor{keywordtype}{char}* dev\_sn);}
+\DoxyCodeLine{321 }
 \DoxyCodeLine{322 }
-\DoxyCodeLine{323 }
-\DoxyCodeLine{332 \textcolor{keyword}{extern} \textcolor{stringliteral}{"{}C"{}} VOXEL3D\_API\_DLL \textcolor{keywordtype}{int} \mbox{\hyperlink{voxel3d_8h_abcfef580d181c50c2bd136bb9ffbff6c}{voxel3d\_read\_lib\_build\_date}}(\textcolor{keywordtype}{char}* lib\_build\_date,}
-\DoxyCodeLine{333                                                            \textcolor{keywordtype}{int} max\_len);}
+\DoxyCodeLine{332 \textcolor{keyword}{extern} \textcolor{stringliteral}{"{}C"{}} VOXEL3D\_API\_DLL \textcolor{keywordtype}{float} \mbox{\hyperlink{voxel3d_8h_a85e761e5080625cdcda1deaffedfdc93}{voxel3d\_get\_depth\_vfov}}(\textcolor{keywordtype}{char}* dev\_sn);}
+\DoxyCodeLine{333 }
 \DoxyCodeLine{334 }
-\DoxyCodeLine{335 }
-\DoxyCodeLine{348 \textcolor{keyword}{extern} \textcolor{stringliteral}{"{}C"{}} VOXEL3D\_API\_DLL \textcolor{keywordtype}{int} \mbox{\hyperlink{voxel3d_8h_a8deac6462b1d96dc3184c39c835e6cba}{voxel3d\_dev\_fw\_upgrade}}(\textcolor{keywordtype}{char}* dev\_sn,}
-\DoxyCodeLine{349                                                       \textcolor{keywordtype}{char}* file\_path,}
-\DoxyCodeLine{350                                                       \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} (*fw\_upgrade\_cb)(\textcolor{keywordtype}{int} state, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} percent\_complete));}
-\DoxyCodeLine{351 }
-\DoxyCodeLine{352 }
-\DoxyCodeLine{366 \textcolor{keyword}{extern} \textcolor{stringliteral}{"{}C"{}} VOXEL3D\_API\_DLL \textcolor{keywordtype}{int} \mbox{\hyperlink{voxel3d_8h_a8ec3c8ddac21c27e3507813ea93887d5}{voxel3d\_dev\_fw\_upgrade\_state\_poll}} (\textcolor{keywordtype}{char}* dev\_sn, \textcolor{keywordtype}{int} \&state,}
-\DoxyCodeLine{367                                                                   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \&percent\_complete);}
-\DoxyCodeLine{368 }
-\DoxyCodeLine{369 }
-\DoxyCodeLine{378 \textcolor{keyword}{extern} \textcolor{stringliteral}{"{}C"{}} VOXEL3D\_API\_DLL \textcolor{keywordtype}{int} \mbox{\hyperlink{voxel3d_8h_a1fcb6c89da75b64b69b82fccf2c1dcac}{voxel3d\_set\_filter\_fpr\_mode}}(\textcolor{keywordtype}{char}* dev\_sn,}
-\DoxyCodeLine{379                                                            \textcolor{keywordtype}{int} mode);}
-\DoxyCodeLine{380 }
-\DoxyCodeLine{381 }
-\DoxyCodeLine{391 \textcolor{keyword}{extern} \textcolor{stringliteral}{"{}C"{}} VOXEL3D\_API\_DLL \textcolor{keywordtype}{int} \mbox{\hyperlink{voxel3d_8h_a024ba9ed128283a05fbd9e5370b7303b}{voxel3d\_get\_filter\_fpr\_mode}}(\textcolor{keywordtype}{char}* dev\_sn);}
+\DoxyCodeLine{343 \textcolor{keyword}{extern} \textcolor{stringliteral}{"{}C"{}} VOXEL3D\_API\_DLL \textcolor{keywordtype}{int} \mbox{\hyperlink{voxel3d_8h_a3577fd1a6c1b6c528c8f2e6a392c17c2}{voxel3d\_read\_lib\_version}}(\textcolor{keywordtype}{char}* lib\_version,}
+\DoxyCodeLine{344                                                         \textcolor{keywordtype}{int} max\_len);}
+\DoxyCodeLine{345 }
+\DoxyCodeLine{346 }
+\DoxyCodeLine{355 \textcolor{keyword}{extern} \textcolor{stringliteral}{"{}C"{}} VOXEL3D\_API\_DLL \textcolor{keywordtype}{int} \mbox{\hyperlink{voxel3d_8h_abcfef580d181c50c2bd136bb9ffbff6c}{voxel3d\_read\_lib\_build\_date}}(\textcolor{keywordtype}{char}* lib\_build\_date,}
+\DoxyCodeLine{356                                                            \textcolor{keywordtype}{int} max\_len);}
+\DoxyCodeLine{357 }
+\DoxyCodeLine{358 }
+\DoxyCodeLine{371 \textcolor{keyword}{extern} \textcolor{stringliteral}{"{}C"{}} VOXEL3D\_API\_DLL \textcolor{keywordtype}{int} \mbox{\hyperlink{voxel3d_8h_a8deac6462b1d96dc3184c39c835e6cba}{voxel3d\_dev\_fw\_upgrade}}(\textcolor{keywordtype}{char}* dev\_sn,}
+\DoxyCodeLine{372                                                       \textcolor{keywordtype}{char}* file\_path,}
+\DoxyCodeLine{373                                                       \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} (*fw\_upgrade\_cb)(\textcolor{keywordtype}{int} state, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} percent\_complete));}
+\DoxyCodeLine{374 }
+\DoxyCodeLine{375 }
+\DoxyCodeLine{389 \textcolor{keyword}{extern} \textcolor{stringliteral}{"{}C"{}} VOXEL3D\_API\_DLL \textcolor{keywordtype}{int} \mbox{\hyperlink{voxel3d_8h_a8ec3c8ddac21c27e3507813ea93887d5}{voxel3d\_dev\_fw\_upgrade\_state\_poll}} (\textcolor{keywordtype}{char}* dev\_sn, \textcolor{keywordtype}{int} \&state,}
+\DoxyCodeLine{390                                                                   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \&percent\_complete);}
+\DoxyCodeLine{391 }
 \DoxyCodeLine{392 }
-\DoxyCodeLine{393 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* \_\_VOXEL3d\_H\_\_ */}\textcolor{preprocessor}{}}
-\DoxyCodeLine{394 }
+\DoxyCodeLine{401 \textcolor{keyword}{extern} \textcolor{stringliteral}{"{}C"{}} VOXEL3D\_API\_DLL \textcolor{keywordtype}{int} \mbox{\hyperlink{voxel3d_8h_a1fcb6c89da75b64b69b82fccf2c1dcac}{voxel3d\_set\_filter\_fpr\_mode}}(\textcolor{keywordtype}{char}* dev\_sn,}
+\DoxyCodeLine{402                                                            \textcolor{keywordtype}{int} mode);}
+\DoxyCodeLine{403 }
+\DoxyCodeLine{404 }
+\DoxyCodeLine{414 \textcolor{keyword}{extern} \textcolor{stringliteral}{"{}C"{}} VOXEL3D\_API\_DLL \textcolor{keywordtype}{int} \mbox{\hyperlink{voxel3d_8h_a024ba9ed128283a05fbd9e5370b7303b}{voxel3d\_get\_filter\_fpr\_mode}}(\textcolor{keywordtype}{char}* dev\_sn);}
+\DoxyCodeLine{415 }
+\DoxyCodeLine{416 }
+\DoxyCodeLine{426 \textcolor{keyword}{extern} \textcolor{stringliteral}{"{}C"{}} VOXEL3D\_API\_DLL \textcolor{keywordtype}{float} \mbox{\hyperlink{voxel3d_8h_ac3ab91e65739e6bfcccf8b5d8faa441d}{voxel3d\_get\_sensor\_temperature}}(\textcolor{keywordtype}{char}* dev\_sn);}
+\DoxyCodeLine{427 }
+\DoxyCodeLine{428 }
+\DoxyCodeLine{438 \textcolor{keyword}{extern} \textcolor{stringliteral}{"{}C"{}} VOXEL3D\_API\_DLL \textcolor{keywordtype}{float} \mbox{\hyperlink{voxel3d_8h_a61e8f71a78c13d8e87e02d08ca4156dd}{voxel3d\_get\_illum\_temperature}}(\textcolor{keywordtype}{char}* dev\_sn);}
+\DoxyCodeLine{439 }
+\DoxyCodeLine{440 }
+\DoxyCodeLine{451 \textcolor{keyword}{extern} \textcolor{stringliteral}{"{}C"{}} VOXEL3D\_API\_DLL \textcolor{keywordtype}{int} \mbox{\hyperlink{voxel3d_8h_aeb8e8c2f1c832599ba0ecbcd3bb8da12}{voxel3d\_set\_adaptive\_conf\_filter\_mode}}(\textcolor{keywordtype}{char}* dev\_sn,}
+\DoxyCodeLine{452                                                                      \textcolor{keywordtype}{int} mode);}
+\DoxyCodeLine{453 }
+\DoxyCodeLine{454 }
+\DoxyCodeLine{466 \textcolor{keyword}{extern} \textcolor{stringliteral}{"{}C"{}} VOXEL3D\_API\_DLL \textcolor{keywordtype}{int} \mbox{\hyperlink{voxel3d_8h_a467fbf3dae26b469736212c9347d2452}{voxel3d\_get\_adaptive\_conf\_filter\_mode}}(\textcolor{keywordtype}{char}* dev\_sn);}
+\DoxyCodeLine{467 }
+\DoxyCodeLine{468 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* \_\_VOXEL3d\_H\_\_ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{469 }
 
 \end{DoxyCode}

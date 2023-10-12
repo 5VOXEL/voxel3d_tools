@@ -62,6 +62,9 @@ struct \mbox{\hyperlink{struct_cam_dev_info}{Cam\+Dev\+Info}}
 \item 
 \mbox{\Hypertarget{voxel3d_8h_ab36b256eb28db47487c4327073592224}\label{voxel3d_8h_ab36b256eb28db47487c4327073592224}} 
 \#define {\bfseries MAX\+\_\+\+PRODUCT\+\_\+\+SN\+\_\+\+LEN}~(128)
+\item 
+\mbox{\Hypertarget{voxel3d_8h_ad731a3919bef3fc9787d1c0bed4057be}\label{voxel3d_8h_ad731a3919bef3fc9787d1c0bed4057be}} 
+\#define {\bfseries MAX\+\_\+\+FW\+\_\+\+VER\+\_\+\+LEN}~(16)
 \end{DoxyCompactItemize}
 \doxysubsection*{Enumerations}
 \begin{DoxyCompactItemize}
@@ -71,7 +74,16 @@ enum \mbox{\hyperlink{voxel3d_8h_a29600188291d93981ff1bc64da9a78df}{\+\_\+range\
 , {\bfseries LONG\+\_\+\+RANGE\+\_\+\+MODE}
  \}
 \begin{DoxyCompactList}\small\item\em Supported range mode ~\newline
- \end{DoxyCompactList}\end{DoxyCompactItemize}
+ \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{voxel3d_8h_a729d59796ce7329d9185859e356abb07}{Adaptive\+Conf\+Filter\+\_\+\+Type\+Def}} \{ \newline
+{\bfseries ADAPTIVE\+\_\+\+CONF\+\_\+\+NONE} = 0
+, {\bfseries ADAPTIVE\+\_\+\+CONF\+\_\+\+LIGHT}
+, {\bfseries ADAPTIVE\+\_\+\+CONF\+\_\+\+STANDARD}
+, {\bfseries ADAPTIVE\+\_\+\+CONF\+\_\+\+HEAVY}
+, \newline
+{\bfseries ADAPTIVE\+\_\+\+CONF\+\_\+\+MAX}
+ \}
+\begin{DoxyCompactList}\small\item\em Supported adaptive confidence filter mode. Adaptive confidence filter will try to filter (zero out pixel depth) abnormal / bad pixels. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -118,7 +130,15 @@ VOXEL3\+D\+\_\+\+API\+\_\+\+DLL int \mbox{\hyperlink{voxel3d_8h_a8ec3c8ddac21c27
 VOXEL3\+D\+\_\+\+API\+\_\+\+DLL int \mbox{\hyperlink{voxel3d_8h_a1fcb6c89da75b64b69b82fccf2c1dcac}{voxel3d\+\_\+set\+\_\+filter\+\_\+fpr\+\_\+mode}} (char $\ast$dev\+\_\+sn, int mode)
 \begin{DoxyCompactList}\small\item\em Configure filter (Flying Pixel Removal) mode. \end{DoxyCompactList}\item 
 VOXEL3\+D\+\_\+\+API\+\_\+\+DLL int \mbox{\hyperlink{voxel3d_8h_a024ba9ed128283a05fbd9e5370b7303b}{voxel3d\+\_\+get\+\_\+filter\+\_\+fpr\+\_\+mode}} (char $\ast$dev\+\_\+sn)
-\begin{DoxyCompactList}\small\item\em Get current configuration of filter (Flying Pixel Removal) mode. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Get current configuration of filter (Flying Pixel Removal) mode. \end{DoxyCompactList}\item 
+VOXEL3\+D\+\_\+\+API\+\_\+\+DLL float \mbox{\hyperlink{voxel3d_8h_ac3ab91e65739e6bfcccf8b5d8faa441d}{voxel3d\+\_\+get\+\_\+sensor\+\_\+temperature}} (char $\ast$dev\+\_\+sn)
+\begin{DoxyCompactList}\small\item\em Get current temperature of ToF sensor. \end{DoxyCompactList}\item 
+VOXEL3\+D\+\_\+\+API\+\_\+\+DLL float \mbox{\hyperlink{voxel3d_8h_a61e8f71a78c13d8e87e02d08ca4156dd}{voxel3d\+\_\+get\+\_\+illum\+\_\+temperature}} (char $\ast$dev\+\_\+sn)
+\begin{DoxyCompactList}\small\item\em Get current temperature of illumination VCSEL. \end{DoxyCompactList}\item 
+VOXEL3\+D\+\_\+\+API\+\_\+\+DLL int \mbox{\hyperlink{voxel3d_8h_aeb8e8c2f1c832599ba0ecbcd3bb8da12}{voxel3d\+\_\+set\+\_\+adaptive\+\_\+conf\+\_\+filter\+\_\+mode}} (char $\ast$dev\+\_\+sn, int mode)
+\begin{DoxyCompactList}\small\item\em Configure adaptive confidence filter mode. \end{DoxyCompactList}\item 
+VOXEL3\+D\+\_\+\+API\+\_\+\+DLL int \mbox{\hyperlink{voxel3d_8h_a467fbf3dae26b469736212c9347d2452}{voxel3d\+\_\+get\+\_\+adaptive\+\_\+conf\+\_\+filter\+\_\+mode}} (char $\ast$dev\+\_\+sn)
+\begin{DoxyCompactList}\small\item\em Get current configuration of adaptive confidence filter mode. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -128,7 +148,7 @@ libvoxel3d APIs for 5Voxel 5Z01A device
 Jackie Lee 
 \end{DoxyAuthor}
 \begin{DoxyCopyright}{Copyright}
-Copyright (c) 2022 5Voxel Co., Ltd. 
+Copyright (c) 2023 5Voxel Co., Ltd. 
 \end{DoxyCopyright}
 
 
@@ -161,6 +181,32 @@ Supported range mode ~\newline
 \begin{DoxyItemize}
 \item FPS\+: 5fps
 \item Suggested sensing range with AE-\/enabled\+: 0.\+1m $\sim$ 4.\+5m 
+\end{DoxyItemize}\mbox{\Hypertarget{voxel3d_8h_a729d59796ce7329d9185859e356abb07}\label{voxel3d_8h_a729d59796ce7329d9185859e356abb07}} 
+\index{voxel3d.h@{voxel3d.h}!AdaptiveConfFilter\_TypeDef@{AdaptiveConfFilter\_TypeDef}}
+\index{AdaptiveConfFilter\_TypeDef@{AdaptiveConfFilter\_TypeDef}!voxel3d.h@{voxel3d.h}}
+\doxysubsubsection{\texorpdfstring{AdaptiveConfFilter\_TypeDef}{AdaptiveConfFilter\_TypeDef}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{voxel3d_8h_a729d59796ce7329d9185859e356abb07}{Adaptive\+Conf\+Filter\+\_\+\+Type\+Def}}}
+
+
+
+Supported adaptive confidence filter mode. Adaptive confidence filter will try to filter (zero out pixel depth) abnormal / bad pixels. 
+
+\hypertarget{voxel3d_8h_autotoc_md3}{}\doxyparagraph{ADAPTIVE\+\_\+\+CONF\+\_\+\+NONE\+:}\label{voxel3d_8h_autotoc_md3}
+
+\begin{DoxyItemize}
+\item Disable adaptive confidence filter 
+\end{DoxyItemize}\hypertarget{voxel3d_8h_autotoc_md4}{}\doxyparagraph{ADAPTIVE\+\_\+\+CONF\+\_\+\+LIGHT\+:}\label{voxel3d_8h_autotoc_md4}
+
+\begin{DoxyItemize}
+\item Light effect (less zero-\/out pixels) 
+\end{DoxyItemize}\hypertarget{voxel3d_8h_autotoc_md5}{}\doxyparagraph{ADAPTIVE\+\_\+\+CONF\+\_\+\+STANDARD\+:}\label{voxel3d_8h_autotoc_md5}
+
+\begin{DoxyItemize}
+\item Default mode 
+\end{DoxyItemize}\hypertarget{voxel3d_8h_autotoc_md6}{}\doxyparagraph{ADAPTIVE\+\_\+\+CONF\+\_\+\+HEAVY\+:}\label{voxel3d_8h_autotoc_md6}
+
+\begin{DoxyItemize}
+\item Heavy effect (more zero-\/out pixels) 
 \end{DoxyItemize}
 
 \doxysubsection{Function Documentation}
@@ -211,8 +257,11 @@ Function to poll the state and p5\+Z01A device firmware upgrade utility.
 \begin{DoxyReturn}{Returns}
 true\+: In upgrade procedure 
 
-\texorpdfstring{$<$}{<} 0\+: Not in upgrade procedure Note\+: while output \texorpdfstring{$<$}{<} 0, state \& percent\+\_\+complete can be used to know if the previous upgrade had error or completed withtout failure 
+\texorpdfstring{$<$}{<} 0\+: Not in upgrade procedure 
 \end{DoxyReturn}
+\begin{DoxyNote}{Note}
+while output \texorpdfstring{$<$}{<} 0, state \& percent\+\_\+complete can be used to know if the previous upgrade had error or completed withtout failure 
+\end{DoxyNote}
 \mbox{\Hypertarget{voxel3d_8h_a6e1fba56cb09fbd7c2075ab0026ff300}\label{voxel3d_8h_a6e1fba56cb09fbd7c2075ab0026ff300}} 
 \index{voxel3d.h@{voxel3d.h}!voxel3d\_generatePointCloud@{voxel3d\_generatePointCloud}}
 \index{voxel3d\_generatePointCloud@{voxel3d\_generatePointCloud}!voxel3d.h@{voxel3d.h}}
@@ -236,6 +285,27 @@ The unit of x/y/z is meter
 \texorpdfstring{$>$}{>} 0\+: pixels of pointcloud xyz filled in xyz buffer 
 
 \texorpdfstring{$<$}{<}= 0\+: failed to generate pointcloud 
+\end{DoxyReturn}
+\mbox{\Hypertarget{voxel3d_8h_a467fbf3dae26b469736212c9347d2452}\label{voxel3d_8h_a467fbf3dae26b469736212c9347d2452}} 
+\index{voxel3d.h@{voxel3d.h}!voxel3d\_get\_adaptive\_conf\_filter\_mode@{voxel3d\_get\_adaptive\_conf\_filter\_mode}}
+\index{voxel3d\_get\_adaptive\_conf\_filter\_mode@{voxel3d\_get\_adaptive\_conf\_filter\_mode}!voxel3d.h@{voxel3d.h}}
+\doxysubsubsection{\texorpdfstring{voxel3d\_get\_adaptive\_conf\_filter\_mode()}{voxel3d\_get\_adaptive\_conf\_filter\_mode()}}
+{\footnotesize\ttfamily VOXEL3\+D\+\_\+\+API\+\_\+\+DLL int voxel3d\+\_\+get\+\_\+adaptive\+\_\+conf\+\_\+filter\+\_\+mode (\begin{DoxyParamCaption}\item[{char $\ast$}]{dev\+\_\+sn }\end{DoxyParamCaption})}
+
+
+
+Get current configuration of adaptive confidence filter mode. 
+
+\begin{DoxyWarning}{Warning}
+Call this function after \mbox{\hyperlink{voxel3d_8h_a496143fdb21996473d36dcd87eeb38ee}{voxel3d\+\_\+init()}} is completed and successfully, otherwise, it returns false 
+\end{DoxyWarning}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em dev\+\_\+sn} & device S/N. Input S/N with NULL pointer or empty string will initialize the 1st scanned device \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+mode\+: 0 -\/\texorpdfstring{$>$}{>} Disable 1 -\/\texorpdfstring{$>$}{>} Light 2 -\/\texorpdfstring{$>$}{>} Standard 3 -\/\texorpdfstring{$>$}{>} Heavy 
 \end{DoxyReturn}
 \mbox{\Hypertarget{voxel3d_8h_afc5edbe95b6477bf5d939a6a33e6f629}\label{voxel3d_8h_afc5edbe95b6477bf5d939a6a33e6f629}} 
 \index{voxel3d.h@{voxel3d.h}!voxel3d\_get\_auto\_exposure\_mode@{voxel3d\_get\_auto\_exposure\_mode}}
@@ -349,6 +419,30 @@ Get current configuration of filter (Flying Pixel Removal) mode.
 \begin{DoxyReturn}{Returns}
 mode\+: 0 -\/\texorpdfstring{$>$}{>} Disable 1 -\/\texorpdfstring{$>$}{>} Light 2 -\/\texorpdfstring{$>$}{>} Standard 3 -\/\texorpdfstring{$>$}{>} Heavy 
 \end{DoxyReturn}
+\mbox{\Hypertarget{voxel3d_8h_a61e8f71a78c13d8e87e02d08ca4156dd}\label{voxel3d_8h_a61e8f71a78c13d8e87e02d08ca4156dd}} 
+\index{voxel3d.h@{voxel3d.h}!voxel3d\_get\_illum\_temperature@{voxel3d\_get\_illum\_temperature}}
+\index{voxel3d\_get\_illum\_temperature@{voxel3d\_get\_illum\_temperature}!voxel3d.h@{voxel3d.h}}
+\doxysubsubsection{\texorpdfstring{voxel3d\_get\_illum\_temperature()}{voxel3d\_get\_illum\_temperature()}}
+{\footnotesize\ttfamily VOXEL3\+D\+\_\+\+API\+\_\+\+DLL float voxel3d\+\_\+get\+\_\+illum\+\_\+temperature (\begin{DoxyParamCaption}\item[{char $\ast$}]{dev\+\_\+sn }\end{DoxyParamCaption})}
+
+
+
+Get current temperature of illumination VCSEL. 
+
+\begin{DoxyWarning}{Warning}
+Call this function after \mbox{\hyperlink{voxel3d_8h_a496143fdb21996473d36dcd87eeb38ee}{voxel3d\+\_\+init()}} is completed and successfully, otherwise, it returns false 
+\end{DoxyWarning}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em dev\+\_\+sn} & device S/N. Input S/N with NULL pointer or empty string will initialize the 1st scanned device \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+temperature in degree C 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+temperature only get updated during new depth frame receiving 
+\end{DoxyNote}
 \mbox{\Hypertarget{voxel3d_8h_a604e8a9782abdac085d8054882046030}\label{voxel3d_8h_a604e8a9782abdac085d8054882046030}} 
 \index{voxel3d.h@{voxel3d.h}!voxel3d\_get\_range\_mode@{voxel3d\_get\_range\_mode}}
 \index{voxel3d\_get\_range\_mode@{voxel3d\_get\_range\_mode}!voxel3d.h@{voxel3d.h}}
@@ -376,6 +470,30 @@ Call this function after \mbox{\hyperlink{voxel3d_8h_a496143fdb21996473d36dcd87e
 
 \texorpdfstring{$<$}{<} 0\+: failed to get range mode 
 \end{DoxyReturn}
+\mbox{\Hypertarget{voxel3d_8h_ac3ab91e65739e6bfcccf8b5d8faa441d}\label{voxel3d_8h_ac3ab91e65739e6bfcccf8b5d8faa441d}} 
+\index{voxel3d.h@{voxel3d.h}!voxel3d\_get\_sensor\_temperature@{voxel3d\_get\_sensor\_temperature}}
+\index{voxel3d\_get\_sensor\_temperature@{voxel3d\_get\_sensor\_temperature}!voxel3d.h@{voxel3d.h}}
+\doxysubsubsection{\texorpdfstring{voxel3d\_get\_sensor\_temperature()}{voxel3d\_get\_sensor\_temperature()}}
+{\footnotesize\ttfamily VOXEL3\+D\+\_\+\+API\+\_\+\+DLL float voxel3d\+\_\+get\+\_\+sensor\+\_\+temperature (\begin{DoxyParamCaption}\item[{char $\ast$}]{dev\+\_\+sn }\end{DoxyParamCaption})}
+
+
+
+Get current temperature of ToF sensor. 
+
+\begin{DoxyWarning}{Warning}
+Call this function after \mbox{\hyperlink{voxel3d_8h_a496143fdb21996473d36dcd87eeb38ee}{voxel3d\+\_\+init()}} is completed and successfully, otherwise, it returns false 
+\end{DoxyWarning}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em dev\+\_\+sn} & device S/N. Input S/N with NULL pointer or empty string will initialize the 1st scanned device \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+temperature in degree C 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+temperature only get updated during new depth frame receiving 
+\end{DoxyNote}
 \mbox{\Hypertarget{voxel3d_8h_a496143fdb21996473d36dcd87eeb38ee}\label{voxel3d_8h_a496143fdb21996473d36dcd87eeb38ee}} 
 \index{voxel3d.h@{voxel3d.h}!voxel3d\_init@{voxel3d\_init}}
 \index{voxel3d\_init@{voxel3d\_init}!voxel3d.h@{voxel3d.h}}
@@ -586,6 +704,31 @@ Perform the scan of 5Voxel 5Z01A devices.
 \texorpdfstring{$>$}{>} 0\+: number of device(s) found 
 
 others\+: can\textquotesingle{}t find device 
+\end{DoxyReturn}
+\mbox{\Hypertarget{voxel3d_8h_aeb8e8c2f1c832599ba0ecbcd3bb8da12}\label{voxel3d_8h_aeb8e8c2f1c832599ba0ecbcd3bb8da12}} 
+\index{voxel3d.h@{voxel3d.h}!voxel3d\_set\_adaptive\_conf\_filter\_mode@{voxel3d\_set\_adaptive\_conf\_filter\_mode}}
+\index{voxel3d\_set\_adaptive\_conf\_filter\_mode@{voxel3d\_set\_adaptive\_conf\_filter\_mode}!voxel3d.h@{voxel3d.h}}
+\doxysubsubsection{\texorpdfstring{voxel3d\_set\_adaptive\_conf\_filter\_mode()}{voxel3d\_set\_adaptive\_conf\_filter\_mode()}}
+{\footnotesize\ttfamily VOXEL3\+D\+\_\+\+API\+\_\+\+DLL int voxel3d\+\_\+set\+\_\+adaptive\+\_\+conf\+\_\+filter\+\_\+mode (\begin{DoxyParamCaption}\item[{char $\ast$}]{dev\+\_\+sn,  }\item[{int}]{mode }\end{DoxyParamCaption})}
+
+
+
+Configure adaptive confidence filter mode. 
+
+\begin{DoxyWarning}{Warning}
+Call this function after \mbox{\hyperlink{voxel3d_8h_a496143fdb21996473d36dcd87eeb38ee}{voxel3d\+\_\+init()}} is completed and successfully, otherwise, it returns false 
+\end{DoxyWarning}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em dev\+\_\+sn} & device S/N. Input S/N with NULL pointer or empty string will initialize the 1st scanned device \\
+\hline
+\mbox{\texttt{ in}}  & {\em mode} & (0 -\/\texorpdfstring{$>$}{>} Disable, 1 -\/\texorpdfstring{$>$}{>} Light, 2 -\/\texorpdfstring{$>$}{>} Standard, 3 -\/\texorpdfstring{$>$}{>} Heavy) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true\+: completed configration 
+
+\texorpdfstring{$<$}{<} 0\+: configuration failure 
 \end{DoxyReturn}
 \mbox{\Hypertarget{voxel3d_8h_a33a3399a19f90f5f2d5a5f0ec38df6e7}\label{voxel3d_8h_a33a3399a19f90f5f2d5a5f0ec38df6e7}} 
 \index{voxel3d.h@{voxel3d.h}!voxel3d\_set\_auto\_exposure\_mode@{voxel3d\_set\_auto\_exposure\_mode}}

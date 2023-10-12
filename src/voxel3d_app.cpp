@@ -16,7 +16,7 @@
 #include "voxel3d.h"
 
 #define TOOLS_VER_MAJOR         (1)
-#define TOOLS_VER_MINOR         (6)
+#define TOOLS_VER_MINOR         (7)
 
 #ifdef PLAT_WINDOWS
 #define SleepSeconds(x)        Sleep(x * 1000)
@@ -100,6 +100,9 @@ static void usage(FILE *fp, int argc, char **argv)
          "-A | --set_auto_expo    set auto exposure mode\n"
          "-b | --build_date       show firmware build date\n"
          "-c | --count            Number of frames to grab [%i]\n"
+         "-d | --display          Display camera temperature\n"
+         "-f | --get_acf_mode     get adaptive confidence filter mode\n"
+         "-F | --set_acf_mode     set adaptive confidence filter mode\n"
          "-r | --get_mode         get range mode\n"
          "-R | --set_mode         set range mode\n"
          "-S | --scan_dev         scan devices and list device S/N\n"
@@ -112,7 +115,7 @@ static void usage(FILE *fp, int argc, char **argv)
          argv[0], TOOLS_VER_MAJOR, TOOLS_VER_MINOR, frame_count);
 }
 
-static const char short_options[] = "haA:bc:prR:Ss:tT:u:v";
+static const char short_options[] = "haA:bc:dpfF:rR:Ss:tT:u:v";
 
 static const struct option
 long_options[] = {
@@ -121,7 +124,10 @@ long_options[] = {
     { "set_auto_expo",     required_argument, NULL, 'A' },
     { "build_date",        no_argument,       NULL, 'b' },
     { "count",             required_argument, NULL, 'c' },
+    { "display",           no_argument,       NULL, 'd' },
     { "prod_sn",           no_argument,       NULL, 'p' },
+    { "get_acf_mode",      no_argument,       NULL, 'f' },
+    { "set_acf_mode",      required_argument, NULL, 'F' },
     { "get_mode",          no_argument,       NULL, 'r' },
     { "set_mode",          required_argument, NULL, 'R' },
     { "scan_dev",          no_argument,       NULL, 'S' },
@@ -138,6 +144,7 @@ int main(int argc, char **argv)
     int wait_time = 60;
     char data[64];
     int  result, found_device;
+    float fResult;
     CamDevInfo devInfo;
     char dev_sn[MAX_PRODUCT_SN_LEN] = {'\0'};
 
@@ -204,6 +211,44 @@ int main(int argc, char **argv)
             if (errno)
                 errno_exit(optarg);
             break;
+
+        case 'd':
+            found_device = voxel3d_init(dev_sn);
+            if (found_device > 0) {
+                fResult = voxel3d_get_sensor_temperature(dev_sn);
+                printf("Sensor temperature :       %f\n", fResult);
+                fResult = voxel3d_get_illum_temperature(dev_sn);
+                printf("Illumination temperature : %f\n", fResult);
+            }
+            voxel3d_release(dev_sn);
+            exit(EXIT_SUCCESS);
+
+        case 'f':
+            found_device = voxel3d_init(dev_sn);
+            if (found_device > 0) {
+                result = voxel3d_get_adaptive_conf_filter_mode(dev_sn);
+                if (result >= 0) {
+                    printf("Adaptive Confidence Filter Mode : %d\n", result);
+                }
+            }
+            voxel3d_release(dev_sn);
+            exit(EXIT_SUCCESS);
+
+        case 'F':
+            errno = 0;
+            range_mode = strtol(optarg, NULL, 0);
+            if (errno)
+                errno_exit(optarg);
+
+            found_device = voxel3d_init(dev_sn);
+            if (found_device > 0) {
+                result = voxel3d_set_adaptive_conf_filter_mode(dev_sn, range_mode);
+                if (result > 0) {
+                    printf("Set Adaptive Confidence Filter Mode : %d\n", range_mode);
+                }
+            }
+            voxel3d_release(dev_sn);
+            exit(EXIT_SUCCESS);
 
         case 'r':
             found_device = voxel3d_init(dev_sn);

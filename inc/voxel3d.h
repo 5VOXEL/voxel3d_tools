@@ -2,7 +2,7 @@
  @file      voxel3d.h
  @brief     libvoxel3d APIs for 5Voxel 5Z01A device
  @author    Jackie Lee
- @copyright Copyright (c) 2022 5Voxel Co., Ltd.
+ @copyright Copyright (c) 2023 5Voxel Co., Ltd.
 */
 
 #ifndef __VOXEL3d_H__
@@ -42,6 +42,8 @@
 #define MAX_PRODUCT_NAME_LEN          (128)
 #define MAX_PRODUCT_SN_LEN            (128)
 
+#define MAX_FW_VER_LEN                (16)
+
 /**
  * @brief  Supported range mode  
  * ### Short range:
@@ -59,6 +61,27 @@ enum _range_mode {
     MIDDLE_RANGE_MODE,
     LONG_RANGE_MODE,
 };
+
+/**
+ * @brief  Supported adaptive confidence filter mode.
+ *         Adaptive confidence filter will try to filter (zero out pixel depth) abnormal / bad pixels.
+ * ### ADAPTIVE_CONF_NONE:
+ *     - Disable adaptive confidence filter
+ * ### ADAPTIVE_CONF_LIGHT:
+ *     - Light effect (less zero-out pixels)
+ * ### ADAPTIVE_CONF_STANDARD:
+ *     - Default mode
+ * ### ADAPTIVE_CONF_HEAVY:
+ *     - Heavy effect (more zero-out pixels)
+ */
+typedef enum
+{
+    ADAPTIVE_CONF_NONE = 0,
+    ADAPTIVE_CONF_LIGHT,
+    ADAPTIVE_CONF_STANDARD,
+    ADAPTIVE_CONF_HEAVY,
+    ADAPTIVE_CONF_MAX
+} AdaptiveConfFilter_TypeDef;
 
 /**
  * @brief  Structure used in voxel3d_read_camera_info() to read out camera info from device
@@ -360,8 +383,8 @@ extern "C" VOXEL3D_API_DLL int voxel3d_dev_fw_upgrade(char* dev_sn,
  *              percent_complete: 0 ~ 100
  * @return      true: In upgrade procedure
  * @return      < 0: Not in upgrade procedure
- *              Note: while output < 0, state & percent_complete can be used to know if the previous upgrade
- *                    had error or completed withtout failure
+ * @note        while output < 0, state & percent_complete can be used to know if the previous upgrade
+ *              had error or completed withtout failure
  */
 extern "C" VOXEL3D_API_DLL int voxel3d_dev_fw_upgrade_state_poll (char* dev_sn, int &state,
                                                                   unsigned int &percent_complete);
@@ -389,6 +412,58 @@ extern "C" VOXEL3D_API_DLL int voxel3d_set_filter_fpr_mode(char* dev_sn,
  *                    3 -> Heavy
  */
 extern "C" VOXEL3D_API_DLL int voxel3d_get_filter_fpr_mode(char* dev_sn);
+
+
+/**
+ * @brief       Get current temperature of ToF sensor
+ * @warning     Call this function after voxel3d_init() is completed and successfully,
+ *              otherwise, it returns false
+ * @param[in]   dev_sn: device S/N. Input S/N with NULL pointer or empty string will
+ *                      initialize the 1st scanned device
+ * @return      temperature in degree C
+ * @note        temperature only get updated during new depth frame receiving
+ */
+extern "C" VOXEL3D_API_DLL float voxel3d_get_sensor_temperature(char* dev_sn);
+
+
+/**
+ * @brief       Get current temperature of illumination VCSEL
+ * @warning     Call this function after voxel3d_init() is completed and successfully,
+ *              otherwise, it returns false
+ * @param[in]   dev_sn: device S/N. Input S/N with NULL pointer or empty string will
+ *                      initialize the 1st scanned device
+ * @return      temperature in degree C
+ * @note        temperature only get updated during new depth frame receiving
+ */
+extern "C" VOXEL3D_API_DLL float voxel3d_get_illum_temperature(char* dev_sn);
+
+
+/**
+ * @brief       Configure adaptive confidence filter mode
+ * @warning     Call this function after voxel3d_init() is completed and successfully,
+ *              otherwise, it returns false
+ * @param[in]   dev_sn: device S/N. Input S/N with NULL pointer or empty string will
+ *                      initialize the 1st scanned device
+ * @param[in]   mode: (0 -> Disable, 1 -> Light, 2 -> Standard, 3 -> Heavy)
+ * @return      true: completed configration
+ * @return      < 0: configuration failure
+ */
+extern "C" VOXEL3D_API_DLL int voxel3d_set_adaptive_conf_filter_mode(char* dev_sn,
+                                                                     int mode);
+
+
+/**
+ * @brief       Get current configuration of adaptive confidence filter mode
+ * @warning     Call this function after voxel3d_init() is completed and successfully,
+ *              otherwise, it returns false
+ * @param[in]   dev_sn: device S/N. Input S/N with NULL pointer or empty string will
+ *                      initialize the 1st scanned device
+ * @return      mode: 0 -> Disable
+ *                    1 -> Light
+ *                    2 -> Standard
+ *                    3 -> Heavy
+ */
+extern "C" VOXEL3D_API_DLL int voxel3d_get_adaptive_conf_filter_mode(char* dev_sn);
 
 #endif /* __VOXEL3d_H__ */
 
